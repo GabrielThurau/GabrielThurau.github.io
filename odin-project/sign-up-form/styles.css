@@ -1,0 +1,154 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.velociwrapter {
+    margin: 0 auto;
+    padding: 10px 40px;
+    align-items: center;
+    justify-items: center;
+    display: grid;
+    min-width: 0;
+}
+
+.left-of-form {
+
+    background: url('https://images.unsplash.com/photo-1572900804168-1fc540afecda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fGJpb2x1bWluZXNjZW5jZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.form-container {
+    display: grid;
+    grid-template-columns: 400px 700px;
+    grid-template-rows: 700px 700px;
+    margin-top: 5rem;
+}
+
+
+
+.grid-child:first-child {
+    outline: black;
+    /* background: rgb(238, 174, 202); */
+    background: rgba(148, 187, 233, 1);
+    background: url('https://images.unsplash.com/photo-1441555136638-e47c0158bfc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1474&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid black;
+    border-right: none;
+}
+
+.grid-child:last-child {
+    outline: black;
+    background: rgb(238, 174, 202);
+    border: 1px solid black;
+}
+
+
+.main-content {
+    width: 100%;
+    height: 100%;
+    width: 100vw;
+    height: 150vh;
+    background: #36454f;
+    min-width: 0;
+
+}
+
+.form-wrapper {
+    width: 70vw;
+    margin: 0 auto;
+    background: rgb(238, 174, 202);
+    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    height: 80vh;
+
+}
+
+.right-of-form {
+    background-color: black;
+}
+
+.logowrap {
+    display: flex;
+    align-items: center;
+    margin-top: 0.8rem;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.logo {
+    max-width: 100px;
+    max-height: 200px;
+}
+
+.logo-container {
+    height: 80vh;
+}
+
+.transparent-back {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.404);
+}
+
+.odin {
+    font-family: 'Skranji', cursive;
+    font-size: 5rem;
+    color: white;
+    font-weight: bold;
+}
+
+.form-block {
+    width: 100%;
+    padding: 0px 30px;
+}
+
+.flex-inputs {
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0.5rem;
+    width: 40%;
+    margin-left: 0.5rem;
+}
+
+label,
+input {
+    padding: 0.3rem 0px;
+    font-family: 'Skranji', cursive;
+}
+
+input[type=submit] {
+    margin: 0.5rem;
+    padding: 0.3rem 1rem;
+}
+
+.button-container {
+    display: flex;
+    margin-left: 30px;
+    margin-top: 0.5rem;
+}
+
+/* nesting is now natively supported in chrome btw! */
+
+.text-block {
+
+    padding: 50px 40px;
+
+    >p {
+        font-size: 1.5rem;
+        font-family: 'Skranji', cursive;
+    }
+
+    .space-jam {
+        margin-top: 0.8rem;
+    }
+
+    .boldilocks {
+        font-weight: 700;
+    }
+
+}
+
+/* nesting is now natively supported in chrome btw! */
