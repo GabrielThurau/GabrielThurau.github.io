@@ -2,5 +2,16 @@
     width: 100vw;
     height: 100vw;
     max-width: 100%;
-    background: black;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.logo-wrap {}
+
+.sidenav {
+    display: grid;
+    background: skyblue;
+}
+
+.dashboard {
+    max-width: 100%;
 }
