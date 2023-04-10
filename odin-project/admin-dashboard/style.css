@@ -1,8 +1,19 @@
-.wrapper {
-    width: 100vw;
-    height: 100vw;
+.grid-wrapper {
+    width: 80vw;
+    height: 100vh;
+    margin: 0 auto;
     max-width: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    /* background: rgba(0, 0, 0, 0.8); */
+    display: grid;
+    /* grid-template: auto 4fr/ 1fr 4fr; */
+    grid-template-columns: 0.5fr 1fr;
+
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .logo-wrap {}
@@ -10,8 +21,16 @@
 .sidenav {
     display: grid;
     background: skyblue;
+    grid-template-rows: auto auto 1fr;
+    /* grid-row-end: -1; */
+    padding: 1rem;
+
 }
+
+/* The syntax is grid-row-start / grid-column-start / grid-row-end / grid-column-end. */
 
 .dashboard {
     max-width: 100%;
+    height: 5rem;
+    fill: white;
 }
