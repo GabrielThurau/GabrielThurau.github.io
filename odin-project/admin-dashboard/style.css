@@ -6,9 +6,17 @@
     /* background: rgba(0, 0, 0, 0.8); */
     display: grid;
     /* grid-template: auto 4fr/ 1fr 4fr; */
-    grid-template-columns: 0.5fr 1fr;
+    grid-template-columns: 0.3fr 1fr;
 
 }
+
+
+/* You can use the grid-area property to specify where to place an item.
+
+The syntax is grid-row-start / grid-column-start / grid-row-end / grid-column-end.
+
+Item1 will start on row 2 and column 1, and span 2 rows and 3 columns: */
+
 
 ul {
     list-style: none;
@@ -25,6 +33,58 @@ ul {
     /* grid-row-end: -1; */
     padding: 1rem;
 
+}
+
+/* this is for hiding the label on the search bar. Better for accessibility to have that label. */
+
+.hide-element {
+    border: 0;
+    clip: rect(1px 1px 1px 1px);
+    /* IE6, IE7 */
+    clip;
+    rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+#site-search {
+
+    border-radius: 1.625rem;
+    outline: none;
+    border: none;
+    height: 2.2rem;
+    background: #f5f5f5;
+    padding: 0 3.5rem 0 1.5rem;
+    font-size: 1rem;
+    width: 70%;
+}
+
+div.search {
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    max-width: 2rem;
+    fill: white;
+    height: 2.2rem;
+    margin-right: 1rem;
+}
+
+header {
+    background: blueviolet;
+    display: grid;
+    grid-template: auto 1fr / 2fr 1fr;
+}
+
+#top-nav {
+    background: blueviolet;
+    margin-top: 3rem;
+    margin-left: 3rem;
 }
 
 /* The syntax is grid-row-start / grid-column-start / grid-row-end / grid-column-end. */
