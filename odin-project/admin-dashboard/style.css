@@ -10,6 +10,10 @@
 
 }
 
+* {
+    font-family: "Times New Roman", Times, serif;
+}
+
 
 /* You can use the grid-area property to specify where to place an item.
 
@@ -61,6 +65,7 @@ ul {
     padding: 0 3.5rem 0 1.5rem;
     font-size: 1rem;
     width: 70%;
+    flex: 1;
 }
 
 div.search {
@@ -79,6 +84,29 @@ header {
     background: blueviolet;
     display: grid;
     grid-template: auto 1fr / 2fr 1fr;
+    padding: 2rem;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+}
+
+.wimp-lo {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.wimp-lo-name {
+    font-size: 1.5rem;
+}
+
+.bell {
+    max-height: 30px;
+    max-width: 30px;
 }
 
 #top-nav {
