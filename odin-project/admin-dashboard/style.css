@@ -81,10 +81,11 @@ div.search {
 }
 
 header {
-    background: blueviolet;
+    background: #FFAF38FF;
     display: grid;
     grid-template: auto 1fr / 2fr 1fr;
     padding: 2rem;
+    padding-top: 0.4rem;
 }
 
 .login {
@@ -109,11 +110,26 @@ header {
     max-width: 30px;
 }
 
-#top-nav {
-    background: blueviolet;
-    margin-top: 3rem;
-    margin-left: 3rem;
+.greeting {
+    display: flex;
+    max-height: 10rem;
+
 }
+
+.hello {
+    font-size: 1.3rem;
+    font-style: italic;
+    font-weight: 400;
+    display: inline-block;
+    max-height: 10rem;
+}
+
+.bold-name {
+    font-weight: 700;
+    font-size: 2rem;
+    display: inline-block;
+}
+
 
 /* The syntax is grid-row-start / grid-column-start / grid-row-end / grid-column-end. */
 
