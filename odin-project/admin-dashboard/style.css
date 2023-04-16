@@ -10,8 +10,7 @@
     grid-template-areas:
         "sidebar header"
         "sidebar main"
-        "sidebar main"
-        "footer  footer";
+        "sidebar main";
 }
 
 * {
@@ -163,9 +162,34 @@ button {
 }
 
 .main-content {
+    display: grid;
     grid-area: main;
     background-color: #CBFF63FF;
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    grid-template: auto / 3fr 1fr;
+}
+
+.cards {
+
+    display: grid;
+    margin-top: 0.5rem;
+    grid-template-rows: auto 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    /* grid-auto-rows: auto; */
+    grid-gap: 1rem;
+}
+
+.card {
+
+    border: 2px solid black;
+
+    border-radius: 4px;
+
+    padding: .5rem;
+
+}
+
+.card-title {
+    grid-column: 1 /-1;
 }
 
 
