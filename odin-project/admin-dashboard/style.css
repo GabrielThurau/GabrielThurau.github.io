@@ -165,7 +165,8 @@ button {
     display: grid;
     grid-area: main;
     background-color: #CBFF63FF;
-    grid-template: auto / 3fr 1fr;
+    grid-template: auto auto / 3fr 1fr;
+    /* overflow: scroll; */
 }
 
 .cards {
@@ -190,6 +191,12 @@ button {
 
 .card-title {
     grid-column: 1 /-1;
+}
+
+.delete {
+    max-width: 40px;
+    max-height: 40px;
+    margin-left: auto;
 }
 
 
