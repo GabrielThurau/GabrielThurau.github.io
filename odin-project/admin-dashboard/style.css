@@ -182,21 +182,36 @@ button {
 .card {
 
     border: 2px solid black;
-
     border-radius: 4px;
-
     padding: .5rem;
+    display: grid;
 
 }
 
-.card-title {
+.project-title {
     grid-column: 1 /-1;
 }
 
 .delete {
+    display: flex;
+    align-self: flex-end;
+    justify-content: flex-end;
+}
+
+.plus {
+    display: flex;
+    align-self: flex-end;
+    justify-content: flex-end;
+}
+
+.plus svg {
     max-width: 40px;
-    max-height: 40px;
-    margin-left: auto;
+    cursor: pointer;
+}
+
+.delete svg {
+    max-width: 40px;
+    cursor: pointer;
 }
 
 
