@@ -6,7 +6,7 @@ class Card {
         this.title = title;
         this.description = description;
     }
-    renderCard() {
+   renderCard() {
         const createdCard = document.createElement('div');
         createdCard.classList.add('card');
         const markup = 
@@ -29,3 +29,98 @@ class Card {
 let cardN = new Card("Software Sprint", "this is for a software sprint that needs to be shipped ASAP");
 
 cardN.renderCard();
+
+
+// Local Storage Class
+class Store {
+
+    static getTasks() {
+        let tasks
+        localStorage.getItem('tasks') === null ? tasks = [] : tasks = JSON.parse(localStorage.getItem('tasks'));
+        console.log(tasks)
+        return tasks;
+    }
+
+    static addTask(task) {
+        const tasks = Store.getTasks();
+        tasks.push(task);
+
+        console.log(task)
+
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+
+}
+
+
+class UI {
+
+    static tryTasks(){
+        const sampleTasks = [
+            {
+                title: 'Code Sprint',
+                daysToComplete: 13,
+                status: false,
+                started: false
+            },
+            {
+                title: 'A/B Test #414',
+                daysToComplete: 1,
+                status: false,
+                started: false
+            },
+            {
+                title: 'Site Speed Audit',
+                daysToComplete: 3,
+                status: false,
+                started: false
+            },
+            {
+                title: 'Refactoring Junior Dev Code',
+                daysToComplete: 2,
+                status: false,
+                started: false
+            }
+        ]
+        const tasks = sampleTasks; 
+
+        setTimeout(()=>{tasks.forEach((task)=> {
+            UI.addTaskToStorage(task); 
+            Store.addTask(task)});
+        }, 200);
+    }
+
+    static addTaskToStorage(task){
+             
+        if(task.status === true){ 
+            task.status = 'Read'; 
+            task.process = 'success';
+            task.summary = 'Completed';
+        }
+        else { 
+            task.status = 'Not read'; 
+            task.process = 'failure'; 
+            task.summary = 'On progress';
+        };
+    }
+    }
+
+    UI.tryTasks();
+
+//     static removetask(taskTitle) {
+//         const tasks = Store.gettasks();
+
+//         tasks.forEach((task, index) => { task.title === taskTitle ? tasks.splice(index, 1) : tasks});
+//         localStorage.setItem('tasks', JSON.stringify(tasks));
+//     }
+
+//     static updatetaskstatus(taskTitle, status) {
+//         const tasks = Store.gettasks();
+
+//         tasks.forEach((task) => { 
+//             if(task.title !== taskTitle) return;
+//             task.status = status;
+//         });
+
+//         localStorage.setItem('tasks', JSON.stringify(tasks));
+//     }
