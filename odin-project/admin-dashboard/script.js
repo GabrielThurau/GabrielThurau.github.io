@@ -64,14 +64,16 @@ class UI {
                 title: 'Code Sprint',
                 daysToComplete: 13,
                 status: 'started',
-                pomodoros: 4 
-                
+                pomodoros: 4,
+                tomatoesSquashed: 4,
+                percentage: 0
+           
                 // how many pomodoros will this take to complete? 
                 //https://en.wikipedia.org/wiki/Pomodoro_Technique
             },
             {
                 title: 'A/B Test #414',
-                daysToComplete: 1,
+                daysToComplete: 1, // this will be an extra step of complexity for factoring the progress bar. Will have to figure that one out. 
                 status: 'started',
                 pomodoros: 8,
                 tomatoesSquashed: 4,
@@ -105,10 +107,12 @@ class UI {
     }
 
     static addTaskToStorage(task){
+        console.log(task);
         if(task.status === 'started'){  
             task.progress = true;
-            task.percentage = UI.percentage(task.pomodoros, task.tomatoesSquashed);
-            console.log(task.percentage);
+            task.percentage = UI.percentage(task.tomatoesSquashed, task.pomodoros);
+           // need to then update a progress bar
+           // or update 
         }
         else { 
             task.progress = false; 
@@ -116,8 +120,9 @@ class UI {
     }
 
     static percentage(num, per) {
-        return (num / 100) * per;
+        return (num / per) * 100;
      } 
+
 
 
     }
