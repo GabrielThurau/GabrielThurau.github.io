@@ -1,6 +1,12 @@
 // use classes for deleting/adding cards to dashboard
 // also update local storage to keep dashboard the same?
 
+
+// need to display progress bar based on the status of the task. So will first check if the task is in local storage. Then will check to see the percentage of the task that is complete. 
+
+
+
+
 class Card {
     constructor(title, description) {
         this.title = title;
@@ -37,16 +43,13 @@ class Store {
     static getTasks() {
         let tasks
         localStorage.getItem('tasks') === null ? tasks = [] : tasks = JSON.parse(localStorage.getItem('tasks'));
-        console.log(tasks)
         return tasks;
     }
 
     static addTask(task) {
         const tasks = Store.getTasks();
         tasks.push(task);
-
-        console.log(task)
-
+        // console.log(task)
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 
@@ -60,49 +63,63 @@ class UI {
             {
                 title: 'Code Sprint',
                 daysToComplete: 13,
-                status: false,
-                started: false
+                status: 'started',
+                pomodoros: 4 
+                
+                // how many pomodoros will this take to complete? 
+                //https://en.wikipedia.org/wiki/Pomodoro_Technique
             },
             {
                 title: 'A/B Test #414',
                 daysToComplete: 1,
-                status: false,
-                started: false
+                status: 'started',
+                pomodoros: 8,
+                tomatoesSquashed: 4,
+                percentage: 0
+              
             },
             {
                 title: 'Site Speed Audit',
                 daysToComplete: 3,
-                status: false,
-                started: false
+                status: 'started',
+                pomodoros: 4,
+                tomatoesSquashed: 4,
+                percentage: 0
             },
             {
                 title: 'Refactoring Junior Dev Code',
                 daysToComplete: 2,
-                status: false,
-                started: false
+                status: 'started',
+                pomodoros: 100,
+                tomatoesSquashed: 4,
+                percentage: 0
             }
         ]
         const tasks = sampleTasks; 
 
         setTimeout(()=>{tasks.forEach((task)=> {
             UI.addTaskToStorage(task); 
-            Store.addTask(task)});
+            Store.addTask(task)
+});
         }, 200);
     }
 
     static addTaskToStorage(task){
-             
-        if(task.status === true){ 
-            task.status = 'Read'; 
-            task.process = 'success';
-            task.summary = 'Completed';
+        if(task.status === 'started'){  
+            task.progress = true;
+            task.percentage = UI.percentage(task.pomodoros, task.tomatoesSquashed);
+            console.log(task.percentage);
         }
         else { 
-            task.status = 'Not read'; 
-            task.process = 'failure'; 
-            task.summary = 'On progress';
+            task.progress = false; 
         };
     }
+
+    static percentage(num, per) {
+        return (num / 100) * per;
+     } 
+
+
     }
 
     UI.tryTasks();
