@@ -48,12 +48,24 @@ class Store {
 
     static addTask(task) {
         const tasks = Store.getTasks();
+        console.log(tasks);
         tasks.push(task);
         // console.log(task)
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 
+    static clear() {
+
+        localStorage.clear();
+        console.log('local storage cleared');
+    }
+
 }
+
+addEventListener("DOMContentLoaded", (event) => {
+    console.log('dom loaded');
+    Store.clear();
+});
 
 
 class UI {
@@ -107,12 +119,10 @@ class UI {
     }
 
     static addTaskToStorage(task){
-        console.log(task);
         if(task.status === 'started'){  
             task.progress = true;
             task.percentage = UI.percentage(task.tomatoesSquashed, task.pomodoros);
            // need to then update a progress bar
-           // or update 
         }
         else { 
             task.progress = false; 
@@ -122,8 +132,6 @@ class UI {
     static percentage(num, per) {
         return (num / per) * 100;
      } 
-
-
 
     }
 
