@@ -5,7 +5,7 @@
 // need to display progress bar based on the status of the task. So will first check if the task is in local storage. Then will check to see the percentage of the task that is complete. 
 
 
-
+// need to modify the render card method based on the actual sample tasks data below
 
 class Card {
     constructor(title, description) {
@@ -17,6 +17,8 @@ class Card {
         createdCard.classList.add('card');
         const markup = 
          `
+         <label for="task-progress">Task Progress:</label>
+         <progress class="task-progress" id="task-progress" value="0" max="100"></progress>
          <h4 class="card-title">${this.title}</h4>
          <div class="text">${this.description}
          </div>
@@ -42,7 +44,7 @@ class Store {
 
     static getTasks() {
         let tasks
-        localStorage.getItem('tasks') === null ? tasks = [] : tasks = JSON.parse(localStorage.getItem('tasks'));
+        localStorage.getItem('tasks') === null ? tasks = [] : tasks = JSON.parse(localStorage.getItem('tasks')); // 
         return tasks;
     }
 
@@ -136,6 +138,48 @@ class UI {
     }
 
     UI.tryTasks();
+
+
+    //convert rendercard into this?
+    // Add this to sample tasks and add description + title to default fields 
+
+
+    // static addBookToLibrary(book){
+    //     const librarySection = document.querySelector('main');
+             
+    //     const bookCard = document.createElement('div');
+    //     bookCard.classList.add('book-card', 'animated', 'vanishIn');
+
+    //     if(book.status === true){ 
+    //         book.status = 'Read'; 
+    //         book.process = 'success';
+    //         book.summary = 'Completed';
+    //     }
+    //     else { 
+    //         book.status = 'Not read'; 
+    //         book.process = 'failure'; 
+    //         book.summary = 'On progress';
+    //     };
+
+    //     bookCard.innerHTML =  `
+    //     <div class="description">
+    //         <h2>${book.title}</h2>
+    //         <h3>by ${book.author}</h3>
+    //         <p>Pages: ${book.pages}</p>
+    //     </div>
+    //     <div class="action-btns">
+    //         <button class="read read-status ${book.process}">${book.status}</button>
+    //         <button class="delete">Delete</button>
+    //     </div>
+    //     <div class="status">${book.summary}</div>`;
+
+    //     librarySection.appendChild(bookCard);
+
+    //     UI.activateBtn();
+    //     UI.usageTip();
+
+    //     setTimeout(()=>{bookCard.classList.remove('vanishIn');}, 2000);
+    // }
 
 //     static removetask(taskTitle) {
 //         const tasks = Store.gettasks();

@@ -112,8 +112,47 @@
 
         <dialog class="task-modal">
 
-
-
+            <form id="task-form">
+                <div class="form-container">
+                    <h1 class="form-header">
+                        New Task
+                    </h1>
+                    <div class="input-container">
+                        <label for="title"></label>
+                        <input type="text" name="title" id="title" required="">
+                        <span>
+                            Title
+                        </span>
+                    </div>
+                    <div class="input-container">
+                        <label for="author"></label>
+                        <input type="text" name="author" id="author" required="">
+                        <span>
+                            Pomodoros Until Completion
+                        </span>
+                    </div>
+                    <div class="input-container">
+                        <label for="pages">
+                        </label>
+                        <input type="number" name="pages" id="pages" min="1" required="">
+                        <span>
+                            Deadline (in days)
+                        </span>
+                    </div>
+                    <div class="input-container checkbox">
+                        <span class="checkbox">
+                            Status
+                        </span>
+                        <label class="checkbox-container">
+                            <input type="checkbox" class="read-status-determiner">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div id="btm">
+                        <button type="submit" class="submit-btn">Add to Library</button>
+                    </div>
+                </div>
+            </form>
 
         </dialog>
 
