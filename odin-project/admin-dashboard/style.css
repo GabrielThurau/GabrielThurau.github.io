@@ -161,6 +161,24 @@ button {
     height: 2rem;
 }
 
+.close-btn,
+.submit-btn {
+    padding: 0.5rem;
+    width: auto;
+    height: auto;
+    margin-top: 1rem;
+}
+
+.input-container {
+    margin-top: 0.5rem;
+}
+
+#btm {
+    display: flex;
+    gap: 0.4rem;
+    justify-content: space-between;
+}
+
 .main-content {
     display: grid;
     grid-area: main;

@@ -69,7 +69,7 @@ addEventListener("DOMContentLoaded", (event) => {
     Store.clear();
     UI.openModal();
     UI.closeModal();
-});
+}); 
 
 
 class UI {
