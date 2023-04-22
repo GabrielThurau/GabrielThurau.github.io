@@ -67,6 +67,8 @@ class Store {
 addEventListener("DOMContentLoaded", (event) => {
     console.log('dom loaded');
     Store.clear();
+    UI.openModal();
+    UI.closeModal();
 });
 
 
@@ -120,6 +122,23 @@ class UI {
         }, 200);
     }
 
+   static openModal() {
+    let dialog = document.querySelector('.task-modal');
+    const addTask = document.querySelector('.plus');
+       addTask.addEventListener("click", () => {
+        dialog.showModal();
+      });
+   }
+
+   static closeModal() {
+    let closeButton = document.querySelector('.close-btn');
+    let dialog = document.querySelector('.task-modal');
+    closeButton.addEventListener("click", () => {
+        dialog.close();
+      });
+      
+   }
+
     static addTaskToStorage(task){
         if(task.status === 'started'){  
             task.progress = true;
@@ -134,7 +153,6 @@ class UI {
     static percentage(num, per) {
         return (num / per) * 100;
      } 
-
     }
 
     UI.tryTasks();
