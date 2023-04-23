@@ -7,43 +7,6 @@
 
 // need to modify the render card method based on the actual sample tasks data below
 
-class Card {
-    constructor(title, description) {
-        this.title = title;
-        this.description = description;
-    }
-   renderCard() {
-        const createdCard = document.createElement('div');
-        createdCard.classList.add('card');
-        const markup = 
-         `
-         <label for="task-progress">Task Progress:</label>
-         <progress class="task-progress" id="task-progress" value="0" max="100"></progress>
-         <h4 class="card-title">${this.title}</h4>
-         <div class="text">${this.description}
-         </div>
-         <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                 <title>delete</title>
-                 <path
-                     d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-             </svg>
-             <svg class="plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-             <title>plus</title>
-             <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
-         </svg>
-             </div>`;
-
-     createdCard.innerHTML = markup;
-     document.querySelector('.cards').appendChild(createdCard);
-    }
-}
-
-
-let cardN = new Card("Software Sprint", "this is for a software sprint that needs to be shipped ASAP");
-
-cardN.renderCard();
-
-
 // Local Storage Class
 class Store {
 
@@ -82,6 +45,7 @@ class UI {
         const sampleTasks = [
             {
                 title: 'Code Sprint',
+                description: "New coding application for showing customers purchased since x date",
                 daysToComplete: 13,
                 status: 'started',
                 pomodoros: 4,
@@ -93,6 +57,7 @@ class UI {
             },
             {
                 title: 'A/B Test #414',
+                description: "Adding an AJAX cart to client site",
                 daysToComplete: 1, // this will be an extra step of complexity for factoring the progress bar. Will have to figure that one out. 
                 status: 'started',
                 pomodoros: 8,
@@ -102,6 +67,7 @@ class UI {
             },
             {
                 title: 'Site Speed Audit',
+                description: "Figure out what's causing homepage rendering flickering",
                 daysToComplete: 3,
                 status: 'started',
                 pomodoros: 4,
@@ -110,6 +76,7 @@ class UI {
             },
             {
                 title: 'Refactoring Junior Dev Code',
+                description: "Remove all settimeouts and replace with mutation observers where possible",
                 daysToComplete: 2,
                 status: 'started',
                 pomodoros: 100,
@@ -122,10 +89,36 @@ class UI {
         setTimeout(()=>{tasks.forEach((task)=> {
             UI.addTaskToStorage(task); 
             Store.addTask(task)
+            UI.renderCard(task);
 });
         }, 200);
-    }
 
+    }
+     static  renderCard(task) {
+                 const createdCard = document.createElement('div');
+                 createdCard.classList.add('card');
+                 const markup = 
+                  `
+                  <label for="task-progress">Task Progress:</label>
+                  <progress class="task-progress" id="task-progress" value="0" max="100"></progress>
+                  <h4 class="card-title">${task.title}</h4>
+                  <div class="text">${task.description}
+                  </div>
+                  <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                          <title>delete</title>
+                          <path
+                              d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                      </svg>
+                      <svg class="plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>plus</title>
+                      <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+                  </svg>
+                      </div>`;
+         
+              createdCard.innerHTML = markup;
+              document.querySelector('.cards').appendChild(createdCard);
+             }
+ 
    static openModal() {
     let dialog = document.querySelector('.task-modal');
     const addTask = document.querySelector('.plus');
@@ -161,48 +154,8 @@ class UI {
 
     UI.tryTasks();
 
-
-    //convert rendercard into this?
-    // Add this to sample tasks and add description + title to default fields 
-
-
-    // static addBookToLibrary(book){
-    //     const librarySection = document.querySelector('main');
-             
-    //     const bookCard = document.createElement('div');
-    //     bookCard.classList.add('book-card', 'animated', 'vanishIn');
-
-    //     if(book.status === true){ 
-    //         book.status = 'Read'; 
-    //         book.process = 'success';
-    //         book.summary = 'Completed';
-    //     }
-    //     else { 
-    //         book.status = 'Not read'; 
-    //         book.process = 'failure'; 
-    //         book.summary = 'On progress';
-    //     };
-
-    //     bookCard.innerHTML =  `
-    //     <div class="description">
-    //         <h2>${book.title}</h2>
-    //         <h3>by ${book.author}</h3>
-    //         <p>Pages: ${book.pages}</p>
-    //     </div>
-    //     <div class="action-btns">
-    //         <button class="read read-status ${book.process}">${book.status}</button>
-    //         <button class="delete">Delete</button>
-    //     </div>
-    //     <div class="status">${book.summary}</div>`;
-
-    //     librarySection.appendChild(bookCard);
-
-    //     UI.activateBtn();
-    //     UI.usageTip();
-
-    //     setTimeout(()=>{bookCard.classList.remove('vanishIn');}, 2000);
-    // }
-
+// need to add delete card function to UI class
+    
 //     static removetask(taskTitle) {
 //         const tasks = Store.gettasks();
 
