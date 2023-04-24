@@ -155,6 +155,10 @@ header {
     margin-top: 1rem;
 }
 
+.card-title {
+    text-transform: capitalize;
+}
+
 button {
     border-radius: 20%;
     width: 4.5rem;

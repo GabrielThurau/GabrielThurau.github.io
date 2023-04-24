@@ -37,6 +37,7 @@ addEventListener("DOMContentLoaded", (event) => {
     setTimeout(() => {
         UI.openModal();
         UI.closeModal();
+        UI.deleteCard();
     }, 1000);
 }); 
 
@@ -106,7 +107,7 @@ class UI {
                   <h4 class="card-title">${task.title}</h4>
                   <div class="text">${task.description}
                   </div>
-                  <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <div class="delete"><svg class="delete-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                           <title>delete</title>
                           <path
                               d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
@@ -120,6 +121,23 @@ class UI {
               createdCard.innerHTML = markup;
               document.querySelector('.cards').appendChild(createdCard);
              }
+
+    // method to delete card from HTML and local storage
+
+    //first delete card from HTML
+
+    static deleteCard(task) {
+        if (localStorage.getItem('tasks') !== null) {
+        let storage = JSON.parse(localStorage.getItem('tasks'));
+        console.log(storage);
+        }
+            let deleteIcons = document.querySelectorAll('.delete-icon')
+            deleteIcons.forEach(icon => {
+                icon.addEventListener("click", () => {
+                    console.log('deleted')
+                  });
+            });
+    }
  
    static openModal() {
     let dialog = document.querySelector('.task-modal');
