@@ -34,8 +34,10 @@ class Store {
 addEventListener("DOMContentLoaded", (event) => {
     console.log('dom loaded');
     Store.clear();
-    UI.openModal();
-    UI.closeModal();
+    setTimeout(() => {
+        UI.openModal();
+        UI.closeModal();
+    }, 1000);
 }); 
 
 
@@ -121,19 +123,22 @@ class UI {
  
    static openModal() {
     let dialog = document.querySelector('.task-modal');
-    const addTask = document.querySelector('.plus');
-       addTask.addEventListener("click", () => {
-        dialog.showModal();
-      });
+    const addTask = document.querySelectorAll('.plus');
+    addTask.forEach(element => {
+        element.addEventListener("click", () => {
+            dialog.showModal();
+          });
+    });
    }
 
    static closeModal() {
     let closeButton = document.querySelector('.close-btn');
     let dialog = document.querySelector('.task-modal');
-    closeButton.addEventListener("click", () => {
-        dialog.close();
-      });
-      
+        closeButton.addEventListener("click", () => {
+            console.log('clicked')
+            dialog.close();
+          });
+ 
    }
 
     static addTaskToStorage(task){
