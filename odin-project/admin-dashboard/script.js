@@ -100,7 +100,7 @@ class UI {
                  const markup = 
                   `
                   <label for="task-progress">Task Progress:</label>
-                  <progress class="task-progress" id="task-progress" value="0" max="100"></progress>
+                  <progress class="task-progress" id="task-progress" value="${task.percentage}" max="100"></progress>
                   <h4 class="card-title">${task.title}</h4>
                   <div class="text">${task.description}
                   </div>
