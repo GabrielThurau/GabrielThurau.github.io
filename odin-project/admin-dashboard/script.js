@@ -38,7 +38,7 @@ addEventListener("DOMContentLoaded", (event) => {
         UI.openModal();
         UI.closeModal();
         UI.deleteCard();
-    }, 1000);
+    }, 500);
 }); 
 
 
@@ -133,8 +133,15 @@ class UI {
         }
             let deleteIcons = document.querySelectorAll('.delete-icon')
             deleteIcons.forEach(icon => {
-                icon.addEventListener("click", () => {
-                    console.log('deleted')
+                icon.addEventListener("click", (event) => {
+                    setTimeout(() => {
+                        event.target.closest('.card').classList.add('fade');
+                    }, 500);
+
+                    setTimeout(() => {
+                        event.target.closest('.card').remove();
+                    }, 1000);
+                  
                   });
             });
     }

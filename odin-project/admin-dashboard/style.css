@@ -207,7 +207,15 @@ button {
     border-radius: 4px;
     padding: .5rem;
     display: grid;
+    opacity: 1;
+    -webkit-transition: opacity 500ms linear;
+    transition: opacity 500ms linear;
 
+
+}
+
+.fade {
+    opacity: 0;
 }
 
 .project-title {
