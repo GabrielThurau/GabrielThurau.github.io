@@ -253,6 +253,14 @@ button {
     fill: white;
 }
 
+.tomato-meter {
+    margin-top: 1.5rem;
+}
+
+a:visited {
+    color: initial;
+}
+
 /* thanks css tricks - https://css-tricks.com/html5-progress-element/ */
 
 progress[value] {

@@ -98,11 +98,13 @@ class UI {
 
     }
      static  renderCard(task) {
+                 let tomatoCount = 5;
                  const createdCard = document.createElement('div');
                  createdCard.classList.add('card');
                  const markup = 
                   `
-                  <label for="task-progress">Task Progress:</label>
+                  <label for="task-progress">Task Progress: ${tomatoCount} tomatoes left</label>
+                  <span class="tomato-meter">🍅🍅🍅🍅🍅</span>
                   <progress class="task-progress" id="task-progress" value="${task.percentage}" max="100"></progress>
                   <h4 class="card-title">${task.title}</h4>
                   <div class="text">${task.description}
