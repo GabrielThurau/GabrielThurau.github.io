@@ -126,12 +126,15 @@ class UI {
 
     // method to delete card from HTML and local storage
 
-    //first delete card from HTML
+    //Add event listeners for deleting card from HTML and once that card is deleted, get the title value and check it against the local storage
+    // once found in local storage delete that item as well. 
 
     static deleteCard(task) {
         if (localStorage.getItem('tasks') !== null) {
         let storage = JSON.parse(localStorage.getItem('tasks'));
         console.log(storage);
+        const taskToDelete = storage.find(element => element.title === 'Code Sprint');
+        console.log(taskToDelete);
         }
             let deleteIcons = document.querySelectorAll('.delete-icon')
             deleteIcons.forEach(icon => {
