@@ -7,6 +7,10 @@
 
 // need to modify the render card method based on the actual sample tasks data below
 
+// need to update tomatoes needed to complete task and refresh or re-rerender card contents AJAX-style
+
+// 
+
 // Local Storage Class
 class Store {
 
@@ -154,8 +158,10 @@ class UI {
             deleteIcons.forEach(icon => {
                 icon.addEventListener("click", (event) => {
                     setTimeout(() => { // turn into async instead to ensure that I have node information before card is deleted
-                        event.target.closest('.card').classList.add('fade');
-                        console.log(event.target.closest('.card').children[3].textContent);
+                        let closestCard = event.target.closest('.card');
+                        closestCard.classList.add('fade');
+                        let taskTitle = closestCard.children[3].textContent;
+                        console.log(taskTitle)
                     }, 500);
 
                     setTimeout(() => { // turn into async instead to ensure that I have node information before card is deleted
