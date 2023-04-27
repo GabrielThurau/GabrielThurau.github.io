@@ -47,6 +47,18 @@ class UI {
     static tryTasks(){
         const sampleTasks = [
             {
+                title: 'Client site audit',
+                description: "Check on the site health of existing client page and provide suggestions.",
+                daysToComplete: 13,
+                status: 'started',
+                pomodoros: 4,
+                tomatoesSquashed: 2,
+                percentage: 0
+           
+                // how many pomodoros will this take to complete? 
+                //https://en.wikipedia.org/wiki/Pomodoro_Technique
+            },
+            {
                 title: 'Code Sprint',
                 description: "New coding application for showing customers purchased since x date",
                 daysToComplete: 13,
@@ -64,7 +76,7 @@ class UI {
                 daysToComplete: 1, // this will be an extra step of complexity for factoring the progress bar. Will have to figure that one out. 
                 status: 'started',
                 pomodoros: 8,
-                tomatoesSquashed: 4,
+                tomatoesSquashed: 6,
                 percentage: 0
               
             },
