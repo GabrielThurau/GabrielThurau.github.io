@@ -147,17 +147,20 @@ class UI {
         console.log(storage);
         const taskToDelete = storage.find(element => element.title === 'Code Sprint');
         console.log(taskToDelete);
+        let cardTitles = document.querySelectorAll('.card-title');
+        
         }
             let deleteIcons = document.querySelectorAll('.delete-icon')
             deleteIcons.forEach(icon => {
                 icon.addEventListener("click", (event) => {
-                    setTimeout(() => {
+                    setTimeout(() => { // turn into async instead to ensure that I have node information before card is deleted
                         event.target.closest('.card').classList.add('fade');
+                        console.log(event.target.closest('.card').children[3].textContent);
                     }, 500);
 
-                    setTimeout(() => {
+                    setTimeout(() => { // turn into async instead to ensure that I have node information before card is deleted
                         event.target.closest('.card').remove();
-                    }, 1000);
+                    }, 2000);
                   
                   });
             });
