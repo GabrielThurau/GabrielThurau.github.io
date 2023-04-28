@@ -24,7 +24,6 @@ class Store {
         const tasks = Store.getTasks();
         console.log(tasks);
         tasks.push(task);
-        // console.log(task)
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 
@@ -149,11 +148,6 @@ class UI {
         if (localStorage.getItem('tasks') !== null) {
         let storage = JSON.parse(localStorage.getItem('tasks'));
         console.log(storage);
-        // const taskToDelete = storage.find(element => element.title === 'Code Sprint');
-        // console.log(taskToDelete);
-        // let cardTitles = document.querySelectorAll('.card-title');
-        
-        }
             let deleteIcons = document.querySelectorAll('.delete-icon')
             deleteIcons.forEach(icon => {
                 icon.addEventListener("click", (event) => {
@@ -162,17 +156,23 @@ class UI {
                         closestCard.classList.add('fade');
                         let taskTitle = closestCard.children[3].textContent;
                         console.log(taskTitle)
-                        let allStorage = JSON.parse(localStorage.getItem('tasks'));
-                        const taskToDelete = allStorage.find(element => element.title === taskTitle);
+                        const taskToDelete = storage.find(element => element.title === taskTitle);
+                        // need to figure out how to actually get the key of the local storage object here and delete it that way
+
+
+                        localStorage.removeItem(taskToDelete);
                         console.log(taskToDelete);
                     }, 500);
 
                     setTimeout(() => { // turn into async instead to ensure that I have node information before card is deleted
                         event.target.closest('.card').remove();
+                        let allStorage = JSON.parse(localStorage.getItem('tasks'));
+                        console.log(allStorage);
                     }, 2000);
                   
                   });
             });
+        }
     }
  
    static openModal() {
