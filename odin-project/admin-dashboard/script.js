@@ -149,9 +149,9 @@ class UI {
         if (localStorage.getItem('tasks') !== null) {
         let storage = JSON.parse(localStorage.getItem('tasks'));
         console.log(storage);
-        const taskToDelete = storage.find(element => element.title === 'Code Sprint');
-        console.log(taskToDelete);
-        let cardTitles = document.querySelectorAll('.card-title');
+        // const taskToDelete = storage.find(element => element.title === 'Code Sprint');
+        // console.log(taskToDelete);
+        // let cardTitles = document.querySelectorAll('.card-title');
         
         }
             let deleteIcons = document.querySelectorAll('.delete-icon')
@@ -162,6 +162,9 @@ class UI {
                         closestCard.classList.add('fade');
                         let taskTitle = closestCard.children[3].textContent;
                         console.log(taskTitle)
+                        let allStorage = JSON.parse(localStorage.getItem('tasks'));
+                        const taskToDelete = allStorage.find(element => element.title === taskTitle);
+                        console.log(taskToDelete);
                     }, 500);
 
                     setTimeout(() => { // turn into async instead to ensure that I have node information before card is deleted
