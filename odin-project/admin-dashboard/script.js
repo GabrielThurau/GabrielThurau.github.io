@@ -32,6 +32,25 @@ class Store {
         console.log('local storage cleared');
     }
 
+    static remove(storage = JSON.parse(localStorage.getItem('tasks')), key, value) {
+           let newStorage;
+            console.log('remove function ran');
+            console.log(storage);
+            const index = storage.findIndex(obj => obj[key] === value);
+            console.log(newStorage);
+
+            if (index >= 0) {
+                newStorage = [
+                    ...storage.slice(0, index),
+                    ...storage.slice(index + 1)
+                ]
+                localStorage.setItem('newTasks', JSON.stringify(newStorage))
+            }
+
+            else {
+                newStorage = storage;
+            }
+    }
 }
 
 addEventListener("DOMContentLoaded", (event) => {
@@ -49,7 +68,7 @@ class UI {
 
     static tryTasks(){
         const sampleTasks = [
-            {
+               {
                 title: 'Client site audit',
                 description: "Check on the site health of existing client page and provide suggestions.",
                 daysToComplete: 13,
@@ -140,10 +159,8 @@ class UI {
              }
 
     // method to delete card from HTML and local storage
-
-    //Add event listeners for deleting card from HTML and once that card is deleted, get the title value and check it against the local storage
     // once found in local storage delete that item as well. 
-
+ 
     static deleteCard(task) {
         if (localStorage.getItem('tasks') !== null) {
         let storage = JSON.parse(localStorage.getItem('tasks'));
@@ -155,19 +172,39 @@ class UI {
                         let closestCard = event.target.closest('.card');
                         closestCard.classList.add('fade');
                         let taskTitle = closestCard.children[3].textContent;
-                        console.log(taskTitle)
-                        const taskToDelete = storage.find(element => element.title === taskTitle);
+                        const taskToDelete = storage.findIndex(element => element.title === taskTitle);
+                        Store.remove(storage, "title", taskTitle);
+                      
+
+                        // console.log(storage.findIndex(taskToDelete));
+                        //try using the below for manipulating local storage
+
+                    //   let myStorage = storage.filter(function( obj ) {
+                    //         return obj.id !== id;
+                    //       });
+
+
+
+
+
+
                         // need to figure out how to actually get the key of the local storage object here and delete it that way
-
-
+                        // if (taskToDelete) {
+                        //     console.log('true');
+                        //     storage.forEach(element => {
+                        //     console.log(element);
+                        //     let keys_1 = Object.values(element);
+                        //     console.log(keys_1);
+                        //   });
+                        // }
                         localStorage.removeItem(taskToDelete);
                         console.log(taskToDelete);
                     }, 500);
 
                     setTimeout(() => { // turn into async instead to ensure that I have node information before card is deleted
                         event.target.closest('.card').remove();
-                        let allStorage = JSON.parse(localStorage.getItem('tasks'));
-                        console.log(allStorage);
+                        // let allStorage = JSON.parse(localStorage.getItem('tasks'));
+                        // console.log(allStorage);
                     }, 2000);
                   
                   });
