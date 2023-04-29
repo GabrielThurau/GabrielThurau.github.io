@@ -32,22 +32,25 @@ class Store {
         console.log('local storage cleared');
     }
 
-    static remove(storage = JSON.parse(localStorage.getItem('tasks')), key, value) {
-           let newStorage;
-            console.log('remove function ran');
-            const index = storage.findIndex(obj => obj[key] === value);
-            if (index >= 0) {
-                newStorage = [
-                    ...storage.slice(0, index),
-                    ...storage.slice(index + 1)
-                ]
-                localStorage.setItem('newTasks', JSON.stringify(newStorage))
-            }
+    static removeTask(taskTitle) {
+        const tasks = Store.getTasks();
 
-            else {
-                newStorage = storage;
-            }
+        tasks.forEach((task, index) => { task.title === taskTitle ? tasks.splice(index, 1) : tasks});
+        localStorage.setItem('tasks', JSON.stringify(tasks));
     }
+
+    // static remove(storage = JSON.parse(localStorage.getItem('tasks')), key, value) {
+    //        let newStorage;
+    //         console.log('remove function ran');
+    //         const index = storage.findIndex(obj => obj[key] === value);
+    //         if (index >= 0) {
+    //             newStorage = [
+    //                 ...storage.slice(0, index),
+    //                 ...storage.slice(index + 1)
+    //             ]
+    //             localStorage.setItem('newTasks', JSON.stringify(newStorage))
+    //         }
+    // }
 }
 
 addEventListener("DOMContentLoaded", (event) => {
@@ -169,8 +172,8 @@ class UI {
                         let closestCard = event.target.closest('.card');
                         closestCard.classList.add('fade');
                         let taskTitle = closestCard.children[3].textContent;
-                        const taskToDelete = storage.findIndex(element => element.title === taskTitle);
-                        Store.remove(storage, "title", taskTitle);
+                        // const taskToDelete = storage.findIndex(element => element.title === taskTitle);
+                        Store.removeTask(taskTitle);
                       
 
                         // console.log(storage.findIndex(taskToDelete));
