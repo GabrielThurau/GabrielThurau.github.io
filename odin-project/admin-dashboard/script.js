@@ -35,10 +35,7 @@ class Store {
     static remove(storage = JSON.parse(localStorage.getItem('tasks')), key, value) {
            let newStorage;
             console.log('remove function ran');
-            console.log(storage);
             const index = storage.findIndex(obj => obj[key] === value);
-            console.log(newStorage);
-
             if (index >= 0) {
                 newStorage = [
                     ...storage.slice(0, index),
@@ -56,11 +53,11 @@ class Store {
 addEventListener("DOMContentLoaded", (event) => {
     console.log('dom loaded');
     Store.clear();
-    setTimeout(() => {
-        UI.openModal();
-        UI.closeModal();
-        UI.deleteCard();
-    }, 500);
+    // setTimeout(() => {
+    //     UI.openModal();
+    //     UI.closeModal();
+    //     UI.deleteCard();
+    // }, 500);
 }); 
 
 
@@ -131,7 +128,7 @@ class UI {
         }, 200);
 
     }
-     static  renderCard(task) {
+     static renderCard(task) {
                  let tomatoCount = 5;
                  const createdCard = document.createElement('div');
                  createdCard.classList.add('card');
@@ -184,10 +181,6 @@ class UI {
                     //       });
 
 
-
-
-
-
                         // need to figure out how to actually get the key of the local storage object here and delete it that way
                         // if (taskToDelete) {
                         //     console.log('true');
@@ -197,8 +190,6 @@ class UI {
                         //     console.log(keys_1);
                         //   });
                         // }
-                        localStorage.removeItem(taskToDelete);
-                        console.log(taskToDelete);
                     }, 500);
 
                     setTimeout(() => { // turn into async instead to ensure that I have node information before card is deleted
@@ -248,7 +239,21 @@ class UI {
      } 
     }
 
-    UI.tryTasks();
+    const renderButton = document.querySelector('.render-button');
+    const noButton = document.querySelector('.no-button');
+
+    renderButton.addEventListener("click", (event) => {
+        UI.tryTasks();
+        setTimeout(() => {
+            UI.openModal();
+            UI.closeModal();
+            UI.deleteCard();
+        }, 500);
+    });
+
+    noButton.addEventListener("click", (event) => {
+        console.log('do nothing');
+    });
 
 // need to add delete card function to UI class
     
