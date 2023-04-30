@@ -27,10 +27,21 @@ class Store {
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 
-    static clear() {
-        localStorage.clear();
-        console.log('local storage cleared');
-    }
+
+
+   // sort of makes sense. Just need to tie render card to actual local storage instead of sample tasks if local storage > 0. 
+
+
+    // static checkLength() {
+    //     let length = localStorage.length;
+    //     let randomTasks = document.querySelector('.random-tasks');
+    //     if (length > 0) {
+    //         randomTasks.open = false;
+    //     }
+    //     else {
+    //         randomTasks.open = true;
+    //     }
+    // }
 
     static removeTask(taskTitle) {
         const tasks = Store.getTasks();
@@ -38,29 +49,16 @@ class Store {
         tasks.forEach((task, index) => { task.title === taskTitle ? tasks.splice(index, 1) : tasks});
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }
-
-    // static remove(storage = JSON.parse(localStorage.getItem('tasks')), key, value) {
-    //        let newStorage;
-    //         console.log('remove function ran');
-    //         const index = storage.findIndex(obj => obj[key] === value);
-    //         if (index >= 0) {
-    //             newStorage = [
-    //                 ...storage.slice(0, index),
-    //                 ...storage.slice(index + 1)
-    //             ]
-    //             localStorage.setItem('newTasks', JSON.stringify(newStorage))
-    //         }
-    // }
 }
 
 addEventListener("DOMContentLoaded", (event) => {
     console.log('dom loaded');
-    Store.clear();
-    // setTimeout(() => {
-    //     UI.openModal();
-    //     UI.closeModal();
-    //     UI.deleteCard();
-    // }, 500);
+    Store.checkLength();
+    setTimeout(() => {
+        UI.openModal();
+        UI.closeModal();
+        UI.deleteCard();
+    }, 500);
 }); 
 
 
@@ -174,31 +172,10 @@ class UI {
                         let taskTitle = closestCard.children[3].textContent;
                         // const taskToDelete = storage.findIndex(element => element.title === taskTitle);
                         Store.removeTask(taskTitle);
-                      
-
-                        // console.log(storage.findIndex(taskToDelete));
-                        //try using the below for manipulating local storage
-
-                    //   let myStorage = storage.filter(function( obj ) {
-                    //         return obj.id !== id;
-                    //       });
-
-
-                        // need to figure out how to actually get the key of the local storage object here and delete it that way
-                        // if (taskToDelete) {
-                        //     console.log('true');
-                        //     storage.forEach(element => {
-                        //     console.log(element);
-                        //     let keys_1 = Object.values(element);
-                        //     console.log(keys_1);
-                        //   });
-                        // }
                     }, 500);
 
                     setTimeout(() => { // turn into async instead to ensure that I have node information before card is deleted
                         event.target.closest('.card').remove();
-                        // let allStorage = JSON.parse(localStorage.getItem('tasks'));
-                        // console.log(allStorage);
                     }, 2000);
                   
                   });
@@ -245,7 +222,7 @@ class UI {
     const renderButton = document.querySelector('.render-button');
     const noButton = document.querySelector('.no-button');
 
-    renderButton.addEventListener("click", (event) => {
+    renderButton.addEventListener("click", () => {
         UI.tryTasks();
         setTimeout(() => {
             UI.openModal();
@@ -254,26 +231,6 @@ class UI {
         }, 500);
     });
 
-    noButton.addEventListener("click", (event) => {
+    noButton.addEventListener("click", () => {
         console.log('do nothing');
     });
-
-// need to add delete card function to UI class
-    
-//     static removetask(taskTitle) {
-//         const tasks = Store.gettasks();
-
-//         tasks.forEach((task, index) => { task.title === taskTitle ? tasks.splice(index, 1) : tasks});
-//         localStorage.setItem('tasks', JSON.stringify(tasks));
-//     }
-
-//     static updatetaskstatus(taskTitle, status) {
-//         const tasks = Store.gettasks();
-
-//         tasks.forEach((task) => { 
-//             if(task.title !== taskTitle) return;
-//             task.status = status;
-//         });
-
-//         localStorage.setItem('tasks', JSON.stringify(tasks));
-//     }
