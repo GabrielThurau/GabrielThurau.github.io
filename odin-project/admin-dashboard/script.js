@@ -28,24 +28,25 @@ class Store {
     }
 
 
-
    // sort of makes sense. Just need to tie render card to actual local storage instead of sample tasks if local storage > 0. 
 
 
-    // static checkLength() {
-    //     let length = localStorage.length;
-    //     let randomTasks = document.querySelector('.random-tasks');
-    //     if (length > 0) {
-    //         randomTasks.open = false;
-    //     }
-    //     else {
-    //         randomTasks.open = true;
-    //     }
-    // }
+    static checkLength() {
+        let length = localStorage.length;
+        let randomTasks = document.querySelector('.random-tasks');
+        if (length > 0) {
+            randomTasks.open = false;
+            let tasks;
+           tasks = localStorage.getItem('tasks') === null ? tasks = [] : tasks = JSON.parse(localStorage.getItem('tasks'));
+            UI.renderLocalStorage(tasks);
+        }
+        else {
+            randomTasks.open = true;
+        }
+    }
 
     static removeTask(taskTitle) {
         const tasks = Store.getTasks();
-
         tasks.forEach((task, index) => { task.title === taskTitle ? tasks.splice(index, 1) : tasks});
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }
@@ -63,6 +64,19 @@ addEventListener("DOMContentLoaded", (event) => {
 
 
 class UI {
+
+    static renderLocalStorage(tasks) {
+
+        setTimeout(()=>{tasks.forEach((task)=> {
+            UI.addTaskToStorage(task); 
+            Store.addTask(task)
+            UI.renderCard(task);
+});
+        }, 200);
+
+    }
+
+    // use api call to get random json data instead of this. To alleviate code bloat. 
 
     static tryTasks(){
         const sampleTasks = [
@@ -129,6 +143,7 @@ class UI {
         }, 200);
 
     }
+
      static renderCard(task) {
                  let tomatoCount = 5;
                  const createdCard = document.createElement('div');
@@ -161,8 +176,6 @@ class UI {
  
     static deleteCard(task) {
         if (localStorage.getItem('tasks') !== null) {
-        let storage = JSON.parse(localStorage.getItem('tasks'));
-        console.log(storage);
             let deleteIcons = document.querySelectorAll('.delete-icon')
             deleteIcons.forEach(icon => {
                 icon.addEventListener("click", (event) => {
