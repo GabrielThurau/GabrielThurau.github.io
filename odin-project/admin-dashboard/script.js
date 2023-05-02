@@ -27,8 +27,6 @@ class Store {
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 
-
-
     static checkLength() {
         let tasks = JSON.parse(localStorage.getItem('tasks'));
         let length = tasks.length;
@@ -60,6 +58,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }, 500);
 }); 
 
+class Helper {
+    sleep = (ms) => {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+       asyncSleeper = async () => {
+          await sleep(2000);
+          console.log('look at this');
+          await sleep(1000);
+          console.log('getting fancy now');
+      }
+
+    }
 
 class UI {
 
@@ -98,7 +108,7 @@ class UI {
                  const markup = 
                   `
                   <label for="task-progress">Task Progress: ${tomatoCount} tomatoes left</label>
-                  <span class="tomato-meter">🍅🍅🍅🍅🍅</span>
+                  <div class="tomato-meter">🍅🍅🍅🍅🍅</div>
                   <progress class="task-progress" id="task-progress" value="${task.percentage}" max="100"></progress>
                   <h4 class="card-title">${task.title}</h4>
                   <div class="text">${task.description}
@@ -120,25 +130,26 @@ class UI {
 
     // method to delete card from HTML and local storage
     // once found in local storage delete that item as well. 
+
+    // helper functions
  
-    static deleteCard() {
+    static async deleteCard() {
+        let sleep = (ms) => {
+            return new Promise(resolve => setTimeout(resolve, ms));
+          }
         if (localStorage.getItem('tasks') !== null) {
             let deleteIcons = document.querySelectorAll('.delete-icon')
+            const asyncSleeper = async (event) => {
+                await sleep(500);
+                let closestCard = event.target.closest('.card');
+                closestCard.classList.add('fade');
+                let taskTitle = closestCard.children[3].textContent;
+                Store.removeTask(taskTitle);
+                await sleep(1500);
+                event.target.closest('.card').remove();
+            }
             deleteIcons.forEach(icon => {
-                icon.addEventListener("click", (event) => {
-                    setTimeout(() => { // turn into async instead to ensure that I have node information before card is deleted
-                        let closestCard = event.target.closest('.card');
-                        closestCard.classList.add('fade');
-                        let taskTitle = closestCard.children[3].textContent;
-                        // const taskToDelete = storage.findIndex(element => element.title === taskTitle);
-                        Store.removeTask(taskTitle);
-                    }, 500);
-
-                    setTimeout(() => { // turn into async instead to ensure that I have node information before card is deleted
-                        event.target.closest('.card').remove();
-                    }, 2000);
-                  
-                  });
+                icon.addEventListener("click", asyncSleeper);
             });
         }
     }
