@@ -71,13 +71,16 @@ class UI {
 
     }
 
-    // use api call to get JSON data from github file and not here. 
+    // use fetch to get JSON data from random task raw github file. 
 
-    static tryTasks(){
+    static async tryTasks(){
   
-        const endpoint = '';
+        const endpoint = 'https://raw.githubusercontent.com/GabrielThurau/GabrielThurau.github.io/main/odin-project/admin-dashboard/randomTasks.json';
+        const response = await fetch(endpoint)
+        const data = await response.json(); 
+        console.log(data);
 
-
+        const tasks = data; 
 
         setTimeout(()=>{tasks.forEach((task)=> {
             UI.changeTaskValues(task); 
