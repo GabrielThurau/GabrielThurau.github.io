@@ -32,12 +32,11 @@ class Store {
 
 
     static checkLength() {
-        let length = localStorage.length;
+        let tasks = JSON.parse(localStorage.getItem('tasks'));
+        let length = tasks.length;
         let randomTasks = document.querySelector('.random-tasks');
         if (length > 0) {
             randomTasks.open = false;
-            let tasks;
-           tasks = localStorage.getItem('tasks') === null ? tasks = [] : tasks = JSON.parse(localStorage.getItem('tasks'));
             UI.renderLocalStorage(tasks);
         }
         else {
@@ -49,10 +48,11 @@ class Store {
         const tasks = Store.getTasks();
         tasks.forEach((task, index) => { task.title === taskTitle ? tasks.splice(index, 1) : tasks});
         localStorage.setItem('tasks', JSON.stringify(tasks));
+        console.log(JSON.parse(localStorage.getItem('tasks')).length);
     }
 }
 
-addEventListener("DOMContentLoaded", (event) => {
+window.addEventListener("DOMContentLoaded", (event) => {
     console.log('dom loaded');
     Store.checkLength();
     setTimeout(() => {
@@ -67,9 +67,9 @@ class UI {
 
     static renderLocalStorage(tasks) {
 
+        console.log(tasks); 
+
         setTimeout(()=>{tasks.forEach((task)=> {
-            UI.addTaskToStorage(task); 
-            Store.addTask(task)
             UI.renderCard(task);
 });
         }, 200);
@@ -136,7 +136,7 @@ class UI {
         const tasks = sampleTasks; 
 
         setTimeout(()=>{tasks.forEach((task)=> {
-            UI.addTaskToStorage(task); 
+            UI.changeTaskValues(task); 
             Store.addTask(task)
             UI.renderCard(task);
 });
@@ -216,7 +216,7 @@ class UI {
  
    }
 
-    static addTaskToStorage(task){
+    static changeTaskValues(task){
         if(task.status === 'started'){  
             task.progress = true;
             task.percentage = UI.percentage(task.tomatoesSquashed, task.pomodoros);
