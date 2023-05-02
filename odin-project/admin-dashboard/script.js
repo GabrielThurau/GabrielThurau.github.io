@@ -7,7 +7,7 @@
 
 // need to modify the render card method based on the actual sample tasks data below
 
-// need to update tomatoes needed to complete task and refresh or re-rerender card contents AJAX-style
+// need to update tomatoes needed to complete task and refresh or re-render card contents AJAX-style
 
 // 
 
@@ -27,8 +27,6 @@ class Store {
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 
-
-   // sort of makes sense. Just need to tie render card to actual local storage instead of sample tasks if local storage > 0. 
 
 
     static checkLength() {
@@ -65,10 +63,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 class UI {
 
-    static renderLocalStorage(tasks) {
-
-        console.log(tasks); 
-
+    static renderLocalStorage(tasks) { 
         setTimeout(()=>{tasks.forEach((task)=> {
             UI.renderCard(task);
 });
@@ -76,64 +71,13 @@ class UI {
 
     }
 
-    // use api call to get random json data instead of this. To alleviate code bloat. 
+    // use api call to get JSON data from github file and not here. 
 
     static tryTasks(){
-        const sampleTasks = [
-               {
-                title: 'Client site audit',
-                description: "Check on the site health of existing client page and provide suggestions.",
-                daysToComplete: 13,
-                status: 'started',
-                pomodoros: 4,
-                tomatoesSquashed: 2,
-                percentage: 0
-           
-                // how many pomodoros will this take to complete? 
-                //https://en.wikipedia.org/wiki/Pomodoro_Technique
-            },
-            {
-                title: 'Code Sprint',
-                description: "New coding application for showing customers purchased since x date",
-                daysToComplete: 13,
-                status: 'started',
-                pomodoros: 4,
-                tomatoesSquashed: 4,
-                percentage: 0
-           
-                // how many pomodoros will this take to complete? 
-                //https://en.wikipedia.org/wiki/Pomodoro_Technique
-            },
-            {
-                title: 'A/B Test #414',
-                description: "Adding an AJAX cart to client site",
-                daysToComplete: 1, // this will be an extra step of complexity for factoring the progress bar. Will have to figure that one out. 
-                status: 'started',
-                pomodoros: 8,
-                tomatoesSquashed: 6,
-                percentage: 0
-              
-            },
-            {
-                title: 'Site Speed Audit',
-                description: "Figure out what's causing homepage rendering flickering",
-                daysToComplete: 3,
-                status: 'started',
-                pomodoros: 4,
-                tomatoesSquashed: 4,
-                percentage: 0
-            },
-            {
-                title: 'Refactoring Junior Dev Code',
-                description: "Remove all settimeouts and replace with mutation observers where possible",
-                daysToComplete: 2,
-                status: 'started',
-                pomodoros: 100,
-                tomatoesSquashed: 4,
-                percentage: 0
-            }
-        ]
-        const tasks = sampleTasks; 
+  
+        const endpoint = '';
+
+
 
         setTimeout(()=>{tasks.forEach((task)=> {
             UI.changeTaskValues(task); 
@@ -174,7 +118,7 @@ class UI {
     // method to delete card from HTML and local storage
     // once found in local storage delete that item as well. 
  
-    static deleteCard(task) {
+    static deleteCard() {
         if (localStorage.getItem('tasks') !== null) {
             let deleteIcons = document.querySelectorAll('.delete-icon')
             deleteIcons.forEach(icon => {
@@ -220,7 +164,6 @@ class UI {
         if(task.status === 'started'){  
             task.progress = true;
             task.percentage = UI.percentage(task.tomatoesSquashed, task.pomodoros);
-           // need to then update a progress bar
         }
         else { 
             task.progress = false; 
@@ -247,3 +190,5 @@ class UI {
     noButton.addEventListener("click", () => {
         console.log('do nothing');
     });
+
+

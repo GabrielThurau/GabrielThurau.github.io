@@ -1,0 +1,42 @@
+[
+    {
+        "title": "Client site audit",
+        "description": "Check on the site health of existing client page and provide suggestions.",
+        "status": "started",
+        "pomodoros": 4,
+        "tomatoesSquashed": 2,
+        "percentage": 0
+    },
+    {
+        "title": "Code Sprint",
+        "description": "New coding application for showing customers purchased since x date",
+        "status": "started",
+        "pomodoros": 4,
+        "tomatoesSquashed": 4,
+        "percentage": 0
+    },
+    {
+        "title": "A/B Test #414",
+        "description": "Adding an AJAX cart to client site",
+        "status": "started",
+        "pomodoros": 8,
+        "tomatoesSquashed": 6,
+        "percentage": 0
+    },
+    {
+        "title": "Site Speed Audit",
+        "description": "Figure out what's causing homepage rendering flickering",
+        "status": "started",
+        "pomodoros": 4,
+        "tomatoesSquashed": 4,
+        "percentage": 0
+    },
+    {
+        "title": "Refactoring Junior Dev Code",
+        "description": "Remove all settimeouts and replace with mutation observers where possible",
+        "status": "started",
+        "pomodoros": 100,
+        "tomatoesSquashed": 4,
+        "percentage": 0
+    }
+]
