@@ -11,6 +11,8 @@
 
 // 
 
+// selectors
+
 // Local Storage Class
 class Store {
 
@@ -29,6 +31,10 @@ class Store {
 
     static checkLength() {
         let tasks = JSON.parse(localStorage.getItem('tasks'));
+        tasks.forEach(element => {
+        console.log(element.pomodoros)
+       });
+        // tomatoCounts = JSON.parse(localStorage.getItem('tasks'));
         let length = tasks.length;
         let randomTasks = document.querySelector('.random-tasks');
         if (length > 0) {
@@ -75,7 +81,8 @@ class UI {
 
     static renderLocalStorage(tasks) { 
         setTimeout(()=>{tasks.forEach((task)=> {
-            UI.renderCard(task);
+           let tomatoCount = task.pomodoros - task.tomatoesSquashed;
+            UI.renderCard(task, tomatoCount); // at least this is populating the html, but it needs to do so only after the necessary calculation has happened. 
 });
         }, 200);
 
@@ -101,8 +108,7 @@ class UI {
 
     }
 
-     static renderCard(task) {
-                 let tomatoCount = 5;
+     static renderCard(task, tomatoCount) {
                  const createdCard = document.createElement('div');
                  createdCard.classList.add('card');
                  const markup = 
