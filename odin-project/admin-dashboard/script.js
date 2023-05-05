@@ -100,9 +100,10 @@ class UI {
         const tasks = data; 
 
         setTimeout(()=>{tasks.forEach((task)=> {
+            let tomatoCount = task.pomodoros - task.tomatoesSquashed;
             UI.changeTaskValues(task); 
             Store.addTask(task)
-            UI.renderCard(task);
+            UI.renderCard(task, tomatoCount);
 });
         }, 200);
 
@@ -111,6 +112,7 @@ class UI {
      static renderCard(task, tomatoCount) {
                  const createdCard = document.createElement('div');
                  createdCard.classList.add('card');
+                 // add ternary inside template literal when tomato count = 0, display 'task completed!' and delete all tomatos. 
                  const markup = 
                   `
                   <label for="task-progress">Task Progress: ${tomatoCount} tomatoes left</label>
