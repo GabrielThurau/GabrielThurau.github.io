@@ -115,7 +115,7 @@ class UI {
                  // add ternary inside template literal when tomato count = 0, display 'task completed!' and delete all tomatos. 
                  const markup = 
                   `
-                  <label for="task-progress">Task Progress: ${tomatoCount} tomatoes left</label>
+                  <label for="task-progress">Task Progress: ${tomatoCount > 0 ?  tomatoCount + ' tomatoes left' : '<b>You finished the task!</b>'}</label>
                   <div class="tomato-meter">🍅🍅🍅🍅🍅</div>
                   <progress class="task-progress" id="task-progress" value="${task.percentage}" max="100"></progress>
                   <h4 class="card-title">${task.title}</h4>
