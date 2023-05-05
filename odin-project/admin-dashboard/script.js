@@ -1,17 +1,11 @@
-// use classes for deleting/adding cards to dashboard
-// also update local storage to keep dashboard the same?
-
 
 // need to display progress bar based on the status of the task. So will first check if the task is in local storage. Then will check to see the percentage of the task that is complete. 
 
-
-// need to modify the render card method based on the actual sample tasks data below
-
 // need to update tomatoes needed to complete task and refresh or re-render card contents AJAX-style
 
-// 
+// global selectors
 
-// selectors
+
 
 // Local Storage Class
 class Store {
@@ -95,8 +89,6 @@ class UI {
         const endpoint = 'https://raw.githubusercontent.com/GabrielThurau/GabrielThurau.github.io/main/odin-project/admin-dashboard/randomTasks.json';
         const response = await fetch(endpoint)
         const data = await response.json(); 
-        console.log(data);
-
         const tasks = data; 
 
         setTimeout(()=>{tasks.forEach((task)=> {
@@ -109,14 +101,26 @@ class UI {
 
     }
 
+    // this is for adding/removing the correct number of tomatoes to each task card. 
+  
+    // static generateTomatoes(tomatoCount) {
+   
+        
+    // }
+
      static renderCard(task, tomatoCount) {
+
+        let tomTotal = "🍅".repeat(tomatoCount);
+        console.log(tomTotal);
                  const createdCard = document.createElement('div');
                  createdCard.classList.add('card');
                  // add ternary inside template literal when tomato count = 0, display 'task completed!' and delete all tomatos. 
                  const markup = 
                   `
                   <label for="task-progress">Task Progress: ${tomatoCount > 0 ?  tomatoCount + ' tomatoes left' : '<b>You finished the task!</b>'}</label>
-                  <div class="tomato-meter">🍅🍅🍅🍅🍅</div>
+                  <div class="tomato-meter">
+                  ${tomatoCount < 10 ? tomTotal : `${tomatoCount} <span>🍅's left</span> `}
+                  </div>
                   <progress class="task-progress" id="task-progress" value="${task.percentage}" max="100"></progress>
                   <h4 class="card-title">${task.title}</h4>
                   <div class="text">${task.description}
@@ -136,10 +140,11 @@ class UI {
               document.querySelector('.cards').appendChild(createdCard);
              }
 
+
+ 
+
     // method to delete card from HTML and local storage
     // once found in local storage delete that item as well. 
-
-    // helper functions
  
     static async deleteCard() {
         let sleep = (ms) => {
