@@ -61,7 +61,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         UI.openModal();
         UI.closeModal();
         UI.deleteCard();
-        UI.formSubmitClick();
+        UI.selectForm();
     }, 500);
 }); 
 
@@ -184,14 +184,13 @@ class UI {
  
    }
 
-   static doFormStuff(event) {
-    console.log(event);
-    event.preventDefault();
-   }
-
-   static formSubmitClick() {
-    const form = document.querySelector('.submit-btn');
-    form.addEventListener("click", UI.doFormStuff);
+   static selectForm() {
+   const formName = document.querySelector('[name="add-task"]');
+   console.log(formName);
+    formName.addEventListener("submit", function(event) {
+        console.log(event);
+        event.preventDefault();
+      });
    }
 
     static changeTaskValues(task){
