@@ -5,6 +5,12 @@
 
 // global selectors
 
+// use clamp
+
+// use modules
+
+// 
+
 
 
 // Local Storage Class
@@ -55,6 +61,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         UI.openModal();
         UI.closeModal();
         UI.deleteCard();
+        UI.formSubmitClick();
     }, 500);
 }); 
 
@@ -101,13 +108,6 @@ class UI {
 
     }
 
-    // this is for adding/removing the correct number of tomatoes to each task card. 
-  
-    // static generateTomatoes(tomatoCount) {
-   
-        
-    // }
-
      static renderCard(task, tomatoCount) {
 
         let tomTotal = "🍅".repeat(tomatoCount);
@@ -139,9 +139,6 @@ class UI {
               createdCard.innerHTML = markup;
               document.querySelector('.cards').appendChild(createdCard);
              }
-
-
- 
 
     // method to delete card from HTML and local storage
     // once found in local storage delete that item as well. 
@@ -187,6 +184,16 @@ class UI {
  
    }
 
+   static doFormStuff(event) {
+    console.log(event);
+    event.preventDefault();
+   }
+
+   static formSubmitClick() {
+    const form = document.querySelector('.submit-btn');
+    form.addEventListener("click", UI.doFormStuff);
+   }
+
     static changeTaskValues(task){
         if(task.status === 'started'){  
             task.progress = true;
@@ -214,8 +221,4 @@ class UI {
         }, 500);
     });
 
-    noButton.addEventListener("click", () => {
-        console.log('do nothing');
-    });
-
-
+ 
