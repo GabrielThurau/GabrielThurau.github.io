@@ -3,13 +3,13 @@
 
 // need to update tomatoes needed to complete task and refresh or re-render card contents AJAX-style
 
-// use clamp
+// dispatch a custom event for the hell of it
 
-// use modules
+// use promise.all if applicable. Doubt it will be though.
 
 // filter out tasks by due date  or progress
 
-
+// use document.fragment to apply HTML
 
 // Local Storage Class
 class Store {
@@ -56,10 +56,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     console.log('dom loaded');
     Store.checkLength();
     setTimeout(() => {
-        UI.openModal();
-        UI.closeModal();
-        UI.deleteCard();
-        UI.selectForm();
+    UI.addListeners();
     }, 500);
 }); 
 
@@ -87,6 +84,15 @@ class UI {
 
     }
 
+    static addListeners() {
+        console.log('add listeners function ran');
+        UI.openModal();
+        UI.closeModal();
+        UI.deleteCard();
+        UI.selectForm();
+        UI.sortByChange();
+    }
+
     // use fetch to get JSON data from random task raw github file. 
 
     static async tryTasks(){
@@ -111,8 +117,7 @@ class UI {
         let tomTotal = "🍅".repeat(tomatoCount);
         console.log(tomTotal);
                  const createdCard = document.createElement('div');
-                 createdCard.classList.add('card');
-                 // add ternary inside template literal when tomato count = 0, display 'task completed!' and delete all tomatos. 
+                 createdCard.classList.add('card'); 
                  const markup = 
                   `
                   <label for="task-progress">Task Progress: ${tomatoCount > 0 ?  tomatoCount + ' tomatoes left' : '<b>You finished the task!</b>'}</label>
@@ -133,7 +138,8 @@ class UI {
                       <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
                   </svg>
                       </div>`;
-         
+              
+              DOMPurify.sanitize(markup); // purifying html just in case
               createdCard.innerHTML = markup;
               document.querySelector('.cards').appendChild(createdCard);
              }
@@ -179,7 +185,21 @@ class UI {
             console.log('clicked')
             dialog.close();
           });
- 
+   }
+
+   static sortByTomatoes() {
+        return a - b;
+   }
+
+
+   // connect to UI.sortByTomatoes
+
+   static sortByChange() {
+    let selectElement = document.querySelector('#filter-tasks');
+    selectElement.addEventListener('change', function (event) {
+      console.log(event)
+    });
+
    }
 
    static selectForm() {
@@ -237,9 +257,7 @@ class UI {
     renderButton.addEventListener("click", () => {
         UI.tryTasks();
         setTimeout(() => {
-            UI.openModal();
-            UI.closeModal();
-            UI.deleteCard();
+           UI.addListeners();
         }, 500);
     });
 
