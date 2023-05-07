@@ -82,6 +82,13 @@
                 <button>Share</button>
 
             </div>
+
+            <div class="filter-wrap">
+                <select name="filter-tasks" id="filter-tasks">
+                    <option value="date">Sort by Due Date</option>
+                    <option value="tomatoes-left">Sort by 🍅's Left</option>
+                </select>
+            </div>
         </header>
 
         <!-- Code for Main -->
@@ -89,9 +96,11 @@
         <!-- Add a tomato emoji to each card and the ability to first pick the amount of pomodoros and then add to that number -->
 
         <main class="main-content">
+
             <div class="cards">
                 <h3 class="project-title">Your Projects: Calculated with <a target="_blank"
                         href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoros</a></h3>
+
                 <!-- <div class="card">
                     <label for="task-progress">Task Progress: <span class="tom-count">5</span> tomatoes left</label>
                     <span class="tomato-meter">🍅🍅🍅🍅🍅</span>

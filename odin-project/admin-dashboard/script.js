@@ -3,13 +3,11 @@
 
 // need to update tomatoes needed to complete task and refresh or re-render card contents AJAX-style
 
-// global selectors
-
 // use clamp
 
 // use modules
 
-// 
+// filter out tasks by due date  or progress
 
 
 
@@ -188,10 +186,35 @@ class UI {
    const formName = document.querySelector('[name="add-task"]');
    console.log(formName);
     formName.addEventListener("submit", function(event) {
-        console.log(event);
-        event.preventDefault();
+
+    console.log(event);
+    event.preventDefault();
+
+    //  // Get form values 
+    //  const title = document.querySelector('#title').value,
+    //  author = document.querySelector('#author').value,
+    //  pages = document.querySelector('#pages').value,
+    //  status = document.querySelector('.read-status-determiner').checked;
+
+    //  // Unchecks the checkbox for close the add-book panel
+    //  document.querySelector("#togglerCheckbox").checked = false; 
+
+
+
+    
+
+    //     setTimeout(()=>{
+    //         const book = new Book(title, author, pages, status);
+    //         UI.addBookToLibrary(book);
+    //         Store.addBook(book);
+    //     }, 200)
+    
+    //     UI.clearFields();
+        
       });
    }
+
+
 
     static changeTaskValues(task){
         if(task.status === 'started'){  

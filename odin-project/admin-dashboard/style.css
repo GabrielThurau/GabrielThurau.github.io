@@ -222,6 +222,16 @@ button {
     grid-column: 1 /-1;
 }
 
+.filter-wrap {
+    grid-column: 1 /-1;
+    margin-top: 2rem;
+    margin-left: auto;
+}
+
+.filter-wrap option {
+    padding: 0.4rem;
+}
+
 .delete {
     display: flex;
     align-self: flex-end;
