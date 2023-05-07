@@ -307,5 +307,18 @@ progress[value]::-webkit-progress-value {
 
 /* Use Clamp just for the hell of it */
 
+.text {
+    font-size: clamp(0.8rem, 1.1rem, 1.6rem);
+}
 
 /* use container query for the hell of it*/
+
+.card {
+    container-type: inline-size;
+}
+
+@container (min-width: 700px) {
+    .card {
+        background-color: peachpuff;
+    }
+}
