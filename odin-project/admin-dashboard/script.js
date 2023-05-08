@@ -5,6 +5,9 @@
 
 // dispatch a custom event for the hell of it
 
+
+const dialogElem = document.querySelector('.task-modal');
+
 // use promise.all if applicable. Doubt it will be though.
 
 // filter out tasks by due date  or progress
@@ -52,7 +55,7 @@ class Store {
     }
 }
 
-window.addEventListener("DOMContentLoaded", (event) => {
+window.addEventListener("DOMContentLoaded", () => {
     console.log('dom loaded');
     Store.checkLength();
     setTimeout(() => {
@@ -84,13 +87,31 @@ class UI {
 
     }
 
+    static addBorder(elem) {
+        elem.style.border = "solid 1px black";
+    }
+
+    static customEventHighlight(elem) {
+        const bgColor = 'cornsilk';
+        console.log('custom event function ran');
+        elem.style.backgroundColor = bgColor;
+        let event1 = new CustomEvent('highlight', {
+            detail: {
+                backgroundColor: bgColor
+            }
+        });
+        
+        // dispatch the event
+        elem.dispatchEvent(event1);
+    }
+
     static addListeners() {
-        console.log('add listeners function ran');
         UI.openModal();
         UI.closeModal();
         UI.deleteCard();
         UI.selectForm();
         UI.sortByChange();
+        UI.customEventHighlight(dialogElem);
     }
 
     // use fetch to get JSON data from random task raw github file. 
@@ -111,6 +132,12 @@ class UI {
         }, 200);
 
     }
+
+    static clearFields(){
+        const form = document.querySelectorAll('input');
+        form.forEach(el => el.type != 'checkbox' ? el.value = '' : el.checked = false);
+    }
+
 
      static renderCard(task, tomatoCount) {
 
@@ -175,6 +202,12 @@ class UI {
         element.addEventListener("click", () => {
             dialog.showModal();
           });
+    });
+
+    dialog.addEventListener('highlight', function (e) {
+        UI.addBorder(this);
+        // examine the background
+        console.log(e.detail);
     });
    }
 
