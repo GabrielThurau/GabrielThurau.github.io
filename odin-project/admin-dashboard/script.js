@@ -5,7 +5,6 @@
 
 // dispatch a custom event for the hell of it
 
-
 const dialogElem = document.querySelector('.task-modal');
 
 // use promise.all if applicable. Doubt it will be though.
@@ -147,7 +146,7 @@ class UI {
                  createdCard.classList.add('card'); 
                  const markup = 
                   `
-                  <label for="task-progress">Task Progress: ${tomatoCount > 0 ?  tomatoCount + ' tomatoes left' : '<b>You finished the task!</b>'}</label>
+                  <label for="task-progress" data-tomatoes = ${tomatoCount}>Task Progress: ${tomatoCount > 0 ?  tomatoCount + ' tomatoes left' : '<b>You finished the task!</b>'}</label>
                   <div class="tomato-meter">
                   ${tomatoCount < 10 ? tomTotal : `${tomatoCount} <span>🍅's left</span> `}
                   </div>
@@ -220,7 +219,7 @@ class UI {
           });
    }
 
-   static sortByTomatoes() {
+   static sortByTomatoes(a, b) {
         return a - b;
    }
 
@@ -231,6 +230,14 @@ class UI {
     let selectElement = document.querySelector('#filter-tasks');
     selectElement.addEventListener('change', function (event) {
       console.log(event)
+      let cards = document.querySelectorAll('.card');
+      let cardsArray = Array.from(cards);
+      const tomArray = cardsArray.map(tom => tom.children[0].dataset.tomatoes);
+      console.log(tomArray);
+  
+    // cardsArray.sort(UI.sortByTomatoes);
+    // console.dir(cardsArray);
+   
     });
 
    }
