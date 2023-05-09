@@ -224,6 +224,19 @@ class UI {
    }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
    // connect to UI.sortByTomatoes
 
    static sortByChange() {
@@ -301,4 +314,71 @@ class UI {
         }, 500);
     });
 
+
+
+
+    // people = [
+    //     {
+    //       id: 'xde234',
+    //       height: '196',
+    //       weight: '100',
+    //       age: '34'
+    //    },
+    //    {
+    //       id: 'sbd451',
+    //       height: '176',
+    //       weight: '140',
+    //       age: '26'
+    //    },
+    //    {
+    //       id: 'loe489',
+    //       height: '156',
+    //       weight: 'NA',
+    //       age: '54'
+    //    }]
+    
+     
+       
+    //    console.log(tomArray); // this is just an array of numbers ['2', '0', '2', '0', '96']
+    
+    
+    //    function sortingFunction(e, property){
+    
+    //     peopleContainer = document.getElementById('peopleContainer');
+    //     allPeople =  peopleContainer.children;
+    
+    //     const peopleElements = {};
+    
+    //     [...allPeople].forEach(node=>{
+    //     peopleElements[node.id] = node;
+    //     });
+      
+    //     if(e.target.getAttribute('data-lastSort') === 'desc'){
+    //         e.target.setAttribute('data-lastSort','asc')
+    //         people.sort(function(a,b){
+    //             return a[property] - b[property]
+    //         });
+    //     }else{
+    //         e.target.setAttribute('data-lastSort','desc')
+    //         people.sort(function(a,b){
+    //             return b[property] - a[property]
+    //         });
+    //     };
+       
+    //     people.forEach(person=>{
+    //     const node = peopleElements[person.id];
+    //     peopleContainer.append(node);
+    //     };
+    
+    //     people.forEach(person=>{
+    //        if(person[property] === 'NA'){
+    //        const node = peopleElements[person.id];
+    //        peopleContainer.append(node);
+    //        };
+    //     });
+    
+    // };
  
+    const cards = document.querySelectorAll(".card");
+
+    console.log(cards);

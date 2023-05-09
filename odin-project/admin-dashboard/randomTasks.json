@@ -1,4 +1,5 @@
 [
+    "task1",
     {
         "title": "Client site audit",
         "description": "Check on the site health of existing client page and provide suggestions.",
@@ -7,6 +8,7 @@
         "tomatoesSquashed": 2,
         "percentage": 0
     },
+    "task2",
     {
         "title": "Code Sprint",
         "description": "New coding application for showing customers purchased since x date",
@@ -15,6 +17,7 @@
         "tomatoesSquashed": 4,
         "percentage": 0
     },
+    "task3",
     {
         "title": "A/B Test #414",
         "description": "Adding an AJAX cart to client site",
@@ -23,6 +26,7 @@
         "tomatoesSquashed": 6,
         "percentage": 0
     },
+    "task4",
     {
         "title": "Site Speed Audit",
         "description": "Figure out what's causing homepage rendering flickering",
@@ -31,6 +35,7 @@
         "tomatoesSquashed": 4,
         "percentage": 0
     },
+    "task5",
     {
         "title": "Refactoring Junior Dev Code",
         "description": "Remove all settimeouts and replace with mutation observers where possible",
