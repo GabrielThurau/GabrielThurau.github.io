@@ -62,19 +62,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 500);
 }); 
 
-class Helper {
-    sleep = (ms) => {
-        return new Promise(resolve => setTimeout(resolve, ms));
-      }
-       asyncSleeper = async () => {
-          await sleep(2000);
-          console.log('look at this');
-          await sleep(1000);
-          console.log('getting fancy now');
-      }
-
-    }
-
 class UI {
 
     static renderLocalStorage(tasks) { 
@@ -141,9 +128,9 @@ class UI {
      static renderCard(task, tomatoCount) {
 
         let tomTotal = "🍅".repeat(tomatoCount);
-        console.log(tomTotal);
                  const createdCard = document.createElement('div');
-                 createdCard.classList.add('card'); 
+                 createdCard.classList.add('card');
+                 createdCard.setAttribute('id', task.title) 
                  const markup = 
                   `
                   <label for="task-progress" data-tomatoes = ${tomatoCount}>Task Progress: ${tomatoCount > 0 ?  tomatoCount + ' tomatoes left' : '<b>You finished the task!</b>'}</label>
@@ -247,6 +234,7 @@ class UI {
       let cardsArray = Array.from(cards);
       const tomArray = cardsArray.map(tom => tom.children[0].dataset.tomatoes);
       console.log(tomArray);
+      Helper.sortFunc(cards);
   
     // cardsArray.sort(UI.sortByTomatoes);
     // console.dir(cardsArray);
@@ -314,9 +302,6 @@ class UI {
         }, 500);
     });
 
-
-
-
     // people = [
     //     {
     //       id: 'xde234',
@@ -336,8 +321,53 @@ class UI {
     //       weight: 'NA',
     //       age: '54'
     //    }]
+
+
+//     <div id="peopleContainer">
+//     <div id='xde234'>
+//        <span class="height">196</span>
+//        <span class="weight">100</span>
+//        <span class="age">34</span>
+//     </div>
+//     <div id='sbd451'>
+//        <span class="height">176</span>
+//        <span class="weight">140</span>
+//        <span class="age">26</span>
+//     </div>
+//     <div id='loe489'>
+//        <span class="height">156</span>
+//        <span class="weight">NA</span>
+//        <span class="age">54</span>
+//     </div>
+//   </div>
+
+
+
     
-     
+    class Helper {
+        sleep = (ms) => {
+            return new Promise(resolve => setTimeout(resolve, ms));
+          }
+           asyncSleeper = async () => {
+              await sleep(2000);
+              console.log('look at this');
+              await sleep(1000);
+              console.log('getting fancy now');
+          }
+
+          static sortFunc(cards) {
+            const tomatoElements = {};
+
+            [...cards].forEach(card=>{
+                tomatoElements[card.id] = card;
+                });
+                console.log(tomatoElements);
+          }
+    
+        }
+
+
+   
        
     //    console.log(tomArray); // this is just an array of numbers ['2', '0', '2', '0', '96']
     
@@ -379,6 +409,4 @@ class UI {
     
     // };
  
-    const cards = document.querySelectorAll(".card");
-
-    console.log(cards);
+  
