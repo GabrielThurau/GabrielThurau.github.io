@@ -234,7 +234,7 @@ class UI {
       let cardsArray = Array.from(cards);
       const tomArray = cardsArray.map(tom => tom.children[0].dataset.tomatoes);
       console.log(tomArray);
-      Helper.sortFunc(cards);
+      Helper.sortFunc(cards, event);
   
     // cardsArray.sort(UI.sortByTomatoes);
     // console.dir(cardsArray);
@@ -242,6 +242,61 @@ class UI {
     });
 
    }
+
+   // adding here for ease of manipulation
+   
+
+
+    // tomatoData = [
+    //     {
+    //       id: 'Client site audit',
+    //          total: 400
+    //    },
+    //    {
+    //        id: 'Code Sprint',
+    //          total: 9090
+    //    },
+
+    //    {
+    //     id: 'A/B Test #414',
+    //       total: 500
+    //     },
+
+    //     {
+    //         id: 'Site Speed Audit',
+    //         total: 300
+    //     },
+       
+    //     {
+    //         id: 'Refactoring Junior Dev Code',
+    //          total: 120
+    //    }]
+
+
+//    static sortFunc(cards, e, property) {
+//     const tomatoElements = {};
+
+//     [...cards].forEach(card=>{
+//         tomatoElements[card.id] = card;
+//         });
+//         console.log(tomatoElements.children[0].dataset.tomatoes);
+
+//         // if(e.target.getAttribute('data-lastSort') === 'desc'){
+//         //     e.target.setAttribute('data-lastSort','asc')
+//         //     tomatoData.sort(function(a,b){
+//         //         return a[property] - b[property]
+//         //     });
+//         // }else{
+//         //     e.target.setAttribute('data-lastSort','desc')
+//         //     tomatoData.sort(function(a,b){
+//         //         return b[property] - a[property]
+//         //     });
+//         // };
+       
+//   }
+
+
+
 
    static selectForm() {
    const formName = document.querySelector('[name="add-task"]');
@@ -355,14 +410,29 @@ class UI {
               console.log('getting fancy now');
           }
 
-          static sortFunc(cards) {
+          static sortFunc(cards, e, property) {
             const tomatoElements = {};
 
             [...cards].forEach(card=>{
                 tomatoElements[card.id] = card;
                 });
-                console.log(tomatoElements);
+                console.dir(tomatoElements);
+
+                // if(e.target.getAttribute('data-lastSort') === 'desc'){
+                //     e.target.setAttribute('data-lastSort','asc')
+                //     people.sort(function(a,b){
+                //         return a[property] - b[property]
+                //     });
+                // }else{
+                //     e.target.setAttribute('data-lastSort','desc')
+                //     people.sort(function(a,b){
+                //         return b[property] - a[property]
+                //     });
+                // };
+               
           }
+
+            
     
         }
 
