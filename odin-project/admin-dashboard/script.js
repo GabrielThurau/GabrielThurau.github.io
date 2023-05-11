@@ -9,7 +9,7 @@ const dialogElem = document.querySelector('.task-modal');
 
 // use promise.all if applicable. Doubt it will be though.
 
-// filter out tasks by due date  or progress
+// filter out tasks by due date or progress
 
 // use document.fragment to apply HTML
 
@@ -206,38 +206,14 @@ class UI {
           });
    }
 
-   static sortByTomatoes(a, b) {
-        return a - b;
-   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   // connect to UI.sortByTomatoes
 
    static sortByChange() {
     let selectElement = document.querySelector('#filter-tasks');
     selectElement.addEventListener('change', function (event) {
-      console.log(event)
       let cards = document.querySelectorAll('.card');
       let cardsArray = Array.from(cards);
       const tomArray = cardsArray.map(tom => tom.children[0].dataset.tomatoes);
-      console.log(tomArray);
       Helper.sortFunc(cards, event);
-  
-    // cardsArray.sort(UI.sortByTomatoes);
-    // console.dir(cardsArray);
    
     });
 
@@ -357,48 +333,7 @@ class UI {
         }, 500);
     });
 
-    // people = [
-    //     {
-    //       id: 'xde234',
-    //       height: '196',
-    //       weight: '100',
-    //       age: '34'
-    //    },
-    //    {
-    //       id: 'sbd451',
-    //       height: '176',
-    //       weight: '140',
-    //       age: '26'
-    //    },
-    //    {
-    //       id: 'loe489',
-    //       height: '156',
-    //       weight: 'NA',
-    //       age: '54'
-    //    }]
-
-
-//     <div id="peopleContainer">
-//     <div id='xde234'>
-//        <span class="height">196</span>
-//        <span class="weight">100</span>
-//        <span class="age">34</span>
-//     </div>
-//     <div id='sbd451'>
-//        <span class="height">176</span>
-//        <span class="weight">140</span>
-//        <span class="age">26</span>
-//     </div>
-//     <div id='loe489'>
-//        <span class="height">156</span>
-//        <span class="weight">NA</span>
-//        <span class="age">54</span>
-//     </div>
-//   </div>
-
-
-
-    
+ 
     class Helper {
         sleep = (ms) => {
             return new Promise(resolve => setTimeout(resolve, ms));
@@ -410,13 +345,33 @@ class UI {
               console.log('getting fancy now');
           }
 
-          static sortFunc(cards, e, property) {
-            const tomatoElements = {};
+          static sortFunc(cards) {
+          
+          let container = document.querySelector('div.cards');
 
-            [...cards].forEach(card=>{
-                tomatoElements[card.id] = card;
-                });
-                console.dir(tomatoElements);
+          let cardsArr = [...cards].sort(function (a,b) {
+            return a.children[0].dataset.tomatoes > b.children[0].dataset.tomatoes ? 1 : -1;
+          });
+
+          cardsArr.forEach(element => {
+            container.appendChild(element);
+          });
+
+                // let div = document.querySelector('#wrap'), para = document.querySelectorAll('#wrap p');
+                // let paraArr = [...para].sort(function (a, b) {
+                //     return a.textContent > b.textContent ? 1 : -1;
+                // });
+                // paraArr.forEach(function (p) {
+                //     div.appendChild(p);
+                // });
+
+
+            // const tomatoElements = {};
+                      // [...cards].forEach(card=>{
+            //     tomatoElements[card.id] = card;
+            //     });
+            //     console.dir(tomatoElements);
+            
 
                 // if(e.target.getAttribute('data-lastSort') === 'desc'){
                 //     e.target.setAttribute('data-lastSort','asc')
