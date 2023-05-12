@@ -11,6 +11,10 @@ const dialogElem = document.querySelector('.task-modal');
 
 // filter out tasks by due date or progress
 
+    // (A) progress = tomato sorting and reordering of dom. Try and reorder local storage as well to maintain that order and maintain that sorted status
+
+    // (B) due date = convert deadline by days left into unix timestamp or some sort of millisecond conversion that I can also sort
+
 // use document.fragment to apply HTML
 
 // Local Storage Class
@@ -350,7 +354,7 @@ class UI {
           let container = document.querySelector('div.cards');
 
           let cardsArr = [...cards].sort(function (a,b) {
-            return a.children[0].dataset.tomatoes > b.children[0].dataset.tomatoes ? 1 : -1;
+            return a.children[0].dataset.tomatoes < b.children[0].dataset.tomatoes ? 1 : -1;
           });
 
           cardsArr.forEach(element => {
