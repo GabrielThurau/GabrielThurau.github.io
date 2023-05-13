@@ -217,6 +217,7 @@ class UI {
       let cards = document.querySelectorAll('.card');
       let cardsArray = Array.from(cards);
       const tomArray = cardsArray.map(tom => tom.children[0].dataset.tomatoes);
+      console.log(this.value);
       Helper.sortFunc(cards, event);
    
     });
