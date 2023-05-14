@@ -218,7 +218,12 @@ class UI {
       let cardsArray = Array.from(cards);
       const tomArray = cardsArray.map(tom => tom.children[0].dataset.tomatoes);
       console.log(this.value);
-      Helper.sortFunc(cards, event);
+      if (this.value === 'tomatoes-left')
+      Helper.tomSort(cards, event);
+      
+      else {
+        console.log('do nothing');
+      }
    
     });
 
@@ -350,7 +355,7 @@ class UI {
               console.log('getting fancy now');
           }
 
-          static sortFunc(cards) {
+          static tomSort(cards) {
           
           let container = document.querySelector('div.cards');
 
