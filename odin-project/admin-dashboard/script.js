@@ -17,6 +17,18 @@ const dialogElem = document.querySelector('.task-modal');
 
 // use document.fragment to apply HTML
 
+// task Constructor
+
+// Book Class
+class Task {
+    constructor(title, pomodoros, status){
+        this.title = title;
+        this.pomodoros = pomodoros;
+        this.status = status;
+    }
+}
+
+
 // Local Storage Class
 class Store {
 
@@ -217,11 +229,9 @@ class UI {
       let cards = document.querySelectorAll('.card');
       let cardsArray = Array.from(cards);
       const tomArray = cardsArray.map(tom => tom.children[0].dataset.tomatoes);
-      console.log(this.value);
       if (this.value === 'tomatoes-left')
       Helper.tomSort(cards, event);
-      
-      else {
+      else if (this.value === 'date') {
         console.log('do nothing');
       }
    
@@ -286,32 +296,27 @@ class UI {
 
    static selectForm() {
    const formName = document.querySelector('[name="add-task"]');
-   console.log(formName);
-    formName.addEventListener("submit", function(event) {
+   formName.addEventListener("submit", function(event) {
 
     console.log(event);
     event.preventDefault();
 
-    //  // Get form values 
-    //  const title = document.querySelector('#title').value,
-    //  author = document.querySelector('#author').value,
-    //  pages = document.querySelector('#pages').value,
-    //  status = document.querySelector('.read-status-determiner').checked;
+     // Get form values 
+     const title = document.querySelector('#title').value
+     const pomodoros = document.querySelector('#pomodoros').value
+     const status = document.querySelector('.read-status-determiner').checked;
 
     //  // Unchecks the checkbox for close the add-book panel
     //  document.querySelector("#togglerCheckbox").checked = false; 
 
 
-
+        setTimeout(()=>{
+            const task = new Task(title, pomodoros, status);
+            UI.renderCard(task);
+            Store.addTask(task);
+        }, 200)
     
-
-    //     setTimeout(()=>{
-    //         const book = new Book(title, author, pages, status);
-    //         UI.addBookToLibrary(book);
-    //         Store.addBook(book);
-    //     }, 200)
-    
-    //     UI.clearFields();
+        UI.clearFields();
         
       });
    }
