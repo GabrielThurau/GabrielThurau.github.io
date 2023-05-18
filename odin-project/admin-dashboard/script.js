@@ -21,10 +21,12 @@ const dialogElem = document.querySelector('.task-modal');
 
 // Book Class
 class Task {
-    constructor(title, pomodoros, status){
+    constructor(title, pomodoros, status, description, tomatoesSquashed, ){
         this.title = title;
         this.pomodoros = pomodoros;
         this.status = status;
+        this.description = description;
+        this.tomatoesSquashed = tomatoesSquashed;
     }
 }
 
@@ -323,8 +325,8 @@ class UI {
 
 
         setTimeout(()=>{
-            const task = new Task(title, pomodoros, status);
-            UI.renderCard(task, pomodoros);
+            const task = new Task(title, pomodoros, status, description, tomsFinished);
+            UI.renderCard(task, pomodoros, description, tomsFinished);
             Store.addTask(task);
         }, 200)
     
