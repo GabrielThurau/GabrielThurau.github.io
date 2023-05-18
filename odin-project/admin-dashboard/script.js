@@ -119,6 +119,8 @@ class UI {
     // use fetch to get JSON data from random task raw github file. 
 
     static async tryTasks(){
+
+        // obviously this is just the hard-coded approach. Progress will be static because this 
   
         const endpoint = 'https://raw.githubusercontent.com/GabrielThurau/GabrielThurau.github.io/main/odin-project/admin-dashboard/randomTasks.json';
         const response = await fetch(endpoint)
@@ -140,6 +142,10 @@ class UI {
         form.forEach(el => el.type != 'checkbox' ? el.value = '' : el.checked = false);
     }
 
+
+    // potentially use rest parameter for arguments, given that the form and the JSON approach will require unique args. 
+
+    // need to set up ajax refresh without
 
      static renderCard(task, tomatoCount) {
 
@@ -293,6 +299,10 @@ class UI {
 
 
 
+// need to reapply event listeners when this task is added. 
+// need to update the information to pull in correctly. A lot of undefined values
+// 
+
 
    static selectForm() {
    const formName = document.querySelector('[name="add-task"]');
@@ -304,6 +314,8 @@ class UI {
      // Get form values 
      const title = document.querySelector('#title').value
      const pomodoros = document.querySelector('#pomodoros').value
+     const description = document.querySelector('#description').value
+     const tomsFinished = document.querySelector('#squashed').value
      const status = document.querySelector('.read-status-determiner').checked;
 
     //  // Unchecks the checkbox for close the add-book panel
@@ -312,7 +324,7 @@ class UI {
 
         setTimeout(()=>{
             const task = new Task(title, pomodoros, status);
-            UI.renderCard(task);
+            UI.renderCard(task, pomodoros);
             Store.addTask(task);
         }, 200)
     
