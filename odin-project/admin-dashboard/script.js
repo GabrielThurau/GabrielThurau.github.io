@@ -235,46 +235,13 @@ class UI {
     let selectElement = document.querySelector('#filter-tasks');
     selectElement.addEventListener('change', function (event) {
       let cards = document.querySelectorAll('.card');
-      let cardsArray = Array.from(cards);
-      const tomArray = cardsArray.map(tom => tom.children[0].dataset.tomatoes);
       if (this.value === 'tomatoes-left')
       Helper.tomSort(cards, event);
       else if (this.value === 'date') {
         console.log('do nothing');
       }
-   
     });
-
    }
-
-   // adding here for ease of manipulation
-   
-
-
-    // tomatoData = [
-    //     {
-    //       id: 'Client site audit',
-    //          total: 400
-    //    },
-    //    {
-    //        id: 'Code Sprint',
-    //          total: 9090
-    //    },
-
-    //    {
-    //     id: 'A/B Test #414',
-    //       total: 500
-    //     },
-
-    //     {
-    //         id: 'Site Speed Audit',
-    //         total: 300
-    //     },
-       
-    //     {
-    //         id: 'Refactoring Junior Dev Code',
-    //          total: 120
-    //    }]
 
 
 //    static sortFunc(cards, e, property) {
@@ -318,7 +285,7 @@ class UI {
      const pomodoros = document.querySelector('#pomodoros').value
      const description = document.querySelector('#description').value
      const tomsFinished = document.querySelector('#squashed').value
-     const status = document.querySelector('.read-status-determiner').checked;
+     let status = document.querySelector('.read-status-determiner').checked ? 'started' : 'not started';
 
     //  // Unchecks the checkbox for close the add-book panel
     //  document.querySelector("#togglerCheckbox").checked = false; 
@@ -326,6 +293,7 @@ class UI {
 
         setTimeout(()=>{
             const task = new Task(title, pomodoros, status, description, tomsFinished);
+            UI.changeTaskValues(task); 
             UI.renderCard(task, pomodoros, description, tomsFinished);
             Store.addTask(task);
         }, 200)
@@ -335,8 +303,6 @@ class UI {
       });
    }
 
-
-
     static changeTaskValues(task){
         if(task.status === 'started'){  
             task.progress = true;
@@ -344,6 +310,7 @@ class UI {
         }
         else { 
             task.progress = false; 
+            task.progress = 0;
         };
     }
 
