@@ -243,34 +243,7 @@ class UI {
     });
    }
 
-
-//    static sortFunc(cards, e, property) {
-//     const tomatoElements = {};
-
-//     [...cards].forEach(card=>{
-//         tomatoElements[card.id] = card;
-//         });
-//         console.log(tomatoElements.children[0].dataset.tomatoes);
-
-//         // if(e.target.getAttribute('data-lastSort') === 'desc'){
-//         //     e.target.setAttribute('data-lastSort','asc')
-//         //     tomatoData.sort(function(a,b){
-//         //         return a[property] - b[property]
-//         //     });
-//         // }else{
-//         //     e.target.setAttribute('data-lastSort','desc')
-//         //     tomatoData.sort(function(a,b){
-//         //         return b[property] - a[property]
-//         //     });
-//         // };
-       
-//   }
-
-
-
 // need to reapply event listeners when this task is added. 
-// need to update the information to pull in correctly. A lot of undefined values
-// 
 
 
    static selectForm() {
@@ -286,9 +259,6 @@ class UI {
      const description = document.querySelector('#description').value
      const tomsFinished = document.querySelector('#squashed').value
      let status = document.querySelector('.read-status-determiner').checked ? 'started' : 'not started';
-
-    //  // Unchecks the checkbox for close the add-book panel
-    //  document.querySelector("#togglerCheckbox").checked = false; 
 
 
         setTimeout(()=>{
@@ -352,82 +322,11 @@ class UI {
           cardsArr.forEach(element => {
             container.appendChild(element);
           });
-
-                // let div = document.querySelector('#wrap'), para = document.querySelectorAll('#wrap p');
-                // let paraArr = [...para].sort(function (a, b) {
-                //     return a.textContent > b.textContent ? 1 : -1;
-                // });
-                // paraArr.forEach(function (p) {
-                //     div.appendChild(p);
-                // });
-
-
-            // const tomatoElements = {};
-                      // [...cards].forEach(card=>{
-            //     tomatoElements[card.id] = card;
-            //     });
-            //     console.dir(tomatoElements);
-            
-
-                // if(e.target.getAttribute('data-lastSort') === 'desc'){
-                //     e.target.setAttribute('data-lastSort','asc')
-                //     people.sort(function(a,b){
-                //         return a[property] - b[property]
-                //     });
-                // }else{
-                //     e.target.setAttribute('data-lastSort','desc')
-                //     people.sort(function(a,b){
-                //         return b[property] - a[property]
-                //     });
-                // };
                
           }
 
-            
-    
         }
 
 
-   
-       
-    //    console.log(tomArray); // this is just an array of numbers ['2', '0', '2', '0', '96']
-    
-    
-    //    function sortingFunction(e, property){
-    
-    //     peopleContainer = document.getElementById('peopleContainer');
-    //     allPeople =  peopleContainer.children;
-    
-    //     const peopleElements = {};
-    
-    //     [...allPeople].forEach(node=>{
-    //     peopleElements[node.id] = node;
-    //     });
-      
-    //     if(e.target.getAttribute('data-lastSort') === 'desc'){
-    //         e.target.setAttribute('data-lastSort','asc')
-    //         people.sort(function(a,b){
-    //             return a[property] - b[property]
-    //         });
-    //     }else{
-    //         e.target.setAttribute('data-lastSort','desc')
-    //         people.sort(function(a,b){
-    //             return b[property] - a[property]
-    //         });
-    //     };
-       
-    //     people.forEach(person=>{
-    //     const node = peopleElements[person.id];
-    //     peopleContainer.append(node);
-    //     };
-    
-    //     people.forEach(person=>{
-    //        if(person[property] === 'NA'){
-    //        const node = peopleElements[person.id];
-    //        peopleContainer.append(node);
-    //        };
-    //     });
-    
-    // };
  
   
