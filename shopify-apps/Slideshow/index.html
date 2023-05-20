@@ -5,14 +5,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+        integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Slide Show</title>
 </head>
 
 <!-- Filter functionality borrowed from this code pen https://codepen.io/chiz-developer/pen/ybxBKy -->
 
+
+
 <body>
 
+    <ul class="slider">
+        <li class="red">1</li>
+        <li class="yellow">2</li>
+        <li class="blue">3</li>
+        <li class="red">4</li>
+        <li class="yellow">5</li>
+        <li class="blue">6</li>
+    </ul>
 
+    <p>Click to button for filter slides:</p>
+
+    <ul class="filter clearfix">
+        <li data-filter="red" class="red">Red</li>
+        <li data-filter="yellow" class="yellow">Yellow</li>
+        <li data-filter="blue" class="blue">Blue</li>
+        <li data-filter="all" class="all">All</li>
+    </ul>
 
 </body>
 

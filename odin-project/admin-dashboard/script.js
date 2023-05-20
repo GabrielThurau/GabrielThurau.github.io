@@ -35,6 +35,7 @@ class Task {
 class Store {
 
     static getTasks() {
+        // const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
         let tasks
         localStorage.getItem('tasks') === null ? tasks = [] : tasks = JSON.parse(localStorage.getItem('tasks')); // 
         return tasks;
@@ -121,8 +122,6 @@ class UI {
     // use fetch to get JSON data from random task raw github file. 
 
     static async tryTasks(){
-
-        // obviously this is just the hard-coded approach. Progress will be static because this 
   
         const endpoint = 'https://raw.githubusercontent.com/GabrielThurau/GabrielThurau.github.io/main/odin-project/admin-dashboard/randomTasks.json';
         const response = await fetch(endpoint)
@@ -347,7 +346,7 @@ class UI {
 // <script>
 // const addItems = document.querySelector('.add-items');
 // const itemsList = document.querySelector('.plates');
-// const items = JSON.parse(localStorage.getItem('items')) || [];
+
 
 // function addItem(e) {
 //   e.preventDefault();
