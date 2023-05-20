@@ -35,15 +35,13 @@ class Task {
 class Store {
 
     static getTasks() {
-        // const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-        let tasks
-        localStorage.getItem('tasks') === null ? tasks = [] : tasks = JSON.parse(localStorage.getItem('tasks')); // 
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        // localStorage.getItem('tasks') === null ? tasks = [] : tasks = JSON.parse(localStorage.getItem('tasks')); // 
         return tasks;
     }
 
     static addTask(task) {
         const tasks = Store.getTasks();
-        console.log(tasks);
         tasks.push(task);
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }
@@ -51,7 +49,6 @@ class Store {
     static checkLength() {
         let tasks = JSON.parse(localStorage.getItem('tasks'));
         tasks.forEach(element => {
-        console.log(element.pomodoros)
        });
         // tomatoCounts = JSON.parse(localStorage.getItem('tasks'));
         let length = tasks.length;
@@ -74,7 +71,6 @@ class Store {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    console.log('dom loaded');
     Store.checkLength();
     setTimeout(() => {
     UI.addListeners();
@@ -183,7 +179,7 @@ class UI {
     // method to delete card from HTML and local storage
     // once found in local storage delete that item as well. 
  
-    static async deleteCard() {
+    static async deleteCard(task) {
         let sleep = (ms) => {
             return new Promise(resolve => setTimeout(resolve, ms));
           }
@@ -265,6 +261,7 @@ class UI {
             UI.changeTaskValues(task); 
             UI.renderCard(task, pomodoros, description, tomsFinished);
             Store.addTask(task);
+            UI.deleteCard(task);
         }, 200)
     
         UI.clearFields();
