@@ -6,31 +6,33 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-// Basic initialization is like this:
-// $('.your-class').slick();
-
-// I added some other properties to customize my slider
-// Play around with the numbers and stuff to see
-// how it works.
-$('.slick-carousel').slick({
-    infinite: true,
-    slidesToShow: 3, // Shows a three slides at a time
-    slidesToScroll: 1, // When you click an arrow, it scrolls 1 slide at a time
-    arrows: true, // Adds arrows to sides of slider
-    dots: true // Adds the dots on the bottom
+jQuery(document).ready(function($) {
+    $('.slider').slick({
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      arrows: true,
+      responsive: [{
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+         breakpoint: 400,
+         settings: {
+            arrows: false,
+            slidesToShow: 1,
+            slidesToScroll: 1
+         }
+      }]
   });
-
-
+});
 
 
 // $(function() {
