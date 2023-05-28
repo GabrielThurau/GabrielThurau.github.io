@@ -28,7 +28,9 @@ const sleepUntil = async (f, timeoutMs) => {
       let testimonialsSection = document.querySelector("#shopify-section-template--15582584471691__1644812433ee8ffcc4 > testimonials-section");
       await sleepUntil(() => guaranteeSection, 2000);
       await sleepUntil(() => testimonialsSection, 1000);
-      // 2. Then we 
+      // 2. Then we swap the location of the elements.
+
+      testimonialsSection.before(guaranteeSection);
  
   } catch {
     console.log('Error. Element took too long to load.')
