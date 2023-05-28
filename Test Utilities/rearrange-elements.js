@@ -29,7 +29,6 @@ const sleepUntil = async (f, timeoutMs) => {
       await sleepUntil(() => guaranteeSection, 2000);
       await sleepUntil(() => testimonialsSection, 1000);
       // 2. Then we swap the location of the elements.
-
       testimonialsSection.before(guaranteeSection);
  
   } catch {
