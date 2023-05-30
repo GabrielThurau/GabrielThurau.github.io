@@ -1,4 +1,4 @@
-// for a random client site - https://nuts.com/
+
 // The goal of this code snippet is to make their sticky bar sticky by default on mobile. Instead of having to click on the search icon. 
 
 // 0.5 - if you want to test in console and add styles to your code - 

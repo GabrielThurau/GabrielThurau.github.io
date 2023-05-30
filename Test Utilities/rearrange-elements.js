@@ -1,4 +1,4 @@
-// for a random client site - https://humann.com/products/superbeets-soft-chews?variant=20791397711983
+
 // The goal of this code snippet is write a clean way to wait for elements to load on the page...
 //and then reorder them in a given way to test their optimal position on the page for increased conversions
 
