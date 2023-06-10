@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.3.2/swiper-bundle.min.js"
+        integrity="sha512-+z66PuMP/eeemN2MgRhPvI3G15FOBbsp5NcCJBojg6dZBEFL0Zoi0PEGkhjubEcQF7N1EpTX15LZvfuw+Ej95Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.3.2/swiper-bundle.css"
+        integrity="sha512-zar81H5lVN36QFsq/da1hxpOLODXK4/oFwBGOFrvdWX6SBe3NWriWTQS6YQDVfW5fDeb2Vry41YQCELOe8cHww=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <!-- A lot of clients use either Slick.js, Owl, Flickety, or Swiper.js for their carousel needs on shopify
+Goal is to turn a bunch of product tiles into one singular slider using swiper.js -->
+
+    <!-- Swiper html example to model the HTML off of -->
+
+    <!-- HTML starting with just one row to get used to swiper -->
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a class="link"
+                    href="https://www.swimoutlet.com/collections/womens-competition-training-one-piece-swimsuits-20980">
+                    <div class="image">
+                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-22.png?v=1666061076"
+                            alt="img">
+                    </div>
+                    <h3 class="card-heading">Competition One Piece</h3>
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a class="link"
+                    href="https://www.swimoutlet.com/collections/womens-competition-training-two-piece-swimsuits-20983">
+                    <div class="image">
+                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-08.png?v=1666061031"
+                            alt="img">
+                    </div>
+                    <h3 class="card-heading">Competition Two Piece</h3>
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a class="link" href="https://www.swimoutlet.com/collections/womens-tech-suits-20981">
+                    <div class="image">
+                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-04.png?v=1666061031"
+                            alt="img">
+                    </div>
+                    <h3 class="card-heading">Tech Suits</h3>
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a class="link"
+                    href="https://www.swimoutlet.com/collections/womens-fashion-active-one-piece-swimsuits-20991">
+                    <div class="image">
+                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-07.png?v=1666061031"
+                            alt="img">
+                    </div>
+                    <h3 class="card-heading">Fashion/Active One Piece</h3>
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a class="link" href="https://www.swimoutlet.com/collections/womens-tankinis-20987">
+                    <div class="image">
+                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-10.png?v=1666061031"
+                            alt="img">
+                    </div>
+                    <h3 class="card-heading">Tankinis</h3>
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a class="link" href="https://www.swimoutlet.com/collections/womens-fashion-active-bikini-tops-20984">
+                    <div class="image">
+                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-11.png?v=1666061056"
+                            alt="img">
+                    </div>
+                    <h3 class="card-heading">Bikini Tops</h3>
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a class="link"
+                    href="https://www.swimoutlet.com/collections/womens-fashion-active-bikini-bottoms-20985">
+                    <div class="image">
+                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-09.png?v=1666061031"
+                            alt="img">
+                    </div>
+                    <h3 class="card-heading">Bikini Bottoms</h3>
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a class="link" href="https://www.swimoutlet.com/collections/womens-swim-dresses-20992">
+                    <div class="image">
+                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-14.png?v=1666061056"
+                            alt="img">
+                    </div>
+                    <h3 class="card-heading">Swim Dresses</h3>
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a class="link"
+                    href="https://www.swimoutlet.com/collections/womens-fashion-active-swimwear-20670/womens-plus-size-fashion-and-active-swimwear">
+                    <div class="image">
+                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-28.png?v=1666061094"
+                            alt="img">
+                    </div>
+                    <h3 class="card-heading">Plus Size</h3>
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a class="link"
+                    href="https://www.swimoutlet.com/collections/womens-fashion-active-swimwear-20670/womens-water-aerobics-swimwear">
+                    <div class="image">
+                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-23.png?v=1666061076"
+                            alt="img">
+                    </div>
+                    <h3 class="card-heading">Water Aerobics</h3>
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a class="link" href="https://www.swimoutlet.com/collections/womens-fashion-active-board-shorts-20989">
+                    <div class="image">
+                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-12.png?v=1666061056"
+                            alt="img">
+                    </div>
+                    <h3 class="card-heading">Board Shorts</h3>
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a class="link" href="https://www.swimoutlet.com/collections/womens-unitard-swimsuits-20994">
+                    <div class="image">
+                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-16.png?v=1666061056"
+                            alt="img">
+                    </div>
+                    <h3 class="card-heading">Unitards</h3>
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a class="link" href="https://www.swimoutlet.com/collections/womens-modest-swimwear-20996">
+                    <div class="image">
+                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-21.png?v=1666061076"
+                            alt="img">
+                    </div>
+                    <h3 class="card-heading">Modest</h3>
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a class="link" href="https://www.swimoutlet.com/collections/womens-long-torso-swimwear-20998">
+                    <div class="image">
+                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-18.png?v=1666061075"
+                            alt="img">
+                    </div>
+                    <h3 class="card-heading">Long Torso</h3>
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a class="link" href="https://www.swimoutlet.com/collections/womens-water-polo-suits-20982">
+                    <div class="image">
+                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-05.png?v=1666061031"
+                            alt="img">
+                    </div>
+                    <h3 class="card-heading">Water Polo Suits</h3>
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a class="link"
+                    href="https://www.swimoutlet.com/collections/team-swimsuits-21751/womens-competition-training-swimwear-20669">
+                    <div class="image">
+                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-06.png?v=1666061031"
+                            alt="img">
+                    </div>
+                    <h3 class="card-heading">Team Suits</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+
+    <!-- This is what needs to be modified -->
+
+    <script>
+
+        const swiper = new Swiper('.swiper', {
+            // Default parameters
+            slidesPerView: 1,
+            spaceBetween: 10,
+            // Responsive breakpoints
+            breakpoints: {
+                // when window width is >= 320px
+                320: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                },
+                // when window width is >= 480px
+                480: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                },
+                // when window width is >= 640px
+                640: {
+                    slidesPerView: 3,
+                    spaceBetween: 10
+                }
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        })
+
+    </script>
+
+</body>
+
+</html>
