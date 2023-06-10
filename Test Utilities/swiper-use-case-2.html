@@ -19,210 +19,437 @@
     <!-- A lot of clients use either Slick.js, Owl, Flickety, or Swiper.js for their carousel needs on shopify
 Goal is to turn a bunch of product tiles into one singular slider using swiper.js -->
 
-    <!-- Swiper html example to model the HTML off of -->
-
     <!-- HTML starting with just one row to get used to swiper -->
 
-    <div class="swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <a class="link"
-                    href="https://www.swimoutlet.com/collections/womens-competition-training-one-piece-swimsuits-20980">
-                    <div class="image">
-                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-22.png?v=1666061076"
-                            alt="img">
-                    </div>
-                    <h3 class="card-heading">Competition One Piece</h3>
-                </a>
-            </div>
+    <style>
+        section.six-slide-sec .collection-banner__text {
+            border-bottom: none;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-            <div class="swiper-slide">
-                <a class="link"
-                    href="https://www.swimoutlet.com/collections/womens-competition-training-two-piece-swimsuits-20983">
-                    <div class="image">
-                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-08.png?v=1666061031"
-                            alt="img">
-                    </div>
-                    <h3 class="card-heading">Competition Two Piece</h3>
-                </a>
-            </div>
+        div#mainBanner+.collection-banner__text {
+            display: none;
+        }
 
-            <div class="swiper-slide">
-                <a class="link" href="https://www.swimoutlet.com/collections/womens-tech-suits-20981">
-                    <div class="image">
-                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-04.png?v=1666061031"
-                            alt="img">
-                    </div>
-                    <h3 class="card-heading">Tech Suits</h3>
-                </a>
-            </div>
+        section.six-slide-sec .collection-banner__text h1 {
+            margin: 0 0 15px !important;
+        }
 
-            <div class="swiper-slide">
-                <a class="link"
-                    href="https://www.swimoutlet.com/collections/womens-fashion-active-one-piece-swimsuits-20991">
-                    <div class="image">
-                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-07.png?v=1666061031"
-                            alt="img">
-                    </div>
-                    <h3 class="card-heading">Fashion/Active One Piece</h3>
-                </a>
-            </div>
+        .cat-top-collection {
+            margin-bottom: 0 !important;
+            padding-bottom: 70px !important;
+        }
 
-            <div class="swiper-slide">
-                <a class="link" href="https://www.swimoutlet.com/collections/womens-tankinis-20987">
-                    <div class="image">
-                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-10.png?v=1666061031"
-                            alt="img">
-                    </div>
-                    <h3 class="card-heading">Tankinis</h3>
-                </a>
-            </div>
+        .cat-top-collection.cat-top-bgcolor>.container {
+            display: none;
+        }
 
-            <div class="swiper-slide">
-                <a class="link" href="https://www.swimoutlet.com/collections/womens-fashion-active-bikini-tops-20984">
-                    <div class="image">
-                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-11.png?v=1666061056"
-                            alt="img">
-                    </div>
-                    <h3 class="card-heading">Bikini Tops</h3>
-                </a>
-            </div>
+        .six-slide-sec.V1 .swiper-wrapper .swiper-slide .image {
+            max-width: 150px;
+            max-height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: auto;
+        }
 
-            <div class="swiper-slide">
-                <a class="link"
-                    href="https://www.swimoutlet.com/collections/womens-fashion-active-bikini-bottoms-20985">
-                    <div class="image">
-                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-09.png?v=1666061031"
-                            alt="img">
-                    </div>
-                    <h3 class="card-heading">Bikini Bottoms</h3>
-                </a>
-            </div>
+        .six-slide-sec.V1 .swiper-wrapper .swiper-slide .image img {
+            width: 100%;
+            height: 100%;
+            display: table;
+            object-fit: cover;
+            object-position: center;
+        }
 
-            <div class="swiper-slide">
-                <a class="link" href="https://www.swimoutlet.com/collections/womens-swim-dresses-20992">
-                    <div class="image">
-                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-14.png?v=1666061056"
-                            alt="img">
-                    </div>
-                    <h3 class="card-heading">Swim Dresses</h3>
-                </a>
-            </div>
+        .six-slide-sec.V1 h2.section-heading {
+            font-size: 20px;
+            letter-spacing: .6px;
+            color: #343434;
+            line-height: 30px;
+            text-align: center;
+            font-weight: 500;
+            margin-bottom: 40px;
+        }
 
-            <div class="swiper-slide">
-                <a class="link"
-                    href="https://www.swimoutlet.com/collections/womens-fashion-active-swimwear-20670/womens-plus-size-fashion-and-active-swimwear">
-                    <div class="image">
-                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-28.png?v=1666061094"
-                            alt="img">
-                    </div>
-                    <h3 class="card-heading">Plus Size</h3>
-                </a>
-            </div>
+        .six-slide-sec.V1 .swiper-wrapper .swiper-slide h3.card-heading {
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: .48px;
+            color: #343434;
+            text-align: center;
+            margin-top: 8px;
+            font-weight: 400;
+        }
 
-            <div class="swiper-slide">
-                <a class="link"
-                    href="https://www.swimoutlet.com/collections/womens-fashion-active-swimwear-20670/womens-water-aerobics-swimwear">
-                    <div class="image">
-                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-23.png?v=1666061076"
-                            alt="img">
-                    </div>
-                    <h3 class="card-heading">Water Aerobics</h3>
-                </a>
-            </div>
+        .six-slide-sec.V1 .swiper-wrapper .swiper-slide:hover h3.card-heading {
+            text-decoration: underline;
+        }
 
-            <div class="swiper-slide">
-                <a class="link" href="https://www.swimoutlet.com/collections/womens-fashion-active-board-shorts-20989">
-                    <div class="image">
-                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-12.png?v=1666061056"
-                            alt="img">
-                    </div>
-                    <h3 class="card-heading">Board Shorts</h3>
-                </a>
-            </div>
+        .six-slide-sec.V1 .swiper-button-next {
+            right: 0px;
+        }
 
-            <div class="swiper-slide">
-                <a class="link" href="https://www.swimoutlet.com/collections/womens-unitard-swimsuits-20994">
-                    <div class="image">
-                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-16.png?v=1666061056"
-                            alt="img">
-                    </div>
-                    <h3 class="card-heading">Unitards</h3>
-                </a>
-            </div>
+        .six-slide-sec.V1 .swiper-button-prev {
+            left: 0px;
+        }
 
-            <div class="swiper-slide">
-                <a class="link" href="https://www.swimoutlet.com/collections/womens-modest-swimwear-20996">
-                    <div class="image">
-                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-21.png?v=1666061076"
-                            alt="img">
-                    </div>
-                    <h3 class="card-heading">Modest</h3>
-                </a>
-            </div>
+        .six-slide-sec.V1 .swiper-button-next,
+        .six-slide-sec.V1 .swiper-button-prev {
+            background: rgb(0 0 0 / 10%) !important;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: all;
+        }
 
-            <div class="swiper-slide">
-                <a class="link" href="https://www.swimoutlet.com/collections/womens-long-torso-swimwear-20998">
-                    <div class="image">
-                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-18.png?v=1666061075"
-                            alt="img">
-                    </div>
-                    <h3 class="card-heading">Long Torso</h3>
-                </a>
-            </div>
+        .six-slide-sec.V1 .swiper-button-prev::before,
+        .six-slide-sec.V1 .swiper-button-next::before {
+            content: "";
+            position: absolute;
+            background-position: 0 0;
+            width: 20px;
+            height: 20px;
+        }
 
-            <div class="swiper-slide">
-                <a class="link" href="https://www.swimoutlet.com/collections/womens-water-polo-suits-20982">
-                    <div class="image">
-                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-05.png?v=1666061031"
-                            alt="img">
-                    </div>
-                    <h3 class="card-heading">Water Polo Suits</h3>
-                </a>
-            </div>
+        .six-slide-sec.V1 .swiper-button-next::before {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cg transform='translate(24) rotate(90)'%3e%3crect width='24' height='24' fill='rgba(255,0,0,0)'/%3e%3cpath d='M6.156,7.2,1.193,2.44a.758.758,0,0,1,0-1.075.767.767,0,0,1,1.08,0l5.5,5.3a.758.758,0,0,1,0,1.075l-5.5,5.591a.767.767,0,0,1-1.08,0,.758.758,0,0,1,0-1.075Z' transform='translate(8.703 4.905)'/%3e%3c/g%3e%3c/svg%3e");
+            transform: rotate(-90deg);
+        }
 
-            <div class="swiper-slide">
-                <a class="link"
-                    href="https://www.swimoutlet.com/collections/team-swimsuits-21751/womens-competition-training-swimwear-20669">
-                    <div class="image">
-                        <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-06.png?v=1666061031"
-                            alt="img">
-                    </div>
-                    <h3 class="card-heading">Team Suits</h3>
-                </a>
-            </div>
-        </div>
+        .six-slide-sec.V1 .swiper-button-prev::before {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cg transform='translate(24) rotate(90)'%3e%3crect width='24' height='24' fill='rgba(255,0,0,0)'/%3e%3cpath d='M6.156,7.2,1.193,2.44a.758.758,0,0,1,0-1.075.767.767,0,0,1,1.08,0l5.5,5.3a.758.758,0,0,1,0,1.075l-5.5,5.591a.767.767,0,0,1-1.08,0,.758.758,0,0,1,0-1.075Z' transform='translate(8.703 4.905)'/%3e%3c/g%3e%3c/svg%3e");
+            transform: rotate(90deg);
+        }
+
+        .six-slide-sec.V1 .swiper-button-next span,
+        .six-slide-sec.V1 .swiper-button-prev span {
+            display: none;
+        }
+
+        .six-slide-sec.V1 .owl-nav {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            width: calc(100% + 80px);
+            display: flex;
+            justify-content: space-between;
+            left: -40px;
+            pointer-events: none;
+        }
+
+        section.six-slide-sec.V1 {
+            padding: 0 30px;
+        }
+
+
+        @media (max-width: 767px) {
+
+            /* V1 */
+            .six-slide-sec.V1 .container {
+                padding-inline: 0px;
+            }
+
+            section.six-slide-sec.V1 {
+                padding: 0px 30px;
+            }
+
+            .six-slide-sec.V1 .swiper-wrapper {
+                max-width: 128px;
+                margin: 0 auto;
+                width: 100%;
+            }
+
+            .six-slide-sec.V1 .swiper-wrapper .swiper-slide .image {
+                max-width: 100px;
+                max-height: 100px;
+            }
+
+            section.six-slide-sec .collection-banner__text {
+                margin-bottom: 40px;
+            }
+
+            .ab-cat-scroll .cat-top-collection {
+                padding-bottom: 40px !important;
+            }
+
+            .six-slide-sec.V1 .swiper-wrapper .swiper-slide h3.card-heading {
+                font-size: 12px;
+                line-height: 18px;
+            }
+
+            .six-slide-sec.V1 .owl-nav {
+                width: calc(100% + 50px);
+                left: -25px;
+                top: 33%;
+            }
+
+            .six-slide-sec.V1 .swiper-button-next,
+            .six-slide-sec.V1 .swiper-button-prev {
+                height: 20px;
+                width: 20px;
+            }
+
+            .six-slide-sec.V1 .swiper-button-nextt::before {
+                height: 15px;
+                width: 15px;
+            }
+
+            .six-slide-sec.V1 .swiper-button-prev::before {
+                height: 15px;
+                width: 15px;
+            }
+
+        }
+    </style>
+
+    <!-- <section class="six-slide-sec V1">
+    <div class="container">
+        <div class="collection-banner__text ">
+  <h1>Women's Swimsuits</h1><div class="collection-banner__subtext1">
+      Performance, Training, Fashion and Active Swimwear
     </div>
+</div>
+        <div class="swiper-wrapper owl-carousel owl-theme">
+            
+            <div class="wrapper-box">
+                <div class="box">
+                    <a class="box-link" href="https://www.swimoutlet.com/collections/womens-competition-training-one-piece-swimsuits-20980">
+                        <div class="image">
+                            <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-22.png?v=1666061076" alt="img">
+                        </div>
+                        <h3 class="card-heading">Competition One Piece</h3>
+                    </a>
+                </div>
+            </div>
+
+            </div>
+
+            </div>
+
+            </section> -->
 
 
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+    <section class="six-slide-sec V1">
+        <div class="container">
+            <div class="collection-banner__text ">
+                <h1>Women's Swimsuits</h1>
+                <div class="collection-banner__subtext1">
+                    Performance, Training, Fashion and Active Swimwear
+                </div>
+            </div>
 
+            <div class="swiper">
+                <div class="swiper-wrapper owl-carousel owl-theme">
+                    <div class="swiper-slide">
+                        <a class="link"
+                            href="https://www.swimoutlet.com/collections/womens-competition-training-one-piece-swimsuits-20980">
+                            <div class="image">
+                                <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-22.png?v=1666061076"
+                                    alt="img">
+                            </div>
+                            <h3 class="card-heading">Competition One Piece</h3>
+                        </a>
+                    </div>
 
-    <!-- This is what needs to be modified -->
+                    <div class="swiper-slide">
+                        <a class="link"
+                            href="https://www.swimoutlet.com/collections/womens-competition-training-two-piece-swimsuits-20983">
+                            <div class="image">
+                                <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-08.png?v=1666061031"
+                                    alt="img">
+                            </div>
+                            <h3 class="card-heading">Competition Two Piece</h3>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a class="link" href="https://www.swimoutlet.com/collections/womens-tech-suits-20981">
+                            <div class="image">
+                                <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-04.png?v=1666061031"
+                                    alt="img">
+                            </div>
+                            <h3 class="card-heading">Tech Suits</h3>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a class="link"
+                            href="https://www.swimoutlet.com/collections/womens-fashion-active-one-piece-swimsuits-20991">
+                            <div class="image">
+                                <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-07.png?v=1666061031"
+                                    alt="img">
+                            </div>
+                            <h3 class="card-heading">Fashion/Active One Piece</h3>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a class="link" href="https://www.swimoutlet.com/collections/womens-tankinis-20987">
+                            <div class="image">
+                                <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-10.png?v=1666061031"
+                                    alt="img">
+                            </div>
+                            <h3 class="card-heading">Tankinis</h3>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a class="link"
+                            href="https://www.swimoutlet.com/collections/womens-fashion-active-bikini-tops-20984">
+                            <div class="image">
+                                <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-11.png?v=1666061056"
+                                    alt="img">
+                            </div>
+                            <h3 class="card-heading">Bikini Tops</h3>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a class="link"
+                            href="https://www.swimoutlet.com/collections/womens-fashion-active-bikini-bottoms-20985">
+                            <div class="image">
+                                <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-09.png?v=1666061031"
+                                    alt="img">
+                            </div>
+                            <h3 class="card-heading">Bikini Bottoms</h3>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a class="link" href="https://www.swimoutlet.com/collections/womens-swim-dresses-20992">
+                            <div class="image">
+                                <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-14.png?v=1666061056"
+                                    alt="img">
+                            </div>
+                            <h3 class="card-heading">Swim Dresses</h3>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a class="link"
+                            href="https://www.swimoutlet.com/collections/womens-fashion-active-swimwear-20670/womens-plus-size-fashion-and-active-swimwear">
+                            <div class="image">
+                                <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-28.png?v=1666061094"
+                                    alt="img">
+                            </div>
+                            <h3 class="card-heading">Plus Size</h3>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a class="link"
+                            href="https://www.swimoutlet.com/collections/womens-fashion-active-swimwear-20670/womens-water-aerobics-swimwear">
+                            <div class="image">
+                                <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-23.png?v=1666061076"
+                                    alt="img">
+                            </div>
+                            <h3 class="card-heading">Water Aerobics</h3>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a class="link"
+                            href="https://www.swimoutlet.com/collections/womens-fashion-active-board-shorts-20989">
+                            <div class="image">
+                                <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-12.png?v=1666061056"
+                                    alt="img">
+                            </div>
+                            <h3 class="card-heading">Board Shorts</h3>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a class="link" href="https://www.swimoutlet.com/collections/womens-unitard-swimsuits-20994">
+                            <div class="image">
+                                <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-16.png?v=1666061056"
+                                    alt="img">
+                            </div>
+                            <h3 class="card-heading">Unitards</h3>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a class="link" href="https://www.swimoutlet.com/collections/womens-modest-swimwear-20996">
+                            <div class="image">
+                                <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-21.png?v=1666061076"
+                                    alt="img">
+                            </div>
+                            <h3 class="card-heading">Modest</h3>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a class="link" href="https://www.swimoutlet.com/collections/womens-long-torso-swimwear-20998">
+                            <div class="image">
+                                <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-18.png?v=1666061075"
+                                    alt="img">
+                            </div>
+                            <h3 class="card-heading">Long Torso</h3>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a class="link" href="https://www.swimoutlet.com/collections/womens-water-polo-suits-20982">
+                            <div class="image">
+                                <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-05.png?v=1666061031"
+                                    alt="img">
+                            </div>
+                            <h3 class="card-heading">Water Polo Suits</h3>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a class="link"
+                            href="https://www.swimoutlet.com/collections/team-swimsuits-21751/womens-competition-training-swimwear-20669">
+                            <div class="image">
+                                <img src="https://cdn.shopify.com/s/files/1/0248/3024/6994/files/image-06.png?v=1666061031"
+                                    alt="img">
+                            </div>
+                            <h3 class="card-heading">Team Suits</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+        </div>
+
+    </section>
 
     <script>
 
         const swiper = new Swiper('.swiper', {
             // Default parameters
+            loop: true,
             slidesPerView: 1,
             spaceBetween: 10,
             // Responsive breakpoints
             breakpoints: {
                 // when window width is >= 320px
-                320: {
-                    slidesPerView: 2,
-                    spaceBetween: 20
+                0: {
+                    slidesPerView: 3,
+                    spaceBetween: 10,
                 },
                 // when window width is >= 480px
-                480: {
-                    slidesPerView: 3,
-                    spaceBetween: 30
+                500: {
+                    slidesPerView: 4,
+                    spaceBetween: 10,
                 },
                 // when window width is >= 640px
-                640: {
-                    slidesPerView: 3,
-                    spaceBetween: 10
+                991: {
+                    slidesPerView: 5,
+                    spaceBetween: 10,
+                },
+
+                1000: {
+                    slidesPerView: 6,
+                    spaceBetween: 10,
                 }
             },
             navigation: {
