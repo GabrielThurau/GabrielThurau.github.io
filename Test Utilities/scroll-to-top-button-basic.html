@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        .back-to-top-wrap {
+            width: 58px;
+            height: 58px;
+            border-radius: 100%;
+            border: 3px solid rgb(102, 164, 67);
+            position: fixed;
+            bottom: 83px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            right: 20px;
+            cursor: pointer;
+            background-color: rgb(255, 255, 255);
+            z-index: 10;
+
+        }
+
+        .hide-on-scroll-js {
+            position: relative;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .5s ease-in-out, visibility .5s ease-in-out;
+        }
+
+        .show-on-scroll-js {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .btt-icon-svg {
+            width: 23px;
+            height: 14px;
+            fill: rgb(79, 111, 110);
+        }
+    </style>
+
+
+
+    <!-- 
+    
+    The point of this test is to provide a scroll to top button. Pretty simple task. Just means positioning above the chat widget and then making it visible
+    
+    with a transition via an intersection observer at a certain scroll depth.
+
+     -->
+
+
+    <script>
+
+        function addStyle(styleString) {
+            const style = document.createElement('style');
+            style.textContent = styleString;
+            document.head.append(style);
+        }
+
+        addStyle(`
+.back-to-top-wrap {
+  width : 58px;
+  height : 58px;
+  border-radius : 100%;
+  border : 3px solid rgb(79, 111, 110);
+  position : fixed;
+  bottom : 83px;
+  display : flex;
+  justify-content : center;
+  align-items : center;
+  right : 22px;
+  cursor : pointer;
+  background-color : rgba(255, 255, 255, 0.3);
+  z-index : 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .5s ease-in-out,visibility .5s ease-in-out;
+}
+
+.btt-icon-svg {
+    width : 23px;
+  height : 14px;
+  fill : rgb(79, 111, 110);
+}
+
+.hide-on-scroll-js {
+            position: relative;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .show-on-scroll-js {
+            opacity: 1;
+            visibility: visible;
+        }
+
+`);
+
+
+        function waitUntil(check, ms = 100) {
+            return new Promise(resolve => {
+                const interval = setInterval(() => {
+                    const result = check()
+                    if (result)
+                        clearInterval(interval);
+                    resolve(result);
+                    return;
+                }, ms)
+            })
+        }
+
+        (async function () {
+            const markup = `
+<div class="back-to-top-container">
+<span class="btt-icon">
+<svg class="btt-icon-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="14" fill="none"><path fill="#4F6F6E" d="M13.06.94a1.5 1.5 0 0 0-2.12 0l-9.547 9.545a1.5 1.5 0 1 0 2.122 2.122L12 4.12l8.485 8.486a1.5 1.5 0 1 0 2.122-2.122L13.06.94ZM13.5 3V2h-3v1h3Z"/></svg>
+</span>
+</div>
+   `
+
+            try {
+                let chatWidget = document.querySelector("#reamaze-widget");
+                let backToTopDiv = document.createElement('div');
+                let scrollButton = document.querySelector('.back-to-top-wrap');
+                backToTopDiv.classList.add('back-to-top-wrap');
+
+                await waitUntil(() => chatWidget).then((result) => {
+                    backToTopDiv.innerHTML = markup;
+                    document.body.appendChild(backToTopDiv);
+                    backToTopDiv.addEventListener('click', () => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    })
+                    return result;
+                });
+            } catch (error) {
+                console.error(error);
+            };
+
+
+            let timer;
+            window.addEventListener('scroll', function () {
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    if (document.documentElement.scrollTop > 100) {
+                        backToTopWrap = document.querySelector('.backToTopWrap');
+                        document.querySelector('.back-to-top-wrap').
+                            classList.add('show-on-scroll-js');
+                    } else {
+                        document.querySelector('.back-to-top-wrap').
+                            classList.remove('show-on-scroll-js');
+                    }
+                }, 100)
+            });
+        })();
+
+
+    </script>
+
+</body>
+
+</html>
