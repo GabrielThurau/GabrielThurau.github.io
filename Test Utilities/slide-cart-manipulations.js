@@ -121,3 +121,7 @@ function updateSavings(fullArray) {
 function updateHTML(total) {
   document.querySelector
 }
+
+
+
+
