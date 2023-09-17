@@ -1,0 +1,36 @@
+<style>
+    /* This is great for conditionally changing the spacing on breakpoints instead of redundantly redefining properties and values  */
+    /* Variables are inheritable, so their a parents' children will inherit the --spacing var */
+
+    main {
+        --spacing: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing);
+        padding: var(--spacing);
+    }
+
+    article {
+        border-radius: var(--spacing);
+        padding: var(--spacing);
+    }
+
+    @media (min-width: 350px) {
+        main {
+            --spacing: 16px;
+        }
+    }
+
+    @media (min-width: 500px) {
+        main {
+            --spacing: 32px;
+        }
+    }
+</style>
+
+<main>
+    <article>Card 1</article>
+    <article>Card 2</article>
+    <article>Card 3</article>
+</main>
