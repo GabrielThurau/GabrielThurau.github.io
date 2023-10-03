@@ -57,7 +57,8 @@ const imageConfig = {
 
 function makeImages(color, size, gallery, slides) {
    let quantity = slides.length;
-   largeArray = [];
+   let largeArray = [];
+   let testArray = [];
    let k = 0;
    let image;
    for (let i = 0; i < quantity; i++) {
@@ -66,8 +67,21 @@ function makeImages(color, size, gallery, slides) {
          image = new Image(color, size, k);
       }
       image = new Image(color, size, i);
+      testArray.push(image);
       largeArray.push(image.generateImage());
    }
+
+
+
+
+   testArray.forEach(image => {
+      image['bruh'] = "Gabe";
+     });
+
+
+
+     console.log(testArray)
+
 
    for (let j = 0; j < quantity; j++) {
       const element = slides[j];
