@@ -55,13 +55,24 @@ const imageConfig = {
 }
 
 
+// need to do something more legit and find the objects like this?
+
+let arr = [
+   { name:"string 1", value:"this", other: "that" },
+   { name:"string 2", value:"this", other: "that" }
+];
+
+let obj = arr.find(o => o.name === 'string 1');
+
+console.log(obj);
+
 function makeImages(color, size, gallery, slides) {
    let quantity = slides.length;
    let largeArray = [];
    let testArray = [];
    let k = 0;
    let image;
-   for (let i = 0; i < quantity; i++) {
+   for (let i = 0; i < quantity; i++) {  
       if (quantity > slides.length / 2) {
          k++
          image = new Image(color, size, k);
@@ -92,19 +103,34 @@ function makeImages(color, size, gallery, slides) {
    }
    }
 
-// function largeImages(size, color, id = 0, variant = "v1", quantity) {
-//    let largeObject = {
-//       largeImage1: `https://cdn.shopify.com/s/files/1/0712/1227/files/${color}-${size}-${id}.jpg`,
-//       largeImage2: `https://cdn.shopify.com/s/files/1/0712/1227/files/${color}-${size}-${id + 1}.jpg`,
-//       largeImage3: `https://cdn.shopify.com/s/files/1/0712/1227/files/${color}-${size}-${id + 2}.jpg`,
-//       largeImage4: `https://cdn.shopify.com/s/files/1/0712/1227/files/${color}-${size}-${id + 3}.jpg`,
-//       largeImage5: `https://cdn.shopify.com/s/files/1/0712/1227/files/${color}-${size}-${id + 4}.jpg`,
-//       largeImage6: `https://cdn.shopify.com/s/files/1/0712/1227/files/${color}-${size}-${id + 5}.jpg`,
-//       largeImage7: `https://cdn.shopify.com/s/files/1/0712/1227/files/${color}-${size}-${id + 6}.jpg`,
-//       largeImage8: `https://cdn.shopify.com/s/files/1/0712/1227/files/${color}-${size}-${id + 7}.jpg`
-//    };
-//    console.log(largeObject);
-// }
+
+
+
+   let gallery = document.querySelector('product-gallery');
+   let slides = gallery.querySelectorAll('swiper-slide > div.aspect-square > img');
+
+   slides.forEach( (element, index) => {
+      console.dir(element);
+      // if (element.alt.contains('infographic')) {
+      //    element.closest('swiper-slide').remove();
+      // }
+   });
+
+function largeImages(size, color, id = 0, variant = "v1", quantity) {
+   let largeObject = {
+      largeImage1: `https://cdn.shopify.com/s/files/1/0712/1227/files/${color}-${size}-${id}.jpg`,
+      largeImage2: `https://cdn.shopify.com/s/files/1/0712/1227/files/${color}-${size}-${id + 1}.jpg`,
+      largeImage3: `https://cdn.shopify.com/s/files/1/0712/1227/files/${color}-${size}-${id + 2}.jpg`,
+      largeImage4: `https://cdn.shopify.com/s/files/1/0712/1227/files/${color}-${size}-${id + 3}.jpg`,
+      largeImage5: `https://cdn.shopify.com/s/files/1/0712/1227/files/${color}-${size}-${id + 4}.jpg`,
+      largeImage6: `https://cdn.shopify.com/s/files/1/0712/1227/files/${color}-${size}-${id + 5}.jpg`,
+      largeImage7: `https://cdn.shopify.com/s/files/1/0712/1227/files/${color}-${size}-${id + 6}.jpg`,
+      largeImage8: `https://cdn.shopify.com/s/files/1/0712/1227/files/${color}-${size}-${id + 7}.jpg`
+   };
+   console.log(largeObject);
+}
+
+Object.values(largeObject)
 
 
 //    // build giant image object for small images
