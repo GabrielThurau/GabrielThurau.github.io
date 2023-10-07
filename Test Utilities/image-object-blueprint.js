@@ -110,7 +110,7 @@ function makeImages(color, size, gallery, slides) {
    let slides = gallery.querySelectorAll('swiper-slide > div.aspect-square > img');
 
    slides.forEach( (element, index) => {
-      console.dir(element);
+      console.log(element.alt);
       // if (element.alt.contains('infographic')) {
       //    element.closest('swiper-slide').remove();
       // }
