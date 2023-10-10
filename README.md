@@ -1,2 +1,3 @@
-# Hello I'm Gabe. I like long walks on the beach and kombucha seltzer. 
-Ohh yeah, coding is fun too. 
+# Gabe's Main Github Branch
+
+## You'll mainly find me messing around with JS or React on here
