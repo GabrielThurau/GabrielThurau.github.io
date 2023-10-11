@@ -1,0 +1,98 @@
+p:has(:required) label::after {
+    content: "(required)";
+}
+
+*:has(> label + :required:invalid)>label {
+    font-style: italic;
+}
+
+p:has(:required:invalid) label {
+    color: red;
+}
+
+/*  */
+
+
+
+
+
+div.whaddup:has(img [src="https://images.bauerhosting.com/legacy/media/6262/e2bf/209b/55c1/b411/232b/7-con-air.jpg?ar=16%3A9&fit=crop&crop=top&auto=format&w=undefined&q=80"]) {
+    border: 10px red dotted;
+    color: hsla(194, 100%, 50%, 1);
+    /* some blue color */
+}
+
+.is-logged-in .app-logged-out,
+.app-logged-in {
+    display: none;
+}
+
+.is-logged-in .app-logged-in {
+    display: block;
+}
+
+
+
+.is-logged-in .app-logged-out,
+html:not(.is-logged-in) .app-logged-in {
+    display: none;
+}
+
+
+<div class="button-container"><div class="buttons"><button class="button main-button">Button</button><button class="button main-button" disabled>Disabled Button</button></div></div>.button-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.button {
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.main-button {
+    background: #3886fc;
+    color: white;
+}
+
+.main-button:hover:not(:disabled) {
+    background: #025fe0;
+}
+
+button:disabled {
+    background: #80b6fc;
+    cursor: auto;
+}
+
+
+<a href="example.com" target="_blank">This is a link</a><a href="example.com" target="_blank">This is a link</a><a href="/home">This is a link that doesn't go to a different site</a>
+ <a href="/product-page">This is a link that doesn't go to a different site</a>
+
+
+a[target="_blank"]::after {
+    content: ' ↗';
+    color: black;
+    display: inline-block;
+    padding-inline: 0.5rem 0.5rem;
+    margin-left: 5px;
+    background-color: hsl(0, 20%, 50%);
+}
+
+a[target="_blank"] {
+    margin: 1rem;
+}
+
+a:not([target="_blank"]) {
+    margin-top: 10px;
+    color: goldenrod;
+    display: block;
+}
