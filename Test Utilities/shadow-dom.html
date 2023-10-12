@@ -1,0 +1,118 @@
+<style>
+    image-slider {
+        display: inline-block;
+        float: left;
+        margin: 0.5em;
+        border-radius: 3px;
+        background: #FFF;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+        font-family: Helvetica, arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+</style>
+
+
+
+<image-slider
+    data-images="https://pluralsight.imgix.net/paths/path-icons/nodejs-601628d09d.png,https://camo.githubusercontent.com/eb464a60a4a47f8b600aa71bfbc6aff3fe5c5392/68747470733a2f2f7261772e6769746875622e636f6d2f766f6f646f6f74696b69676f642f6c6f676f2e6a732f6d61737465722f6a732e706e67,https://camo.githubusercontent.com/891e94cd8dda7f40f451bb27067be513c230318a/68747470733a2f2f7261772e6769746875622e636f6d2f766f6f646f6f74696b69676f642f6c6f676f2e6a732f6d61737465722f626f676a732f6a732e706e67">
+</image-slider>
+
+
+<script>
+
+
+    class ImageSlider extends HTMLElement {
+        constructor() {
+            // Always call super first in constructor
+            super();
+            // Create a standard img element and set its attributes.
+            let img = document.createElement('img');
+            let images = this.getAttribute('data-images').split(",");
+            let currentImage = 1;
+            img.src = images[0];
+            img.width = '150';
+            img.height = '150';
+
+
+            // Add the image to the custom element.
+            this.appendChild(img);
+            setInterval(function () {
+                if (currentImage > images.length) {
+                    currentImage = 1;
+                }
+                img.src = images[currentImage - 1];
+                currentImage++;
+            }, 1000)
+        }
+
+
+    }
+
+    // Define the new element
+    customElements.define('image-slider', ImageSlider);
+
+
+</script>
+
+
+
+<script>
+
+
+    /* Fetch API */
+
+    window.addEventListener('load', loadImg);
+
+    function loadImg() {
+        const url = "https://api.unsplash.com/search/photos?query=coffee&per_page=20&client_id=gK52De2Tm_dL5o1IXKa9FROBAJ-LIYqR41xBdlg3X2k";
+        const imageDiv = document.querySelector('.image');
+        fetch(url)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                for (let i = 0; i < data.results.length; i++) {
+                    let imageElement = document.createElement('img');
+                    imageElement.src = data.results[i].urls.thumb;
+                    imageDiv.append(imageElement);
+                }
+            });
+    }
+</script>
+
+
+
+
+<script>
+    const el = document.createElement("div");
+    const shadowRoot = el.attachShadow({ mode: "open" });
+    shadowRoot.innerHTML = `
+    <style>
+    h1 {
+      color: yellow;
+    }
+    </style>
+    <h1>This Shadow DOM has a text color of yellow</h1>
+    `;
+
+    const container = document.querySelector("body");
+    container.appendChild(el);
+
+
+</script>
+
+
+
+
+<script>
+    customElements.define('show-hello', class extends HTMLElement {
+        connectedCallback() {
+            const shadow = this.attachShadow({ mode: 'open' });
+            shadow.innerHTML = `<p>
+          Hello, ${this.getAttribute('name')}
+        </p>`;
+        }
+    });
+</script>
+
+<show-hello name="John"></show-hello>

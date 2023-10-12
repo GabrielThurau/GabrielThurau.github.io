@@ -1,0 +1,61 @@
+<script>
+
+    class HelloWorld extends HTMLElement {
+        connectedCallback() {
+            const shadow = this.attachShadow({
+                mode: 'open'
+            });
+            shadow.innerHTML = `
+  <style>
+    h1.hello-world {
+      color: salmon;
+      font-size: 2rem;
+      text-align: center;
+    }
+    </style>
+<h1 class="hello-world">Hello world</h1>
+`;
+        }
+    }
+    customElements.define('hello-world', HelloWorld);
+
+</script>
+
+<hello-world></hello-world>
+
+
+<style>
+    h1.hello-world {
+        color: wheat !important;
+        font-size: 12rem !important;
+    }
+
+    .wont-render-container {
+        width: 100vw;
+        text-align: center;
+    }
+</style>
+
+
+
+
+<template id='activate-me-js'>
+
+    <div class="wont-render-container">
+        <p class="wont-render">This won't render until I activate it with JS</p>
+        <p class="wont-render">This won't render until I activate it with JS</p>
+        <p class="wont-render">This won't render until I activate it with JS</p>
+        <p class="wont-render">This won't render until I activate it with JS</p>
+    </div>
+
+</template>
+
+
+<script>
+
+    const templateContent = document.getElementById('activate-me-js').content
+
+    // whatever element you want to append to. 
+    document.body.appendChild(templateContent.cloneNode(true));
+
+</script>
