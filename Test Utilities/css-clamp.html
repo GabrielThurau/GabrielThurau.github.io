@@ -1,0 +1,16 @@
+<div class="clamp-it">
+    <p class="clamp-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum reiciendis similique aliquam
+        fuga nobis perspiciatis maiores maxime necessitatibus, rerum, error quos dolorum illum reprehenderit fugit
+        aperiam officiis natus. Nisi, ullam!</p>
+</div>
+
+
+<style>
+    div.clamp-it {
+        width: clamp(500px, 50vw, 700px);
+        margin: 0 auto;
+        font-size: 1rem;
+        /* Fallback for clamp just in case*/
+        font-size: clamp(1rem, 0.5714285714285714rem + 1.1428571428571428vw, 2rem);
+    }
+</style>
