@@ -1,0 +1,23 @@
+{% comment %} Where filter {% endcomment %}
+
+{% assign products = collections.all.products %}
+
+{% case product.type %}
+  {% when 'Iphone' %}
+    {% assign phone_cases = products | where: 'type', 'Iphone' %}
+  {% when 'Samsung' %}
+    {% assign phone_cases = products | where: 'type', 'Samsung' %}
+{% endcase %}
+
+<label for="{{ product.type }}">Other {{ product.type }} Cases to Check Out: </label>
+<select name="{{ product.type }}" id="{{ product.type }}">
+  {% for case in phone_cases %}
+    <option
+      value="{{ case.id }}"
+      data-price="{{ case.price }}"
+      data-handle="{{ case.handle }}"
+    >
+      {{ case.title }}
+    </option>
+  {% endfor %}
+</select>
