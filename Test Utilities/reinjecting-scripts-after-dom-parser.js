@@ -16,30 +16,4 @@ function setInnerHTML(element, html) {
 
 
 
-  fetch(opener.getAttribute('data-product-url'))
-  .then((response) => response.text())
-  .then((responseText) => {
-    const responseHTML = new DOMParser().parseFromString(responseText, 'text/html');
-    this.productElement = responseHTML.querySelector('section[id^="MainProduct-"]');
-    console.log(this.productElement);
-    this.preventDuplicatedIDs();
-    this.removeDOMElements();
-    this.setInnerHTML(this.modalContent, this.productElement.innerHTML);
-
-    if (window.Shopify && Shopify.PaymentButton) {
-      Shopify.PaymentButton.init();
-    }
-
-    if (window.ProductModel) window.ProductModel.loadShopifyXR();
-
-    this.removeGalleryListSemantic();
-    this.updateImageSizes();
-    this.preventVariantURLSwitching();
-    super.show(opener);
-  })
-  .finally(() => {
-    opener.removeAttribute('aria-disabled');
-    opener.classList.remove('loading');
-    opener.querySelector('.loading-overlay__spinner').classList.add('hidden');
-  });
-}
+  
