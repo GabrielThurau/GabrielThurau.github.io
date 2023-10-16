@@ -24,3 +24,22 @@ const imageCallback = (mutationList) => {
  function makeImages(color, size, slides) {
    console.log({color, size, slides})
     }
+
+
+
+
+for (const mutation of mutationList) {
+    if (mutation.type === 'childList') {
+        color = document.querySelector('[data-option-selected="color"]').textContent;
+        if (mutation.target.defaultSelected !== false) {
+           size = mutation.target.textContent;
+           if (size === 'Large') {
+             size = size.toLowerCase();
+             color = color.toLowerCase();
+                let gallery = document.querySelector('product-gallery');
+                let slides = gallery.querySelectorAll('swiper-slide > div.aspect-square > img');
+                makeImages(color, size, gallery, slides);
+           } 
+        }
+     }
+    }
