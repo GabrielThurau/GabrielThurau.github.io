@@ -1,0 +1,17 @@
+<div class="bread-container" style="display: none;">
+    <span class="back-chevron"> &lt; </span>
+    <a href="" class='back-history'>Back</a>
+   <span class="pipe"> | </span>
+   {% for entry in product.metafields.custom.breadcrumbs.value limit: 3 %}
+     {% if entry != blank %}
+     <span class="breadcrumb>
+       <a href='{{ entry.breadcrumb_url }}' class="bread-link">
+        {{ entry.breadcrumb_anchor }}</a>
+       <span class="chevron 
+        {% if forloop.last == true %}last-span{% endif %}">
+         &gt;
+       </span>
+     </span>
+       {% endif %}
+   {% endfor %}
+   </div>
