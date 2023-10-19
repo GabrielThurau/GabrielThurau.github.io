@@ -96,3 +96,17 @@ a:not([target="_blank"]) {
     color: goldenrod;
     display: block;
 }
+
+.card {
+    container-type: inline-size;
+    container-name: card-container;
+}
+
+
+
+/* or use the container shorthand and do both in one go   /*
+  
+  .card {
+    container-type: inline-size;
+    container-name: card-container;
+  }

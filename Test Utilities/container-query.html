@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <style>
+    button {
+      border: none;
+      border-radius: 2rem;
+      padding: 1rem;
+      font-family: 'Roboto Mono', monospace;
+      background-color: #e16162;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 2rem;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    h3 {
+      font-family: 'Roboto Slab', monospace;
+    }
+
+    .text {
+      padding: 0 1rem;
+    }
+
+    img {
+      height: 300px;
+      width: 100%;
+      background-color: turquoise;
+      border-radius: 2rem 2rem 0 0;
+    }
+
+    .container {
+      contain: layout inline-size;
+      /* tells the browser to repaint this part only when its size changes */
+      border-radius: .5rem;
+    }
+
+    article {
+      /* articles will be styled based on the width of their container div */
+      border-radius: 2rem;
+      border: 4px dotted #e16162;
+    }
+
+    @container (min-width: 700px) {
+
+      /* horizontal style */
+      article {
+        display: flex;
+        padding: 1rem;
+        align-items: center;
+      }
+
+      img {
+        border-radius: 2rem;
+        height: 200%;
+        width: 33%;
+      }
+    }
+
+    @container (min-width: 900px) {
+
+      /* hero style */
+      article {
+        display: flex;
+        padding: 1rem;
+        align-items: center;
+        justify-content: center;
+        background-image: url("https://dummyimage.com/600x600/004643/004643.jpg&text=pretty+picture");
+        border: none;
+        color: #fff
+      }
+
+      img {
+        display: none;
+      }
+
+      .text {
+        max-width: 700px;
+        text-align: center;
+      }
+
+      h3 {
+        font-size: 4rem;
+      }
+
+      p {
+        font-size: 2rem;
+      }
+    }
+  </style>
+
+  <main>
+    <button>Toggle Container Query</button>
+    <section> <!-- 3 items -->
+      <div class="container">
+        <article>
+          <img src="https://dummyimage.com/600x600/004643/004643.jpg&text=pretty+picture" />
+          <div class="text">
+            <h3>This is a Heading</h3>
+            <p>This is a sentence. Very interesting content here. Yep, this content is riveting. I wonder where this is
+              going. I could've just used Lorem Ipsum, but that's boring and latin. No one actually likes Lorem Ipsum.
+            </p>
+          </div>
+        </article>
+      </div>
+      <div class="container">
+        <article>
+          <img src="https://dummyimage.com/600x600/abd1c6/abd1c6.jpg&text=pretty+picture" />
+          <div class="text">
+            <h3>This is a Heading</h3>
+            <p>This is a sentence. Very interesting content here. Yep, this content is riveting. I wonder where this is
+              going. I could've just used Lorem Ipsum, but that's boring and latin. No one actually likes Lorem Ipsum.
+            </p>
+          </div>
+        </article>
+      </div>
+      <div class="container">
+        <article>
+          <img src="https://dummyimage.com/600x600/f9bc60/f9bc60.jpg&text=pretty+picture" />
+          <div class="text">
+            <h3>This is a Heading</h3>
+            <p>This is a sentence. Very interesting content here. Yep, this content is riveting. I wonder where this is
+              going. I could've just used Lorem Ipsum, but that's boring and latin. No one actually likes Lorem Ipsum.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section> <!-- 2 items -->
+      <div class="container">
+        <article>
+          <img src="https://dummyimage.com/600x600/004643/004643.jpg&text=pretty+picture" />
+          <div class="text">
+            <h3>This is a Heading</h3>
+            <p>This is a sentence. Very interesting content here. Yep, this content is riveting. I wonder where this is
+              going. I could've just used Lorem Ipsum, but that's boring and latin. No one actually likes Lorem Ipsum.
+            </p>
+          </div>
+        </article>
+      </div>
+      <div class="container">
+        <article>
+          <img src="https://dummyimage.com/600x600/abd1c6/abd1c6.jpg&text=pretty+picture" />
+          <div class="text">
+            <h3>This is a Heading</h3>
+            <p>This is a sentence. Very interesting content here. Yep, this content is riveting. I wonder where this is
+              going. I could've just used Lorem Ipsum, but that's boring and latin. No one actually likes Lorem Ipsum.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section> <!-- 1 item -->
+      <div class="container">
+        <article>
+          <img src="https://dummyimage.com/600x600/004643/004643.jpg&text=pretty+picture" />
+          <div class="text">
+            <h3>This is a Heading</h3>
+            <p>This is a sentence. Very interesting content here. Yep, this content is riveting. I wonder where this is
+              going. I could've just used Lorem Ipsum, but that's boring and latin. No one actually likes Lorem Ipsum.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+
+
+
+const containers = document.querySelectorAll('.container');
+console.log(containers)
+const button = document.querySelector('button');
+
+button.addEventListener('click', function() {
+  for (let i = 0; i < containers.length; i++) {
+      containers[i].classList.toggle('container');
+    console.log(containers[i])
+    }
+});
+
+// function toggleContainerQueries() {
+//   const isContained = containers[0].classList.contains('container');
+  
+//   if (isContained) {
+//     console.log('off')
+//     for (let i = 0; i < containers.length; i++) {
+//       containers[i].classList.remove('container');
+//     }
+//   }
+//   else {
+//     console.log('on')
+//     for (let i = 0; i < containers.length; i++) {
+//       containers[i].classList.add('container');
+//     }
+//   }
+// }
+
+
+
+  </script>
+
+</body>
+
+</html>
