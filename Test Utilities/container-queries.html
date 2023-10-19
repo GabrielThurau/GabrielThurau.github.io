@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .parent {
+        container: child-container / inline-size;
+    }
+
+    .child {
+        display: grid;
+        grid-template-columns: 1fr 200px;
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+
+    .child {
+        background-color: cyan;
+    }
+
+
+    @container child-container (min-width: 500px) {
+
+        .grid {
+            padding: 2rem;
+        }
+
+        .child {
+            grid-template-rows: 1fr 200px;
+            max-height: 5rem;
+        }
+
+        .child>p {
+            background-color: peachpuff;
+        }
+    }
+</style>
+
+<body>
+
+    <div class="parent">
+        <div class="grid">
+            <div class="child">
+                <p class="text">random text boiiii</p>
+                <p class="text">random text boiiii</p>
+            </div>
+            <div class="child">
+                <p class="text">random text boiiii</p>
+                <p class="text">random text boiiii</p>
+            </div>
+            <div class="child">
+                <p class="text">random text boiiii</p>
+                <p class="text">random text boiiii</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
