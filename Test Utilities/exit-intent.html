@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p id="test"></p>
+
+    <script>
+
+
+        // function doSomething() {
+        //     //do some stuff here. eg:
+        //     document.getElementById("test").innerHTML = "Goodbye!";
+        // }
+        // function showADialog(e) {
+        //     var confirmationMessage = 'Your message here';
+        //     //some of the older browsers require you to set the return value of the event
+        //     (e || window.event).returnValue = confirmationMessage;     // Gecko and Trident
+        //     return confirmationMessage;                                // Gecko and WebKit
+        // }
+        // window.addEventListener("beforeunload", function (e) {
+        //     //To do something (Remember, redirects or alerts are blocked here by most browsers):
+        //     doSomething();
+        //     //To show a dialog (uncomment to test):
+        //     //return showADialog(e);  
+        // });
+
+
+
+        setTimeout(() => {
+            document.addEventListener("scroll", scrollSpeed);
+        }, 10000);
+
+
+        scrollSpeed = () => {
+            lastPosition = window.scrollY;
+            setTimeout(() => {
+                newPosition = window.scrollY;
+            }, 100);
+            currentSpeed = newPosition - lastPosition;
+            console.log(currentSpeed);
+
+            if (currentSpeed > 160) {
+                console.log("Exit intent popup triggered");
+                document.removeEventListener("scroll", scrollSpeed);
+            }
+        };
+
+
+    </script>
+
+
+</body>
+
+</html>
