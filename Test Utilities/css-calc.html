@@ -15,35 +15,24 @@
         max-width: 600px;
     }
 
-    main {
-        --spacing: 8px;
+    section {
+        --gutters: 6px;
+        --card-padding: calc(var(--gutters) * 2);
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: var(--spacing);
-        padding: var(--spacing);
+        gap: var(--gutters);
+        padding: var(--card-padding);
     }
 
-    article {
-        border-radius: var(--spacing);
-        padding: var(--spacing);
-    }
-
-    @media (min-width: 350px) {
-        main {
-            --spacing: 16px;
-        }
-    }
-
-    @media (min-width: 500px) {
-        main {
-            --spacing: 32px;
-        }
+    .flex-child {
+        gap: var(--gutters);
+        padding: var(--card-padding);
     }
 </style>
 
-<main>
-    <article>Card 1</article>
-    <article>Card 2</article>
-    <article>Card 3</article>
-</main>
+<section>
+    <article class="flex-child"></article>
+    <article class="flex-child"></article>
+    <article class="flex-child"></article>
+</section>

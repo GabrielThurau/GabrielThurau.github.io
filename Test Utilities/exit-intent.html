@@ -9,48 +9,104 @@
 
 <body>
 
-    <p id="test"></p>
+    <p id="test" style="height: 100vh; background-color: goldenrod;"></p>
 
     <script>
 
 
-        // function doSomething() {
-        //     //do some stuff here. eg:
-        //     document.getElementById("test").innerHTML = "Goodbye!";
-        // }
-        // function showADialog(e) {
-        //     var confirmationMessage = 'Your message here';
-        //     //some of the older browsers require you to set the return value of the event
-        //     (e || window.event).returnValue = confirmationMessage;     // Gecko and Trident
-        //     return confirmationMessage;                                // Gecko and WebKit
-        // }
-        // window.addEventListener("beforeunload", function (e) {
-        //     //To do something (Remember, redirects or alerts are blocked here by most browsers):
-        //     doSomething();
-        //     //To show a dialog (uncomment to test):
-        //     //return showADialog(e);  
-        // });
+
+        document.querySelector('div.scaffold-layout__inner').addEventListener("mouseleave", (event) => {
+            alert('please do not leave me :[')
+        }, { once: true });
 
 
+        // let LinkedInSearchBar = document.querySelector("#global-nav-typeahead > input");
 
-        setTimeout(() => {
-            document.addEventListener("scroll", scrollSpeed);
-        }, 10000);
+        LinkedInSearchBar.addEventListener("focus", (event) => {
+            alert('DONT LEAVE PLEASE')
+        }, { once: true });
 
 
-        scrollSpeed = () => {
-            lastPosition = window.scrollY;
-            setTimeout(() => {
-                newPosition = window.scrollY;
-            }, 100);
-            currentSpeed = newPosition - lastPosition;
-            console.log(currentSpeed);
+        let homeLink = document.querySelector("#global-nav > div > nav > ul > li:nth-child(1) > a");
+        let LinkedInSearchBar = document.querySelector("#global-nav-typeahead > input");
 
-            if (currentSpeed > 160) {
-                console.log("Exit intent popup triggered");
-                document.removeEventListener("scroll", scrollSpeed);
+        function initTimer() {
+            homeLink.addEventListener("focus", (event) => {
+                setTimeout(() => {
+                    LinkedInSearchBar.addEventListener("focus", (event) => {
+                        alert('DONT LEAVE PLEASE')
+                    }, { once: true });
+                }, 25000);
+            }, { once: true });
+        }
+
+        initTimer();
+
+
+        const setCookie = (cname, cvalue, exdays) => {
+            let expires = "";
+
+            if (exdays) {
+                let day = new Date();
+                day.setTime(day.getTime() + exdays * 24 * 60 * 60 * 1000);
+                expires = `expires=${day.toUTCString()}`;
             }
+            document.cookie = `${cname}=${cvalue};${expires};path=/`;
         };
+
+        const getCookie = (cname) => {
+            let ca = document.cookie.split(";");
+
+            for (const cookie of ca) {
+                if (cookie.indexOf(cname + "=") > 0) {
+                    return cookie.split("=")[1];
+                }
+            }
+            return null;
+        };
+
+
+
+        const target = document.querySelector('.section:last-child');
+
+        const options = {
+            threshold: 0.75,
+        }
+
+        function handleIntersection(entries) {
+            entries.map((entry) => {
+                if (entry.isIntersecting) {
+                    console.log('Log event and unobserve')
+                    observer.unobserve(target);
+                }
+            });
+        }
+
+        const observer = new IntersectionObserver(handleIntersection, options);
+
+        observer.observe(target);
+
+
+
+
+        // setTimeout(() => {
+        //     document.addEventListener("scroll", scrollSpeed);
+        // }, 10000);
+
+
+        // scrollSpeed = () => {
+        //     lastPosition = window.scrollY;
+        //     setTimeout(() => {
+        //         newPosition = window.scrollY;
+        //     }, 100);
+        //     currentSpeed = newPosition - lastPosition;
+        //     console.log(currentSpeed);
+
+        //     if (currentSpeed > 160) {
+        //         console.log("Exit intent popup triggered");
+        //         document.removeEventListener("scroll", scrollSpeed);
+        //     }
+        // };
 
 
     </script>
