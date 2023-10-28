@@ -1,0 +1,12 @@
+function observeCartChanges() {
+  const cartObserver = new PerformanceObserver((list) => {
+    list.getEntries().forEach((entry) => {
+      const isValidRequestType = ['xmlhttprequest', 'fetch'].includes(entry.initiatorType);
+      const isCartChangeRequest = /\/cart\//.test(entry.name);
+      if (isValidRequestType && isCartChangeRequest) {
+        // handle cart request
+      }
+    });
+  });
+  cartObserver.observe({ entryTypes: ["resource"] });
+}
