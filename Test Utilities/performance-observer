@@ -4,9 +4,46 @@ function observeCartChanges() {
       const isValidRequestType = ['xmlhttprequest', 'fetch'].includes(entry.initiatorType);
       const isCartChangeRequest = /\/cart\//.test(entry.name);
       if (isValidRequestType && isCartChangeRequest) {
-        // handle cart request
+        console.log('fetch call to cart happened');
       }
     });
   });
   cartObserver.observe({ entryTypes: ["resource"] });
 }
+
+observeCartChanges();
+
+const myCartWatcher = new CartWatcher;
+myCartWatcher.init();
+window.addEventListener("cart_changed", e => console.log(e.detail));
+
+
+
+let cartEvent = new CustomEvent("addToCart",
+  {
+   detail: {
+    title: 'Product Added to Cart!',
+    message: `The product added to cart was ${product.title}`
+  }
+  });
+
+
+
+
+
+const event = new CustomEvent('NOTIFICATION_ADD', { 
+    detail: {
+      title: 'Error!',
+      message: 'There was a problem creating your account.'
+    }
+  });
+  
+  function handleButtonClick(){
+      window.dispatchEvent(event);
+  }
+  
+  function handleAddNotification(e) {
+    alert(e.detail.title + ' ' + e.detail.message);
+  }
+  
+  window.addEventListener('NOTIFICATION_ADD', handleAddNotification);
