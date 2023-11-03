@@ -1,0 +1,18 @@
+<label for="product-select">Choose Selling Plan:</label>
+
+<select name="products" id="product-select">
+  <option value="">--Choose Your Selling Plan--</option>
+  <option value="12345">Every Week</option>
+  <option value="678910">Every 2 Weeks</option>
+  <option value="1112131415">Every month</option>
+</select>
+
+<script>
+  const sellingPlanURL = new URL('{{request.origin}}{{ request.path }}');
+  const productSelect = document.getElementById('product-select');
+  productSelect.addEventListener('change', (event) => {
+    let sellingPlanID = event.target.selectedOptions[0].value.toString();
+    sellingPlanURL.searchParams.set('selling_plan', sellingPlanID);
+    history.pushState({}, '', sellingPlanURL);
+  });
+</script>
