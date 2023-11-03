@@ -1,0 +1,165 @@
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body,
+    html {
+        height: 100%;
+    }
+
+    .loading-overlay {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
+
+    .loading-container {
+        position: relative;
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 0 50px;
+
+        &:before {
+            content: 'loading';
+            display: block;
+            font-size: 1.5rem;
+            position: absolute;
+            top: -250%;
+            left: 0;
+            right: 0;
+            color: black;
+            text-align: center;
+            opacity: .8;
+        }
+    }
+
+    .loading-dot {
+        position: relative;
+        width: 15px;
+        height: 15px;
+        background: black;
+        border-radius: 50%;
+        margin-right: 15px;
+        animation: dot 1.5s cubic-bezier(.17, .67, .83, .67) infinite;
+    }
+
+    .loading-dot:nth-of-type(1) {
+        margin-right: 0;
+    }
+
+    .loading-dot:nth-of-type(2) {
+        animation-delay: .175s;
+    }
+
+    .loading-dot:nth-of-type(3) {
+        animation-delay: .35s;
+    }
+
+    @keyframes dot {
+        0% {
+            transform: translate3d(-1000%, 0, 0);
+            opacity: 0;
+        }
+
+        20% {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+
+        80% {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translate3d(1000%, 0, 0);
+            opacity: 0;
+        }
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .paused {
+        animation-play-state: paused;
+    }
+
+    .fetch-call {
+        margin-top: 2rem;
+    }
+</style>
+
+
+
+
+<div class="loading-overlay">
+    <div class="loading-container hidden paused">
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
+    </div>
+    <button class="fetch-call">Fetch profile data</button>
+    <div class="map-it">
+        <ul class="profile-info">
+
+        </ul>
+    </div>
+
+</div>
+
+<script>
+
+
+    const startLoading = () => {
+        let loadingContainer = document.querySelector('.loading-container');
+        loadingContainer.classList.remove('hidden');
+        loadingContainer.classList.remove('paused');
+    }
+
+    const stopLoading = () => {
+        let loadingContainer = document.querySelector('.loading-container');
+        loadingContainer.classList.add('hidden');
+        loadingContainer.classList.add('paused');
+    }
+
+    async function logGithub() {
+        startLoading();
+        setTimeout(async () => {
+            try {
+                const response = await fetch("https://api.github.com/users/GabrielThurau");
+                const userData = await response.json();
+                console.log(userData);
+                const markup = `
+                    ${Object.values(userData).map(value =>
+                    `
+                        <li>${value}</li> 
+                        `
+                ).join('')}
+                `;
+                document.querySelector('.profile-info').innerHTML = markup;
+                stopLoading();
+            }
+            catch (error) {
+                console.error("The fetch done messed up", error);
+                stopLoading();
+            }
+        }, 3000);
+
+    }
+
+    let fetchButton = document.querySelector('.fetch-call');
+
+    fetchButton.addEventListener('click', logGithub)
+
+
+
+
+
+
+</script>

@@ -1,0 +1,58 @@
+<button class="button" data-count="0">Click me</button>
+
+
+
+<script>
+
+    const facts = {
+        fact1: "the earth is round",
+        fact2: "javascript is cool",
+        twoFacts() {
+            setTimeout(function () {
+                console.log(`${this.fact1}  ${this.fact2}`);
+            }.bind(this), 2000);
+        }
+    }
+
+    const moreFacts = {
+
+        fact1: "Coke is better than Pepsi",
+        fact2: "React is a fun library to learn"
+
+    }
+
+
+    const helloFacts = facts.twoFacts.bind(moreFacts);
+
+    helloFacts();
+
+</script>
+
+
+
+<script>
+
+
+    class MasterClass {
+        constructor(e) {
+            this.button = document.querySelector('.button');
+            this.boundEventHandler = this.eventHandler.bind(this, e)
+            this.button.addEventListener('click', this.boundEventHandler)
+        }
+        eventHandler(e) {
+            console.log(this.button);
+        }
+        removeListener() {
+            this.button.removeEventListener('click', this.boundEventHandler)
+        }
+    }
+
+    let class1 = new MasterClass;
+    class1.removeListener();
+
+
+
+
+
+
+</script>

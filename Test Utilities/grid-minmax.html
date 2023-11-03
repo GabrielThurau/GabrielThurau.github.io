@@ -1,0 +1,87 @@
+<style>
+    body {
+        padding: 40px 0;
+    }
+
+    .container {
+        max-width: 85rem;
+        margin: 0 auto;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+        align-items: stretch;
+    }
+
+    @media (min-width: 1024px) {
+        .grid {
+            grid-template-columns: repeat(auto-fill, minmax(33%, 1fr))
+        }
+    }
+
+
+
+    .grid>article {
+        border: 1px solid #ccc;
+        box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    .grid>article img {
+        max-width: 100%;
+    }
+
+    .grid .text {
+        padding: 20px;
+    }
+</style>
+
+
+
+<div class="container">
+    <main class="grid">
+        <article>
+            <img src="https://img.buzzfeed.com/buzzfeed-static/static/2019-09/17/16/asset/7e5d6e673848/sub-buzz-1160-1568736358-1.jpg"
+                alt="Sample photo">
+            <div class="text">
+                <a href="https://codepen.io/collection/XdWJOQ/" class="btn btn-primary btn-block">I am not a demon.</a>
+            </div>
+        </article>
+        <article>
+            <img src="https://img.buzzfeed.com/buzzfeed-static/static/2019-09/17/16/asset/7e5d6e673848/sub-buzz-1160-1568736358-1.jpg"
+                alt="Sample photo">
+            <div class="text">
+                <a href="https://codepen.io/collection/XdWJOQ/" class="btn btn-primary btn-block">I am not a demon.</a>
+            </div>
+        </article>
+        <article>
+            <img src="https://img.buzzfeed.com/buzzfeed-static/static/2019-09/17/16/asset/7e5d6e673848/sub-buzz-1160-1568736358-1.jpg"
+                alt="Sample photo">
+            <div class="text">
+                <a href="https://codepen.io/collection/XdWJOQ/" class="btn btn-primary btn-block">NOT THE BEES</a>
+            </div>
+        </article>
+        <article>
+            <img src="https://img.buzzfeed.com/buzzfeed-static/static/2019-09/17/16/asset/7e5d6e673848/sub-buzz-1160-1568736358-1.jpg"
+                alt="Sample photo">
+            <div class="text">
+                <a href="https://codepen.io/collection/XdWJOQ/" class="btn btn-primary btn-block">NOT THE BEES</a>
+            </div>
+        </article>
+        <article>
+            <img src="https://img.buzzfeed.com/buzzfeed-static/static/2019-09/17/16/asset/7e5d6e673848/sub-buzz-1160-1568736358-1.jpg"
+                alt="Sample photo">
+            <div class="text">
+                <a href="https://codepen.io/collection/XdWJOQ/" class="btn btn-primary btn-block">NOT THE BEES</a>
+            </div>
+        </article>
+        <article>
+            <img src="https://img.buzzfeed.com/buzzfeed-static/static/2019-09/17/16/asset/7e5d6e673848/sub-buzz-1160-1568736358-1.jpg"
+                alt="Sample photo">
+            <div class="text">
+                <a href="https://codepen.io/collection/XdWJOQ/" class="btn btn-primary btn-block">I'm a VAMPIRE</a>
+            </div>
+        </article>
+    </main>
+</div>
