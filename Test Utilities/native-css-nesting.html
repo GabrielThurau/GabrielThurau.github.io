@@ -1,0 +1,77 @@
+<style>
+    .container {
+        padding: 2rem;
+        border: 1px solid darkslategray;
+        background: rgb(173, 230, 176);
+
+        .child {
+            color: rgba(255, 0, 0, 0.596);
+
+            .subchild {
+                color: rgba(0, 0, 255, 0.507);
+            }
+        }
+    }
+
+
+    .child {
+        padding: 1rem;
+        border: 2px solid green;
+        background: lightgray;
+
+        .subchild {
+            color: green;
+        }
+    }
+
+    .subchild {
+        padding: 0.25rem;
+        border: 1px dashed black
+    }
+
+    /*Combining classes*/
+    .red {
+        color: red;
+
+        .italic {
+            font-style: italic;
+        }
+
+        &.big {
+            font-size: 2rem;
+        }
+    }
+</style>
+
+
+
+<h1>Nesting classes</h1>
+<div class="container">
+    container
+    <div class="child">
+        .container .child
+        <div class="subchild">.container .child .subchild</div>
+
+        <div class="subchild">.container .child .subchild</div>
+    </div>
+</div>
+
+<hr />
+
+<!-- <div class="child">
+    .child
+    <div class="subchild">.child .subchild</div>
+
+    <div class="subchild">.child .subchild</div>
+</div>
+<hr />
+<div class="subchild"> .subchild</div>
+
+
+
+<h1>Combining classes</h1>
+<p class="red">
+    <span class='italic'>.red .itallic</span>
+</p>
+
+<p class="red big">.red.big</p> -->

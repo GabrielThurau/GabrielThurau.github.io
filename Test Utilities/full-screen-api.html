@@ -1,0 +1,85 @@
+<div id="root">
+    <div class="title">This will not go fullscreen</div>
+    <div id="fullscreen">
+        <div class="title">This will go fullscreen</div>
+        <button id="button">Toggle Fullscreen</button>
+    </div>
+</div>
+
+
+<style>
+    button {
+        border: none;
+        padding: 8px 16px;
+        background-color: #264653;
+        color: white;
+        cursor: pointer;
+    }
+
+    #root {
+        position: relative;
+        width: 1000px;
+        font-size: 24px;
+        height: 400px;
+        background-color: #e9c46a;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #fullscreen {
+        position: relative;
+        width: 600px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #e76f51;
+    }
+
+    #fullscreen:fullscreen {
+        /* 	background-color: yellow; */
+    }
+
+    #fullscreen::backdrop {
+        background-color: transparent;
+    }
+
+    #root:fullscreen>#button {
+        background-color: red;
+        border: none;
+    }
+
+    .title {
+        position: absolute;
+        bottom: 40px;
+        font-family: roboto;
+        text-transform: uppercase;
+        color: #264653;
+    }
+
+    body {
+        height: 100vh;
+        width: 100vw;
+        background-color: #264653;
+        margin: 0;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+
+
+<script>
+
+
+
+
+
+
+
+</script>
