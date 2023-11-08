@@ -1,6 +1,6 @@
 class Image {
 	constructor( color, size, id) {
-		this.color = color,
+	  this.color = color,
       this.size = size,
       this.id = id
 	}
@@ -12,31 +12,45 @@ class Image {
 }
 
 
-// need to do something more legit and find the objects like this?
-
-let arr = [
-   { name:"string 1", value:"this", other: "that" },
-   { name:"string 2", value:"this", other: "that" }
-];
-
-let obj = arr.find(o => o.name === 'string 1');
-
-console.log(obj);
-
 function makeImages(color, size, gallery, slides) {
    const quantity = slides.length;
    const largeArray = [];
-   const testArray = [];
-   let k = 0;
    let image;
    for (let i = 0; i < quantity; i++) {  
-      if (quantity > slides.length / 2) {
-         k++
-         image = new Image(color, size, k);
-      }
       image = new Image(color, size, i);
-      testArray.push(image);
       largeArray.push(image.generateImage());
    }
-
 }
+
+
+
+
+
+
+
+let obj = { 'a': 'a' };
+//let func = () => 'hey';
+
+// generate an image based on a strict naming convention
+
+const generateImage = (color, size, id) => {
+    return `https://cdn.shopify.com/s/files/1/0712/1227/files/${color}-${size}-${id}.jpg`; 
+  };
+
+  let imagesToGenerate = document.querySelectorAll('.image-container');
+
+  imagesToGenerate.forEach(image => {
+    generateImage()
+});
+
+//you can also initialize multiple values at once using array syntax
+let map = new Map([[obj, 'object'], [generateImage, 'function']])
+
+function generateMap(...images) {
+    
+}
+
+map.keys() // 123, true, Object, () => 'hey'
+map.get(func) // 'function'
+map.get({ 'a': 'a' }) // undefined 
+//Object and Functions are stored by reference, so { 'a':'a' } and obj are different objects)

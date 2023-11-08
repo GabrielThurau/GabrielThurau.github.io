@@ -1,0 +1,14 @@
+<script>
+  const productInventory = [
+      {%- for v in product.variants %}
+        { title: '{{ v.title }}', id: '{{ v.id }}', quantity: '{{ v.inventory_quantity }}' },
+      {%- endfor %}
+    ];
+
+    const restock = { restock: true };
+  const sufficient = { restock: false };
+  const result = Map.groupBy(productInventory, ({ quantity }) =>
+    quantity < 6 ? restock : sufficient,
+  );
+  console.log(result.get(restock));
+</script>

@@ -1,0 +1,38 @@
+<div class="image-wrapper">
+    <div class="image-container"><img src="" alt="" class="image"></div>
+    <div class="image-container"><img src="" alt="" class="image"></div>
+    <div class="image-container"><img src="" alt="" class="image"></div>
+</div>
+
+
+<script>
+
+
+    let photoArray = [];
+    const generateImage = (color, product, id) => {
+        const imageEarl = new URL(`https://cdn.shopify.com/s/files/1/0675/4605/4931/files/${color}-${product}-${id}.jpg`);
+        return imageEarl;
+    };
+    function photoBucket() {
+        let imagesToGenerate = [...document.querySelectorAll('.image-container > img')]
+        imagesToGenerate.forEach((image, index) => {
+            photoArray.push(generateImage(color = "red", product = "shoes", index));
+        });
+        generateMap(imagesToGenerate, ...photoArray,)
+    }
+    photoBucket();
+    function generateMap(imagesToGenerate, ...images) {
+        const imageMap = new Map();
+        images.forEach((image, index) => {
+            imageMap.set(index, image);
+        });
+        for (let [i, v] of imageMap.entries()) {
+            imagesToGenerate[i].src = v;
+        }
+    }
+
+
+
+
+
+</script>
