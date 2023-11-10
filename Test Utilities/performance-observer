@@ -1,7 +1,8 @@
 function observeCartChanges() {
   const cartObserver = new PerformanceObserver((list) => {
     list.getEntries().forEach((entry) => {
-      const isValidRequestType = ['xmlhttprequest', 'fetch'].includes(entry.initiatorType);
+      const isValidRequestType = ['xmlhttprequest', 'fetch']
+      .includes(entry.initiatorType);
       const isCartChangeRequest = /\/cart\//.test(entry.name);
       if (isValidRequestType && isCartChangeRequest) {
         console.log('fetch call to cart happened');

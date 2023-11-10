@@ -1,6 +1,8 @@
 
 
-const compose = (...fns) => (val) => fns.reduceRight((acc, fn) => fn(acc), val);
+const compose = 
+(...fns) => (val) => 
+fns.reduceRight((acc, fn) => fn(acc), val);
 
 async function getCart() {
     const result = await fetch("/cart.json");

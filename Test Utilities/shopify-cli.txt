@@ -1,0 +1,4 @@
+cd empty shopify folder
+shopify theme pull --store your-store.myshopify.com
+# local code modifications
+shopify theme push

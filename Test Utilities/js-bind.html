@@ -3,7 +3,6 @@
 
 
 <script>
-
     const facts = {
         fact1: "the earth is round",
         fact2: "javascript is cool",
@@ -13,17 +12,11 @@
             }.bind(this), 2000);
         }
     }
-
     const moreFacts = {
-
         fact1: "Coke is better than Pepsi",
         fact2: "React is a fun library to learn"
-
     }
-
-
     const helloFacts = facts.twoFacts.bind(moreFacts);
-
     helloFacts();
 
 </script>
@@ -48,10 +41,11 @@
     }
 
     let class1 = new MasterClass;
+    
+    
+    // if something happens, some condition is met, you can now remove the event listener bound to the MasterClass
+    
     class1.removeListener();
-
-
-
 
 
 

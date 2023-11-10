@@ -1,0 +1,8 @@
+echo "# remote-shopify-store" >> README.md
+git init
+git add README.md
+git add --all
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/GabrielThurau/remote-shopify-store.git
+git push -u origin main
