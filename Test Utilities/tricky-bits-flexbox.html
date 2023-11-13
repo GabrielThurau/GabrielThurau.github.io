@@ -1,0 +1,149 @@
+<h3 class="separator">
+    margin: auto;
+</h3>
+<p class="self">
+    // horizontal and vertical centering
+</p>
+<div class="flexboxContainer ">
+    <div class="flexboxItem m-auto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus temporibus?
+    </div>
+</div>
+
+<h3 class="separator">
+    margin-left: auto at second item
+</h3>
+<p class="self">
+    // a possibility to group the flex-items
+</p>
+<div class="flexboxContainer ">
+    <div class="flexboxItem">Lorem ipsum dolor sit amet,</div>
+    <div class="flexboxItem ml-auto">Lorem ipsum dolor sit amet, </div>
+    <div class="flexboxItem">Lorem ipsum dolor sit amet, </div>
+</div>
+
+<h3 class="separator">
+    margin-left: auto at second and fourth item
+</h3>
+<p class="self">
+    // here: create three groups
+</p>
+<div class="flexboxContainer ">
+    <div class="flexboxItem">Lorem ipsum dolor sit amet,</div>
+    <div class="flexboxItem ml-auto">Lorem ipsum dolor sit amet, </div>
+    <div class="flexboxItem">Lorem ipsum dolor sit amet,</div>
+    <div class="flexboxItem ml-auto">Lorem ipsum dolor sit amet, </div>
+    <div class="flexboxItem">Lorem ipsum dolor sit amet, </div>
+</div>
+
+<h3 class="separator">
+    margin-top: auto at last item
+</h3>
+<p class="self">
+    // here: create two groups | flex-direction is column
+</p>
+<div class="flexboxContainer flex-direction-column">
+    <div class="flexboxItem">Lorem ipsum dolor</div>
+    <div class="flexboxItem">Lorem ipsum dolor</div>
+    <div class="flexboxItem mt-auto">Lorem ipsum dolor</div>
+</div>
+
+<h3 class="separator">
+    margin-top: auto at last item with align-items:flex-start
+</h3>
+<p class="self">
+    // here: create two groups | flex-direction is column<br>
+    // same result as above - the align-items property has no effect because margin-top: auto has stolen the free space
+</p>
+<div class="flexboxContainer flex-direction-column flex-align-items-flex-start">
+    <div class="flexboxItem">Lorem ipsum dolor</div>
+    <div class="flexboxItem">Lorem ipsum dolor</div>
+    <div class="flexboxItem mt-auto">Lorem ipsum dolor</div>
+</div>
+
+<h3 class="separator">
+    No margin-top: auto at last item with align-items:flex-start
+</h3>
+<p class="self">
+    // align-items property works
+</p>
+<div class="flexboxContainer flex-direction-column flex-align-items-flex-start">
+    <div class="flexboxItem">Lorem ipsum dolor</div>
+    <div class="flexboxItem">Lorem ipsum dolor</div>
+    <div class="flexboxItem">Lorem ipsum dolor</div>
+</div>
+
+
+<style>
+    .flexboxContainer.flex-direction-column {
+        -webkit-flex-flow: column wrap;
+        flex-flow: column wrap;
+    }
+
+    .flex-align-items-flex-start {
+        -webkit-align-items: flex-start;
+        align-items: flex-start;
+    }
+
+    .flexboxItem {
+        width: 10rem;
+        background-color: #b94a48;
+        color: #fff;
+        border: 1px dashed #333;
+        padding: 1rem;
+    }
+
+    .m-auto {
+        margin: auto;
+    }
+
+    .flexboxContainer {
+        display: flex;
+        flex-flow: row wrap;
+        min-height: 30rem;
+    }
+
+    .ml-auto {
+        margin-left: auto;
+    }
+
+    .mt-auto {
+        margin-top: auto;
+    }
+
+    html {
+        font-size: 62.5%;
+    }
+
+    body {
+        font-size: 1.6rem;
+        padding: 2rem;
+        max-width: 130rem;
+    }
+
+    .explain {
+        background: #efefef;
+        padding: 2rem;
+    }
+
+    .copy {
+        color: #b94a48;
+        font-weight: bold;
+        font-size: 1.8rem;
+    }
+
+    .self {
+        color: #428bca;
+    }
+
+    .separator {
+        background-color: #f0ad4e;
+        padding: 1.5rem 1rem;
+        margin: 2rem 0;
+    }
+
+    .smallSeparator {
+        background-color: #2980b9;
+        padding: 0.5rem 1rem;
+        margin: 2rem 0;
+    }
+</style>

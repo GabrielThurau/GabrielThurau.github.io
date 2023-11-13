@@ -10,11 +10,6 @@ p:has(:required:invalid) label {
     color: red;
 }
 
-/*  */
-
-
-
-
 
 div.whaddup:has(img [src="https://images.bauerhosting.com/legacy/media/6262/e2bf/209b/55c1/b411/232b/7-con-air.jpg?ar=16%3A9&fit=crop&crop=top&auto=format&w=undefined&q=80"]) {
     border: 10px red dotted;
@@ -41,13 +36,24 @@ html:not(.is-logged-in) .app-logged-in {
 
 <div class="button-container"><div class="buttons"><button class="button main-button">Button</button><button class="button main-button" disabled>Disabled Button</button></div></div>.button-container {
     min-height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
 .buttons {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
 }
 
@@ -74,10 +80,6 @@ button:disabled {
 }
 
 
-<a href="example.com" target="_blank">This is a link</a><a href="example.com" target="_blank">This is a link</a><a href="/home">This is a link that doesn't go to a different site</a>
- <a href="/product-page">This is a link that doesn't go to a different site</a>
-
-
 a[target="_blank"]::after {
     content: ' ↗';
     color: black;
@@ -101,12 +103,3 @@ a:not([target="_blank"]) {
     container-type: inline-size;
     container-name: card-container;
 }
-
-
-
-/* or use the container shorthand and do both in one go   /*
-  
-  .card {
-    container-type: inline-size;
-    container-name: card-container;
-  }
