@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Parcel Sandbox</title>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <div id="app"></div>
+  <div>
+    <span id="myText">You clicked 0 times</span>
+  </div>
+  <button id="myButton">Click me</button>
+  <script src="src/index.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<script>
+
+
+  const fetchUtility = (baseURL, headers) => {
+    const createFetchInstance = (route, requestMethod, data) => {
+      const tempReq = new Request(`${baseURL}${route}`, {
+        method: requestMethod,
+        headers,
+        data: data || null
+      });
+      return [fetch, tempReq];
+    };
+
+    return createFetchInstance;
+  };
+
+
+  const fetchInstance = fetchUtility(window.location.href);
+
+  const [getFunc, getReq] = fetchInstance("cart.js", "GET");
+
+  getFunc(getReq)
+    .then((resp) => resp.json())
+    .then((data) => console.log(data));
+
+
+</script>
+
+<script>
+
+
+  const init = () => {
+    let initialized = false;
+
+    return () => {
+      if (initialized) {
+        return console.warn('init function already called, not initializing');
+      }
+      initialized = true;
+      return console.info('initialized');
+    };
+  };
+
+  const initialize = init();
+
+  initialize();
+  initialize();
+  initialize();
+
+
+
+</script>
+
+
+
+<script>
+
+  function outer() {
+    const outerVar = "Hey I am the outer Var";
+    return function inner() {
+      const innerVar = "hey I am an inner var";
+      console.log(innerVar);
+      console.log(outerVar);
+    }
+  }
+  const closure = outer();
+
+
+
+</script>
