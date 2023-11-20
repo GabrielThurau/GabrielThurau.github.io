@@ -1,4 +1,5 @@
 <button class="click-button">Click me</button>
+<button class="click-button-two">Click me 2</button>
 
 
 
@@ -25,20 +26,76 @@
 
 
 
+    // let count = 0;
+
+    // const clickButton = document.querySelector('.click-button');
+
+    // clickButton.addEventListener('click', () => {
+    //     count++;
+    //     console.log(count);
+    //     if (count >= 5) {
+    //         console.log('event listener removed');
+    //         clickButton.removeEventListener('click', clickCounter);
+    //     }
+    // })
+
+
+
+
+
     let count = 0;
+    let countTwo = 0;
 
     const clickButton = document.querySelector('.click-button');
+    const clickButtonTwo = document.querySelector('.click-button-two');
 
-    (e) => {
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    clickButton.addEventListener('click', () => {
         count++;
         console.log(count);
         if (count >= 5) {
-            console.log('event listener removed');
-            clickButton.removeEventListener('click', clickCounter);
+            controller.abort();
+            console.log('event aborted');
         }
+    }, { signal })
+
+    clickButtonTwo.addEventListener('click', () => {
+        countTwo++;
+        console.log(countTwo);
+        if (countTwo >= 5) {
+            controller.abort();
+            console.log('event aborted');
+        }
+    }, { signal })
+
+
+
+
+    let urls = [...];
+    let controller = new AbortController();
+
+    let ourJob = new Promise((resolve, reject) => { // our task
+  ...
+        controller.signal.addEventListener('abort', reject);
+});
+
+    let fetchJobs = urls.map(url => fetch(url, { // fetches
+        signal: controller.signal
+    }));
+
+    // Wait for fetches and our task in parallel
+    let results = await Promise.all([...fetchJobs, ourJob]);
+
+    // if controller.abort() is called from anywhere,
+    // it aborts all fetches and ourJob
+
+
+    function abortTimeout(ms) {
+        const controller = new AbortController();
+        setTimeout(() => controller.abort(), ms);
+        return controller.signal;
     }
-
-    clickButton.addEventListener('click', clickCounter);
-
 
 </script>
