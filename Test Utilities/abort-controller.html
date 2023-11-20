@@ -1,0 +1,44 @@
+<button class="click-button">Click me</button>
+
+
+
+
+
+<script>
+
+    // let count = 0;
+
+    // const clickButton = document.querySelector('.click-button');
+
+    // function clickCounter(e) {
+    //     count++;
+    //     console.log(count);
+    //     if (count >= 5) {
+    //         console.log('event listener removed');
+    //         clickButton.removeEventListener('click', clickCounter);
+    //     }
+    // }
+
+    // clickButton.addEventListener('click', clickCounter);
+
+
+
+
+
+    let count = 0;
+
+    const clickButton = document.querySelector('.click-button');
+
+    (e) => {
+        count++;
+        console.log(count);
+        if (count >= 5) {
+            console.log('event listener removed');
+            clickButton.removeEventListener('click', clickCounter);
+        }
+    }
+
+    clickButton.addEventListener('click', clickCounter);
+
+
+</script>
