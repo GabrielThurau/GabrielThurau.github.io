@@ -1,0 +1,104 @@
+<div class="slider-wrapper">
+  <div id="product__slider">
+    <button class="product-image-zoom"><i></i></button>
+    <div class="product__slider-main">
+      <div class="slide">
+        <img src="{{ media | img_url: 'master' }}" alt="{{ media.alt }}" class="img-responsive">
+      </div>
+    </div>
+    <div class="product__slider-thmb">
+      <div class="slide"></div>
+    </div>
+    <div class="product__slider-controls"></div>
+  </div>
+</div>
+
+<script>
+  let mainProductSliderSettings = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    autoplay: false,
+    autoplaySpeed: 3000,
+    asNavFor: '.product__slider-thmb',
+    swipe: false,
+    swipeToSlide: false,
+    touchMove: false,
+    draggable: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: true,
+        },
+      },
+    ],
+  };
+  let tmbProductSliderSettings = {
+    arrows: false,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    asNavFor: '.product__slider-main',
+    dots: false,
+    centerMode: false,
+    focusOnSelect: true,
+    responsive: [
+      {
+        breakpoint: 1025,
+        settings: {
+          slidesToShow: 4,
+          arrows: true,
+          appendArrows: $('.product__slider-controls'),
+        },
+      },
+    ],
+  };
+  let imageZoomBtn = document.querySelector('button.product-image-zoom');
+  imageZoomBtn.addEventListener('click', function (e) {
+    if (!document.querySelector('div.product-img-overlay')) {
+      let productImgSrc = imageZoomBtn.parentElement.querySelector('div.slick-active > img').getAttribute('src');
+      let body = document.body,
+        html = document.documentElement;
+      let height = Math.max(
+        body.scrollHeight,
+        body.offsetHeight,
+        html.clientHeight,
+        html.scrollHeight,
+        html.offsetHeight
+      );
+      let el = document.createElement('div');
+      el.classList.add('product-img-overlay');
+      el.setAttribute('style', 'height:' + height + 'px;');
+      document.body.appendChild(el);
+      el = document.createElement('div');
+      el.classList.add('img');
+      el.innerHTML =
+        '<div><button type="button" class="product-img-close">×</button><div class="product-zoom-slick"></div></div>';
+      document.querySelector('div.product-img-overlay').appendChild(el);
+      el = document.createElement('div');
+      el.classList.add('cover');
+      document.querySelector('div.product-img-overlay').appendChild(el);
+      document.querySelector('button.product-img-close').addEventListener('click', function () {
+        document.querySelector('div.product-img-overlay').remove();
+      });
+      $('.product__slider-main').slick('unslick');
+      let carouselOverlay = document.querySelector('div.product__slider-main').cloneNode(true);
+      document.querySelector('div.product-zoom-slick').appendChild(carouselOverlay);
+      $('#product__slider .product__slider-main').slick(mainProductSliderSettings);
+      $('.product-img-overlay .product__slider-main').slick();
+    }
+  });
+  if ($('.product__slider-main').length) {
+    var $slider = $('.product__slider-main').slick(mainProductSliderSettings);
+    var $slider2 = $('.product__slider-thmb').slick(tmbProductSliderSettings);
+
+    $('.product__slider-thmb .slick-slide').removeClass('slick-active');
+    $('.product__slider-thmb .slick-slide').eq(0).addClass('slick-active');
+
+    $('.product__slider-main').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+      var mySlideNumber = nextSlide;
+      $('.product__slider-thmb .slick-slide').removeClass('slick-active');
+      $('.product__slider-thmb .slick-slide').eq(mySlideNumber).addClass('slick-active');
+    });
+  }
+</script>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slick Slider 2</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<style>
+    .width-50 {
+        width: 50%;
+        max-height: 800px;
+    }
+
+    .slider-container {
+        margin-left: auto;
+        display: flex;
+        place-content: center;
+        width: 100%;
+        flex-wrap: wrap;
+
+    }
+
+    .main-image-container {
+        margin-left: auto;
+        display: flex;
+        place-content: center;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .thumb-carousel-container {
+        margin-left: auto;
+        display: flex;
+        place-content: center;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    body {
+
+        overflow: hidden;
+        scroll-behavior: smooth;
+    }
+
+    section {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .carousel-container {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .carousel.sliding-transition {
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-image {
+        -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
+        box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
+    }
+
+    .arrow-button {
+        padding: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #000;
+        cursor: pointer;
+        background: rgb(255, 255, 255, 0.3);
+        width: 36px;
+        font-size: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        border-radius: 50%;
+        aspect-ratio: 1;
+        -webkit-box-shadow: 5px 5px 5px -2px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 5px 5px 5px -2px rgba(0, 0, 0, 0.5);
+        box-shadow: 5px 5px 5px -2px rgba(0, 0, 0, 0.5);
+    }
+
+    span {
+        height: 100%;
+        width: 100%;
+    }
+
+    .left-arrow {
+        left: 20px;
+    }
+
+    .right-arrow {
+        right: 20px;
+    }
+</style>
+
+<body>
+
+
+
+    <section>
+        <div class="carousel-container main-image-container">
+            <div class="main-image-container">
+                <img class="ProductImageReview_big-img__2Lh1G width-50"
+                    src="https://cdn.rowaviron.com/web/product-detail-page/v6/strong/strong-performance-01.jpg"
+                    loading="eager" alt="Strong Performance Package">
+                <!-- <iframe class="carousel-image" width="560" height="315"
+                    src="https://www.youtube.com/embed/vBNBj5C4ljE?si=mgXgEzKy-ZQ4E0_h" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe> -->
+            </div>
+            <div class="carousel main-image-container">
+                <img class="ProductImageReview_product-image__T5b0f carousel-image"
+                    src="https://cdn.rowaviron.com/web/product-detail-page/v6/strong/strong-performance-01-s.jpg"
+                    alt="small-product-image-0" loading="lazy"><img
+                    class="ProductImageReview_product-image__T5b0f carousel-image"
+                    src="https://cdn.rowaviron.com/web/product-detail-page/v6/accessory/strap-s.jpg"
+                    alt="small-product-image-1" loading="lazy"><img
+                    class="ProductImageReview_product-image__T5b0f carousel-image"
+                    src="https://cdn.rowaviron.com/web/product-detail-page/v6/accessory/rower-mat-s.jpg"
+                    alt="small-product-image-2" loading="lazy"><img
+                    class="ProductImageReview_product-image__T5b0f carousel-image"
+                    src="https://cdn.rowaviron.com/web/product-detail-page/v6/strong/ssr-4-s.jpg"
+                    alt="small-product-image-3" loading="lazy"><img
+                    class="ProductImageReview_product-image__T5b0f carousel-image"
+                    src="https://cdn.rowaviron.com/web/product-detail-page/v6/strong/ssr-5-s.jpg"
+                    alt="small-product-image-4" loading="lazy"><img
+                    class="ProductImageReview_product-image__T5b0f carousel-image"
+                    src="https://cdn.rowaviron.com/web/product-detail-page/v6/strong/ssr-6-s.jpg"
+                    alt="small-product-image-5" loading="lazy">
+            </div>
+            <button class="arrow-button left-arrow"><span>&#8249;</span></button>
+            <button class="arrow-button right-arrow"><span>&#8250;</span></button>
+        </div>
+
+
+        <!-- <div class="slider-container">
+        <div class="slider-wrapper">
+            <div class="main-image-container">
+                <img class="ProductImageReview_big-img__2Lh1G width-50"
+                    src="https://cdn.rowaviron.com/web/product-detail-page/v6/strong/strong-performance-01.jpg"
+                    loading="eager" alt="Strong Performance Package">
+            </div>
+            <div class="thumb-carousel-container">
+                <div class="thumb-carousel" id="small-product-images">
+                    <img class="ProductImageReview_product-image__T5b0f"
+                        src="https://cdn.rowaviron.com/web/product-detail-page/v6/strong/strong-performance-01-s.jpg"
+                        alt="small-product-image-0" loading="lazy"><img class="ProductImageReview_product-image__T5b0f"
+                        src="https://cdn.rowaviron.com/web/product-detail-page/v6/accessory/strap-s.jpg"
+                        alt="small-product-image-1" loading="lazy"><img class="ProductImageReview_product-image__T5b0f"
+                        src="https://cdn.rowaviron.com/web/product-detail-page/v6/accessory/rower-mat-s.jpg"
+                        alt="small-product-image-2" loading="lazy"><img class="ProductImageReview_product-image__T5b0f"
+                        src="https://cdn.rowaviron.com/web/product-detail-page/v6/strong/ssr-4-s.jpg"
+                        alt="small-product-image-3" loading="lazy"><img class="ProductImageReview_product-image__T5b0f"
+                        src="https://cdn.rowaviron.com/web/product-detail-page/v6/strong/ssr-5-s.jpg"
+                        alt="small-product-image-4" loading="lazy"><img class="ProductImageReview_product-image__T5b0f"
+                        src="https://cdn.rowaviron.com/web/product-detail-page/v6/strong/ssr-6-s.jpg"
+                        alt="small-product-image-5" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+
+    </section>
+
+
+    <script>
+        const sliderMarkup =
+            `
+        <div class="slider-container">
+        <div class="slider-wrapper">
+            <div class="main-image-container">
+                <img class="ProductImageReview_big-img__2Lh1G"
+                    src="https://cdn.rowaviron.com/web/product-detail-page/v6/strong/strong-performance-01.jpg"
+                    loading="eager" alt="Strong Performance Package">
+            </div>
+            <div class="thumb-carousel-container">
+                <div class="thumb-carousel" id="small-product-images">
+                   <img class="ProductImageReview_product-image__T5b0f"
+                        src="https://cdn.rowaviron.com/web/product-detail-page/v6/strong/strong-performance-01-s.jpg"
+                        alt="small-product-image-0" loading="lazy"><img class="ProductImageReview_product-image__T5b0f"
+                        src="https://cdn.rowaviron.com/web/product-detail-page/v6/accessory/strap-s.jpg"
+                        alt="small-product-image-1" loading="lazy"><img class="ProductImageReview_product-image__T5b0f"
+                        src="https://cdn.rowaviron.com/web/product-detail-page/v6/accessory/rower-mat-s.jpg"
+                        alt="small-product-image-2" loading="lazy"><img class="ProductImageReview_product-image__T5b0f"
+                        src="https://cdn.rowaviron.com/web/product-detail-page/v6/strong/ssr-4-s.jpg"
+                        alt="small-product-image-3" loading="lazy"><img class="ProductImageReview_product-image__T5b0f"
+                        src="https://cdn.rowaviron.com/web/product-detail-page/v6/strong/ssr-5-s.jpg"
+                        alt="small-product-image-4" loading="lazy"><img class="ProductImageReview_product-image__T5b0f"
+                        src="https://cdn.rowaviron.com/web/product-detail-page/v6/strong/ssr-6-s.jpg"
+                        alt="small-product-image-5" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+        `
+
+
+        //  1. When left button is clicked, set prevIndex = currentIndex.
+        // 2. Set currentIndex = (currentIndex - 1 + totalImages) % totalImages
+        // Why modulo?
+        // In case currentIndex = 0, we need to do modulo, so as to implement the cyclical images.
+        // 3. Move the carousel to the left by the width of one image using `translateX(-imageWidth pixels)`.
+        // 4. Move the currentIndex image to the beginning of `carousel` DOM.
+        // 5. Now, to have the animation part, we will add the class `sliding-transition` to carousel.
+        // 6. Now make the carousel move to the right by width of one image (basically setting `translateX(0)`), or you can remove the transform property as well.
+        // 7. Set the background image to the new current image.
+        // 8. After the transition is completed, remove the class `sliding-transition` from carousel. (This can be done using timeout matching the animation's duration)
+
+
+        const carousel = document.querySelector(".carousel");
+
+        const leftArrow = document.querySelector(".left-arrow");
+        const rightArrow = document.querySelector(".right-arrow");
+
+        let currentIndex = 0;
+        let prevIndex;
+        const images = document.querySelectorAll(".carousel-image");
+
+        const totalImages = Object.keys(images).length;
+
+        console.log(totalImages)
+
+        // Use this in your project, if you're doing it locally
+
+
+        const imageWidth = images[1].getBoundingClientRect().x;
+        console.log("getbounding1", images[1].getBoundingClientRect());
+
+        leftArrow.addEventListener("click", () => {
+            prevIndex = currentIndex;
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+
+            carousel.insertBefore(images[currentIndex], carousel.firstChild);
+
+            setTimeout(() => {
+                carousel.style.transform = "";
+                carousel.classList.add("sliding-transition");
+            }, 10);
+
+            setTimeout(() => {
+                carousel.classList.remove("sliding-transition");
+            }, 490);
+        });
+
+        rightArrow.addEventListener("click", () => {
+            carousel.classList.add("sliding-transition");
+
+            prevIndex = currentIndex;
+            currentIndex = (currentIndex + 1) % totalImages;
+
+
+
+
+            setTimeout(() => {
+                carousel.appendChild(images[prevIndex]);
+                carousel.classList.remove("sliding-transition");
+                carousel.style.transform = "";
+            }, 500);
+        });
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
