@@ -324,7 +324,6 @@ class UI {
         }
 
 
- 
   // better local storage use via Wes Bos 
 
 
