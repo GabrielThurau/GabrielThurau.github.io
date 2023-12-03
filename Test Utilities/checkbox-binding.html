@@ -1,0 +1,218 @@
+<input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+<label for="vehicle1"> I have a bike</label><br>
+<input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+<label for="vehicle2"> I have a car</label><br>
+<input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+<label for="vehicle3"> I have a boat</label><br><br>
+
+
+<script>
+
+
+    // gift ship checkout to redirect to after product is added to cart https://eatmila.com/a/gs/cart/ 
+
+
+    (() => {
+
+        function addStyle(styleString) {
+            const style = document.createElement('style');
+            style.textContent = styleString;
+            document.head.append(style);
+        }
+
+        addStyle(`
+.checkbox-container {
+display: flex;
+}
+
+input[type="checkbox"].gift-check {
+outline: 1px solid #E00000 !important; 
+margin-bottom: 16px !important;
+background-color: #d3ffd0 !important;
+appearance: none !important;
+width: 1rem;
+border-radius: 0px !important;
+  }
+
+input[type="checkbox"].gift-check:checked {
+background-color: #E00000!important;
+appearance: checkbox !important;
+accent-color: #E00000 !important;
+}
+
+`);
+
+        // for PDP page
+
+        if (window.location.href === 'https://eatmila.com/products/the-mila-gift-experience') {
+
+            const giftID = setInterval(giftCallback, 200);
+
+            function giftCallback() {
+                let thing = document.querySelector('.product-page--form');
+
+                if (thing) {
+                    clearInterval(giftID);
+                    doThing(thing);
+                    // change event listener for changing the ATC text whenever the button is checked
+                    var checkbox = document.querySelector("input[name=checkbox]");
+
+                    checkbox.addEventListener('change', function () {
+                        if (this.checked) {
+                            console.log("Checkbox is checked..");
+                        } else {
+                            console.log("Checkbox is not checked..");
+                        }
+                    });
+
+                }
+            }
+
+            function doThing(thing) {
+                const checkBoxMarkup = `
+
+            <div class="checkbox-container">
+            <input class="gift-check" type="checkbox">
+            <label class="gift-label">Is This a Gift?</label>
+
+            <div class="image-container">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="none"><path fill="#E00000" d="M21.094 7.227h-4.03c.207-.13.403-.277.586-.438a2.693 2.693 0 0 0 .9-1.953 2.992 2.992 0 0 0-3.072-3.078 2.692 2.692 0 0 0-1.953.9 5.576 5.576 0 0 0-1.025 1.81 5.577 5.577 0 0 0-1.023-1.809 2.692 2.692 0 0 0-1.956-.901 2.991 2.991 0 0 0-3.076 3.077 2.691 2.691 0 0 0 .9 1.953c.184.162.38.308.587.438H3.906A1.367 1.367 0 0 0 2.54 8.594v3.125a1.367 1.367 0 0 0 1.367 1.367h.196v6.445a1.367 1.367 0 0 0 1.367 1.367H19.53a1.367 1.367 0 0 0 1.367-1.367v-6.445h.196a1.367 1.367 0 0 0 1.367-1.367V8.594a1.367 1.367 0 0 0-1.367-1.367Zm-7.835-1.075c.22-1.183.614-2.124 1.141-2.72a1.531 1.531 0 0 1 1.114-.502h.053a1.817 1.817 0 0 1 1.816 1.869 1.53 1.53 0 0 1-.506 1.113c-1.047.924-2.822 1.2-3.758 1.28.025-.282.065-.641.14-1.04Zm-5.11-2.69c.341-.34.802-.531 1.284-.532h.053a1.531 1.531 0 0 1 1.114.506c.923 1.046 1.2 2.822 1.28 3.757a10.836 10.836 0 0 1-1.036-.14C9.66 6.837 8.72 6.44 8.124 5.912A1.528 1.528 0 0 1 7.617 4.8a1.821 1.821 0 0 1 .532-1.337Zm-4.438 8.257V8.594a.195.195 0 0 1 .195-.196h8.008v3.516H3.906a.195.195 0 0 1-.195-.195Zm1.562 7.812v-6.445h6.641v6.64H5.47a.195.195 0 0 1-.196-.195Zm14.454 0a.195.195 0 0 1-.196.196h-6.445v-6.641h6.64v6.445Zm1.562-7.812a.195.195 0 0 1-.195.195h-8.008V8.398h8.008a.195.195 0 0 1 .195.196v3.125Z"/></svg>
+            </div>
+
+            </div>
+
+            `;
+
+                thing.insertAdjacentHTML('beforebegin', checkBoxMarkup);
+
+            }
+
+        }
+
+        // for PDP page
+
+        document.addEventListener('rebuy:cart.add', (event) => {
+            console.log('add to cart triggered');
+            const giftCheck = document.querySelector('.gift-check');
+            const SmartCart = window.Rebuy.SmartCart;
+            if (giftCheck.checked) {
+                SmartCart.skip_open = true;
+                window.location.href = 'https://eatmila.com/a/gs/cart/';
+            }
+        });
+
+
+        // fetch listener
+
+        // window.fetch = new Proxy(window.fetch, {
+        //     apply(actualFetch, that, args) {
+        //         // Forward function call to the original fetch
+        //         const smartCart = window.Rebuy.SmartCart;
+        //         const result = Reflect.apply(actualFetch, that, args);
+        //         const giftCheck = document.querySelector('.gift-check')
+        //         // Do whatever you want with the resulting Promise
+        //         result.then((response) => {
+        //             if (giftCheck.checked) {
+        //                 SmartCart.skip_open = true;
+        //                 window.location.href = 'https://eatmila.com/a/gs/cart/';
+        //             }
+        //         });
+        //         return result;
+        //     }
+        // });
+
+        // fetch listener
+
+
+    })();
+
+
+
+
+
+
+
+
+
+
+    function stopProp(e) {
+        console.log('prop stopped');
+        e.preventDefault();
+    }
+
+
+
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].addEventListener('change', function () {
+            console.log(this);
+            checkboxes.forEach(element => {
+                element.checked = true;
+            });
+        });
+    }
+
+
+
+
+
+    // postItems function. I don't think I really need this because we are gonna let the native functionality take over.
+
+
+
+    function postItems() {
+        let VID, sellingPlan, quantity, countThing;
+
+        // activeID is a globally available variable that grabs the current variant ID on the PDPs. 
+        // Just tapping into that         
+
+        if (activeID === '39392991477889') { console.log('pork!'); VID = '39675646804097'; }
+        if (activeID === '39392991510657') { console.log('shrimp & pork!'); VID = '39675646836865'; }
+        if (activeID === '39392991543425') { console.log('chicken!'); VID = '39675646869633'; }
+        if (activeID === '39667871711361') {
+            console.log('corn!');
+
+        }
+
+        sellingPlan = document.querySelector('[name="selling_plan"]').value;
+        if (sellingPlan === '') {
+            console.log('no selling plan');
+            VID = activeID;
+            countThing = document.querySelector("div.product-page--quantity > div > span").textContent;
+            quantity = Number(countThing);
+        }
+
+        else {
+            quantity = 1;
+        }
+        let formData = {
+            'items': [{
+                'id': VID,
+                'selling_plan': sellingPlan,
+                'quantity': quantity
+            }]
+        };
+        fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(response => {
+                if (response) {
+                    // rebuy method to prevent cart from opening
+
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
+    // postItems function 
+
+
+
+</script>
