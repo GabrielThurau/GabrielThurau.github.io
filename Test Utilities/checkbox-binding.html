@@ -21,26 +21,26 @@
         }
 
         addStyle(`
-.checkbox-container {
-display: flex;
-}
+        .checkbox-container {
+        display: flex;
+        }
 
-input[type="checkbox"].gift-check {
-outline: 1px solid #E00000 !important; 
-margin-bottom: 16px !important;
-background-color: #d3ffd0 !important;
-appearance: none !important;
-width: 1rem;
-border-radius: 0px !important;
-  }
+        input[type="checkbox"].gift-check {
+        outline: 1px solid #E00000 !important; 
+        margin-bottom: 16px !important;
+        background-color: #d3ffd0 !important;
+        appearance: none !important;
+        width: 1rem;
+        border-radius: 0px !important;
+        }
 
-input[type="checkbox"].gift-check:checked {
-background-color: #E00000!important;
-appearance: checkbox !important;
-accent-color: #E00000 !important;
-}
+        input[type="checkbox"].gift-check:checked {
+        background-color: #E00000!important;
+        appearance: checkbox !important;
+        accent-color: #E00000 !important;
+        }
 
-`);
+        `);
 
         // for PDP page
 
@@ -50,21 +50,11 @@ accent-color: #E00000 !important;
 
             function giftCallback() {
                 let thing = document.querySelector('.product-page--form');
-
                 if (thing) {
                     clearInterval(giftID);
                     doThing(thing);
                     // change event listener for changing the ATC text whenever the button is checked
                     var checkbox = document.querySelector("input[name=checkbox]");
-
-                    checkbox.addEventListener('change', function () {
-                        if (this.checked) {
-                            console.log("Checkbox is checked..");
-                        } else {
-                            console.log("Checkbox is not checked..");
-                        }
-                    });
-
                 }
             }
 
@@ -85,46 +75,62 @@ accent-color: #E00000 !important;
 
                 thing.insertAdjacentHTML('beforebegin', checkBoxMarkup);
 
+                // let's do one more thing!
+
+                checkbox.addEventListener('change', changeThing);
             }
 
+            function changeThing() {
+                atcButtons = document.querySelector('.btn-red');
+                if (this.checked) {
+                    atcButtons.forEach(butt => {
+                        if (butt.textContent.includes('Add to Cart')) {
+                            butt.textContent = "Send as Gift?"
+                        }
+                    });
+                }
+            }
+
+            // for PDP page
+
+            // check if the gift checkbox is checked. If it is, stop the usual rebuy slide cart from opening on post and then redirect to gift checkout page
+
+            document.addEventListener('rebuy:cart.add', (event) => {
+                console.log('add to cart triggered');
+                const giftCheck = document.querySelector('.gift-check');
+                const SmartCart = window.Rebuy.SmartCart;
+                if (giftCheck.checked) {
+                    SmartCart.skip_open = true;
+                    window.location.href = 'https://eatmila.com/a/gs/cart/';
+                }
+            });
         }
 
-        // for PDP page
-
-        document.addEventListener('rebuy:cart.add', (event) => {
-            console.log('add to cart triggered');
-            const giftCheck = document.querySelector('.gift-check');
-            const SmartCart = window.Rebuy.SmartCart;
-            if (giftCheck.checked) {
-                SmartCart.skip_open = true;
-                window.location.href = 'https://eatmila.com/a/gs/cart/';
-            }
-        });
-
-
-        // fetch listener
-
-        // window.fetch = new Proxy(window.fetch, {
-        //     apply(actualFetch, that, args) {
-        //         // Forward function call to the original fetch
-        //         const smartCart = window.Rebuy.SmartCart;
-        //         const result = Reflect.apply(actualFetch, that, args);
-        //         const giftCheck = document.querySelector('.gift-check')
-        //         // Do whatever you want with the resulting Promise
-        //         result.then((response) => {
-        //             if (giftCheck.checked) {
-        //                 SmartCart.skip_open = true;
-        //                 window.location.href = 'https://eatmila.com/a/gs/cart/';
-        //             }
-        //         });
-        //         return result;
-        //     }
-        // });
-
-        // fetch listener
-
-
     })();
+
+    // fetch listener
+
+    // window.fetch = new Proxy(window.fetch, {
+    //     apply(actualFetch, that, args) {
+    //         // Forward function call to the original fetch
+    //         const smartCart = window.Rebuy.SmartCart;
+    //         const result = Reflect.apply(actualFetch, that, args);
+    //         const giftCheck = document.querySelector('.gift-check')
+    //         // Do whatever you want with the resulting Promise
+    //         result.then((response) => {
+    //             if (giftCheck.checked) {
+    //                 SmartCart.skip_open = true;
+    //                 window.location.href = 'https://eatmila.com/a/gs/cart/';
+    //             }
+    //         });
+    //         return result;
+    //     }
+    // });
+
+    // fetch listener
+
+
+
 
 
 
