@@ -225,7 +225,7 @@ function addStyle(styleString) {
         let liverProducts = cartItems.filter(product => product.handle.indexOf('liver') > -1);
         liverProducts.forEach(product => {
             if(!product?.selling_plan_allocation) {
-
+                
             }
         });
         let item = cart.items[0];
