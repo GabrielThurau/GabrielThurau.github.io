@@ -1,0 +1,56 @@
+
+
+<select name="" id="mySelect"></select>
+
+<mega-menu id=${e.target.id} class="mega-menu">
+    <header class="plg49-header">
+       <h3 class="category-title">${categoryTitle}</h3>
+       <nav class="plg49-nav">
+          <ul class="menu-list">
+          ${menuLinks.map((v, i) => 
+          `
+          <li>
+             <a> ${v.textContent} </a>
+          </li>
+          `)
+          .join('')}
+          <ul>
+       </nav>
+    </header>
+ </mega-menu>
+
+<script>
+
+
+const myOptsArr = [
+    {
+        title: 'Fruit',
+        values: ['apple','pear','grapes','beer']
+    },
+    {
+        title: 'Animals',
+        values: ['apple','dog','mouse','cat']
+    },
+    {
+        title: 'Sports'
+    },
+    // more here
+];
+
+let myOpts = `
+<option value="">Select Option</option>
+${myOptsArr.map(item => `
+    <optgroup label="${item.title}">${
+    item.values.map(itemValue => `
+            <option value="${itemValue}">${itemValue}</option>
+        `).join('')}
+    </optgroup>;
+`).join('')}
+`;
+
+document.getElementById('mySelect').innerHTML = myOpts;
+
+
+</script>
+
+
