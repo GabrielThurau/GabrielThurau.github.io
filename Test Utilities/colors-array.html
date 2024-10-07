@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+    body {
+        height: 100vh;
+        display: grid;
+        place-content: center;
+        --red: red;
+        --yellow: yellow;
+        --blue: blue;
+    }
+
+    div {
+        margin: 0 auto;
+    }
+
+    p:has(.color) {
+        font-size: 2rem;
+    }
+
+    .color {
+font-weight: bold;
+    }
+
+    button {
+      
+    }
+
+    </style>
+    <button class="increment">Show Colors in Circular Fashion</button>
+<div>
+
+    <p>Color: <span class="color"></span></p>
+</div>
+
+
+<script>
+
+const COLORS = ['red', 'yellow', 'blue'];
+function getColor( count ) {
+const color = document.querySelector('.color');
+const colorIndex = (count -1) % COLORS.length;
+  color.textContent = COLORS[colorIndex];
+  color.style.color = COLORS[colorIndex]
+}
+
+const increment = document.querySelector('.increment');
+let count = 0;
+increment.addEventListener('click', (e) =>{
+count++;
+getColor(count)
+})
+
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<style>
+
+button {
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem;
+  font-family: 'Roboto Mono', monospace; 
+  background-color: #e16162;
+  color: #fff;
+  cursor: pointer;
+}
+
+main {
+  padding: 2rem;
+  font-family: 'Roboto Mono', monospace; 
+  display: grid;
+}
+
+section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+h3 {
+  font-family: 'Roboto Slab', monospace;
+}
+
+.text {
+  padding: 0 1rem;
+}
+.text h3 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+img:not(h3 + img) {
+  height: 300px;
+  width: 100%;
+  background-color: turquoise;
+  border-radius: 2rem 2rem 0 0;
+}
+
+
+
+.container {
+  container: card/inline-size; /* <container-name>/<container-type> */
+  /* tells the browser to repaint this part only when its size changes */
+  border-radius: .5rem;
+  display: grid;
+}
+
+article { /* articles will be styled based on the width of their container div */
+  border-radius: 2rem;
+  border: 4px dotted #e16162;
+}
+
+/* @container card (inline-size <  350px) { 
+  article {
+    display: grid;
+  }
+}  */
+
+h3 + img {
+  /* max-width: 150px;  */
+  margin: 0 auto; 
+  width: 100%;
+  text-align: center;
+  height: 30px; 
+}
+
+
+@container card (inline-size > 500px) and (inline-size <= 700px) { 
+  article {
+    display: flex;
+    align-items: center;
+    flex-flow: nowrap;
+  }
+  article > img.card-image {
+    border-radius: 2rem;
+    height: 100%;
+    width: calc(50% - 4px);
+  }
+  div.text {
+    width: calc(50% - 4px);
+  }
+}
+
+@container card (inline-size > 1200px) { 
+  article {
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+    background-image: url("https://images.unsplash.com/photo-1716337757705-c5f314ef84ee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNhcHliYXJhfGVufDB8fDB8fHww");
+    border: none;
+    color: #fff;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  img {
+    display: none;
+  }
+  
+  .text {
+    max-width: 700px;
+    text-align: center;
+  }
+  
+  h3 {
+    font-size: 4rem;
+  }
+  
+  p {
+    font-size: 2rem;
+  }
+}
+
+
+</style>
+
+<main>
+    <section> <!-- 1 item -->
+        <div class="container">
+          <article>
+            <img class="card-image" src="https://dummyimage.com/600x600/004643/004643.jpg&text=pretty+picture"/>
+            <div class="text">
+              <h3>This is a Hero Section</h3>
+              <p>This is a sentence. Very interesting content here. Yep, this content is riveting. I wonder where this is going. I could've just used Lorem Ipsum, but that's boring and latin. No one actually likes Lorem Ipsum.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section> <!-- 2 items -->
+        <div class="container">
+          <article>
+            <img class="card-image" src="https://dummyimage.com/600x600/004643/004643.jpg&text=pretty+picture"/>
+            <div class="text">
+              <h3>This is a Heading</h3>
+              <img src="https://cdn.shopify.com/s/files/1/0266/0483/0829/files/star-rating.svg?v=1703659891">
+              <p>This is a sentence. blah blah blah blah blah blah blah blah  Very interesting content here. Yep, blah blah blah blah blah blah blah blah  this content is riveting. I wonder where this is going. I could've just used Lorem Ipsum, but that's boring and latin. No one actually likes Lorem Ipsum.</p>
+            </div>
+          </article>
+        </div>
+        <div class="container">
+          <article>
+            <img class="card-image" src="https://dummyimage.com/600x600/abd1c6/abd1c6.jpg&text=pretty+picture"/>
+            <div class="text">
+              <h3>This is a Heading</h3>
+              <img class="card-image" src="https://cdn.shopify.com/s/files/1/0266/0483/0829/files/star-rating.svg?v=1703659891">
+              <p>This is a sentence. Very interesting content here. Yep, this content is riveting. I wonder where this is going. I could've just used Lorem Ipsum, but that's boring and latin. No one actually likes Lorem Ipsum.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    <section> <!-- 3 items -->
+      <div class="container">
+        <article>
+          <img class="card-image" src="https://dummyimage.com/600x600/004643/004643.jpg&text=pretty+picture"/>
+          <div class="text">
+            <h3>This is a Heading</h3>
+            <img class="card-image" src="https://cdn.shopify.com/s/files/1/0266/0483/0829/files/star-rating.svg?v=1703659891">
+            <p>This is a sentence. Very interesting content here. Yep, this content is riveting. I wonder where this is going. I could've just used Lorem Ipsum, but that's boring and latin. No one actually likes Lorem Ipsum.</p>
+          </div>
+        </article>
+      </div>
+      <div class="container">
+        <article>
+          <img class="card-image" src="https://dummyimage.com/600x600/abd1c6/abd1c6.jpg&text=pretty+picture"/>
+          <div class="text">
+            <h3>This is a Heading</h3>
+            <img class="card-image" src="https://cdn.shopify.com/s/files/1/0266/0483/0829/files/star-rating.svg?v=1703659891">
+            <p>This is a sentence. Very interesting content here. Yep, this content is riveting. I wonder where this is going. I could've just used Lorem Ipsum, but that's boring and latin. No one actually likes Lorem Ipsum.</p>
+          </div>
+        </article>
+      </div>
+      <div class="container">
+        <article>
+          <img class="card-image" src="https://dummyimage.com/600x600/f9bc60/f9bc60.jpg&text=pretty+picture"/>
+          <div class="text">
+            <h3>This is a Heading</h3>
+            <img class="card-image" src="https://cdn.shopify.com/s/files/1/0266/0483/0829/files/star-rating.svg?v=1703659891">
+            <p>This is a sentence. Very interesting content here. Yep, this content is riveting. I wonder where this is going. I could've just used Lorem Ipsum, but that's boring and latin. No one actually likes Lorem Ipsum.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+
+
+  </script>
+    
+</body>
+</html>

@@ -1,14 +1,38 @@
 <script>
-  const productInventory = [
-      {%- for v in product.variants %}
-        { title: '{{ v.title }}', id: '{{ v.id }}', quantity: '{{ v.inventory_quantity }}' },
-      {%- endfor %}
-    ];
+    const productInventory = [
+        {%- for v in product.variants %}
+          { title: '{{ v.title }}', id: '{{ v.id }}', quantity: '{{ v.inventory_quantity }}' },
+        {%- endfor %}
+      ];
 
-    const restock = { restock: true };
-  const sufficient = { restock: false };
-  const result = Map.groupBy(productInventory, ({ quantity }) =>
-    quantity < 6 ? restock : sufficient,
-  );
-  console.log(result.get(restock));
+      const restock = { restock: true };
+    const sufficient = { restock: false };
+    const result = Map.groupBy(productInventory, ({ quantity }) =>
+      quantity < 6 ? restock : sufficient,
+    );
+    console.log(result.get(restock));
+
+
+
+
+
+    function createDataObject(title, id, handle, price) {
+      const product = {};
+      product[title] = {
+        title,
+        handle,
+        price
+      };
+      return product;
+    }
+
+    const productData = createDataObject();
+
+  const productObjects = []
+
+  {% for product in collections.best-sellers.products %}
+
+  productObjects.push(createDataObject('{{  product.title   }}', {{  product.id  }}, '{{    product.handle   }}', {{  product.price  }}))
+
+  {% endfor %}
 </script>

@@ -1,0 +1,21 @@
+<script>
+   function createDataObject(id, title, handle, price) {
+      const product = {};
+      product[id] = {
+        title,
+        handle,
+        price
+      };
+      return product;
+    }
+
+    const productData = createDataObject();
+
+  const productObjects = []
+
+  {% for product in collection['your-collection'] %}
+
+  productObjects.push(createDataObject({{  product.id   }}, {{  product.title  }}, {{  product.handle   }}, {{  product.price  }}))
+
+  {% endfor %}
+</script>

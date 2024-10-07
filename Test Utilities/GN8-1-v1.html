@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+
+(() => {
+
+function addStyle(styleString) {
+    const style = document.createElement('style');
+    style.textContent = styleString;
+    style.id = "gn8-take-two-v1-styles";
+    document.head.append(style);
+}
+addStyle(`
+    @media (max-width: 450px) {
+    .INDhasDragTooltip.INDpositionRight button#INDmenu-btn:after {
+        left: 100% !important;
+    }
+    
+    .INDpositionRight #INDmenu-btn, [data-indpositionright] #INDmenu-btn {
+        right: unset !important;
+    }
+    #INDmenu-btn {
+        bottom: 50% !important;
+        left: -20px !important;
+        top: unset !important;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .icon-container-gn8 {
+        position: absolute;
+        right: 2%;
+    }
+
+    .faq-anchor {
+    color: #FF8900;
+    }
+    }
+    `);
+
+  console.log('GN8.1 - variant 1')
+
+  // tracking code
+
+  // test fired
+
+  const testFired = () => {
+    window.gn8TestFired = "true";
+    //console.log('test fired event fired for GN8.1');
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "MonetateEvent",
+      "ga4-event-name": "GN8.1_TestFired",
+    });
+  };
+
+  // view event
+
+  const observeMe = (elem) => {
+    window.gn8ViewEvent = "true";
+    window.dataLayer = window.dataLayer || [];
+    const elemObserver = new IntersectionObserver((entries) => {
+      const [entry] = entries;
+      const intersecting = entry.isIntersecting;
+      //console.log('faq intersecting', intersecting);
+      intersecting &&
+        window.dataLayer.push({
+          event: "MonetateEvent",
+          "ga4-event-name": "GN8.1_View_Event",
+          "ga4-event-p1-name": "event_label",
+          "ga4-event-p1-value": "",
+        });
+    });
+    elemObserver.observe(elem);
+  };
+
+  // tracking code
+
+  // url changed
+
+  let previousUrl = "";
+  const observer = new MutationObserver(function (mutations) {
+    if (location.href !== previousUrl && window.innerWidth < 550) {
+      window.urlChange = "true";
+      // console.log('url changed new')
+      previousUrl = location.href;
+      if (!location.href.includes('https://www.gonutre.com/plans') && document.querySelector('#gn8-take-two-v1-styles')) {
+        const styles = document.querySelectorAll('#gn8-take-two-v1-styles');
+        styles.forEach((s) => {
+          s.remove();
+        });
+      }
+      if (location.href.includes("https://www.gonutre.com/plans")) {
+        if (!window.gn8TestFired) {
+          testFired();
+        }
+        const linkID = setInterval(() => {
+          const link = document.querySelector(".main-wrapper p.info");
+          const faqSection = document.querySelector(".gn8-faq-section");
+          const mainWrapper = document.querySelector(
+            ".main-wrapper.plans label"
+          ).parentElement;
+          if (link && faqSection && mainWrapper) {
+            clearInterval(linkID);
+            observeMe(faqSection);
+            mutations.forEach((mutation) => {
+              //console.log(mutation.target)
+              // let nextDiv = document.querySelector('#__next');
+              if (mutation.target) {
+                //console.log(mutation.target)
+                faqSection.id = "faqs";
+                link.innerHTML = ``;
+                setTimeout(() => {
+                  link.innerHTML = `You can change your dietary preferences at any time <a class="faq-anchor" href="#faqs">FAQs</a>`;
+                  link.style.textWrap = "pretty";
+                  let anchor = document.querySelector(".faq-anchor");
+                  anchor.addEventListener("click", (e) => {
+                    window.dataLayer.push({
+                      event: "MonetateEvent",
+                      "ga4-event-name": "GN8.1_ Anchor copy",
+                      "ga4-event-p1-name": "event_label",
+                      "ga4-event-p1-value": e.target.textContent.trim(),
+                    });
+                    //console.log(window.dataLayer)
+                  });
+                }, 400);
+              }
+            });
+            const iconContainer = document.createElement("div");
+            iconContainer.classList.add("icon-container-gn8");
+            iconContainer.innerHTML = `
+            <a href="#faqs">
+            <svg width="35" height="35" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="17.5" cy="17.5" r="16.5" fill="#fff" stroke="#FF8900" stroke-width="2"/><path d="M18.77 6.408c2.111 0 3.818.597 5.12 1.792 1.3 1.195 1.951 2.795 1.951 4.8 0 2.24-.693 3.904-2.08 4.992-1.386 1.067-3.264 1.6-5.632 1.6l-.096 3.04h-2.528l-.128-5.056h.928c2.112 0 3.766-.32 4.96-.96 1.195-.64 1.792-1.845 1.792-3.616 0-1.28-.384-2.293-1.152-3.04-.768-.747-1.802-1.12-3.104-1.12-1.322 0-2.368.363-3.136 1.088-.746.704-1.12 1.675-1.12 2.912h-2.752c0-1.28.288-2.4.864-3.36a5.82 5.82 0 0 1 2.432-2.272c1.067-.533 2.294-.8 3.68-.8Zm-2.017 22.784a1.915 1.915 0 0 1-1.408-.576 1.915 1.915 0 0 1-.576-1.408c0-.555.192-1.024.576-1.408a1.915 1.915 0 0 1 1.408-.576c.534 0 .982.192 1.344.576.384.384.576.853.576 1.408 0 .555-.192 1.024-.576 1.408-.362.384-.81.576-1.344.576Z" fill="#000"/></svg>
+            </a>
+            `;
+            if (!document.querySelector(".icon-container-gn8")) {
+              mainWrapper.appendChild(iconContainer);
+            }
+            setTimeout(() => {
+              iconContainer.addEventListener("click", (e) => {
+                window.dataLayer.push({
+                  event: "MonetateEvent",
+                  "ga4-event-name": "GN8.1_AnchorIcon",
+                  "ga4-event-p1-name": "event_label",
+                  "ga4-event-p1-value": "anchor-icon",
+                });
+                // console.log(window.dataLayer)
+              });
+            }, 200);
+          }
+        }, 100);
+        //console.log('we are on the plans page')
+      }
+    }
+  });
+  const config = { subtree: true, childList: true };
+  if (window.urlChange !== "true") {
+    observer.observe(document, config);
+  }
+
+  // regular code
+})();
+
+</script>
+    
+</body>
+</html>
+
